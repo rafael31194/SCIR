@@ -1,0 +1,2831 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="SCIR_SistemaInventarioModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="c_compra">
+          <Key>
+            <PropertyRef Name="c_id" />
+          </Key>
+          <Property Name="c_id" Type="int" Nullable="false" />
+          <Property Name="c_id_i" Type="int" Nullable="false" />
+          <Property Name="c_fecha" Type="date" Nullable="false" />
+          <Property Name="c_codigoFactura" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="c_descripcion" Type="nchar" MaxLength="100" />
+          <Property Name="c_id_usuarioCreacion" Type="int" />
+          <Property Name="c_id_ope" Type="int" />
+        </EntityType>
+        <EntityType Name="c_dtl_compra_detalle">
+          <Key>
+            <PropertyRef Name="c_dtl_id" />
+          </Key>
+          <Property Name="c_dtl_id" Type="int" Nullable="false" />
+          <Property Name="c_dtl_id_c" Type="int" Nullable="false" />
+          <Property Name="c_dtl_id_mp" Type="int" Nullable="false" />
+          <Property Name="c_dtl_cantidad" Type="float" Nullable="false" />
+        </EntityType>
+        <EntityType Name="carg_cargoInventario">
+          <Key>
+            <PropertyRef Name="carg_id" />
+          </Key>
+          <Property Name="carg_id" Type="int" Nullable="false" />
+          <Property Name="carg_id_ope" Type="int" Nullable="false" />
+          <Property Name="carg_id_i" Type="int" />
+          <Property Name="carg_id_mp" Type="int" />
+          <Property Name="carg_cantidad" Type="float" />
+          <Property Name="carg_id_usuarioCreacion" Type="int" />
+        </EntityType>
+        <EntityType Name="ce_comidaEmpleado">
+          <Key>
+            <PropertyRef Name="ce_id" />
+          </Key>
+          <Property Name="ce_id" Type="int" Nullable="false" />
+          <Property Name="ce_fecha" Type="date" Nullable="false" />
+          <Property Name="ce_cantidadEmpleados" Type="int" Nullable="false" />
+          <Property Name="ce_descripcion" Type="nchar" MaxLength="100" />
+          <Property Name="ce_id_i" Type="int" Nullable="false" />
+          <Property Name="ce_id_usuarioCreacion" Type="int" />
+          <Property Name="ce_id_ope" Type="int" />
+        </EntityType>
+        <EntityType Name="ce_dtl_comidaEmpleado_detalle">
+          <Key>
+            <PropertyRef Name="ce_dtl_id" />
+          </Key>
+          <Property Name="ce_dtl_id" Type="int" Nullable="false" />
+          <Property Name="ce_dtl_id_ce" Type="int" Nullable="false" />
+          <Property Name="ce_dtl_id_p" Type="int" Nullable="false" />
+          <Property Name="ce_dtl_cantidad" Type="float" Nullable="false" />
+        </EntityType>
+        <EntityType Name="d_desecho">
+          <Key>
+            <PropertyRef Name="d_id" />
+          </Key>
+          <Property Name="d_id" Type="int" Nullable="false" />
+          <Property Name="d_id_i" Type="int" Nullable="false" />
+          <Property Name="d_fecha" Type="date" Nullable="false" />
+          <Property Name="d_descripcion" Type="nchar" MaxLength="50" />
+          <Property Name="d_tipo" Type="nchar" MaxLength="10" />
+          <Property Name="d_id_usuarioCreacion" Type="int" />
+          <Property Name="d_id_ope" Type="int" />
+        </EntityType>
+        <EntityType Name="dc_desechoCompleto">
+          <Key>
+            <PropertyRef Name="dc_id" />
+          </Key>
+          <Property Name="dc_id" Type="int" Nullable="false" />
+          <Property Name="dc_id_d" Type="int" Nullable="false" />
+          <Property Name="dc_id_p" Type="int" Nullable="false" />
+          <Property Name="dc_cantidad" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="deg_degustacion">
+          <Key>
+            <PropertyRef Name="deg_id" />
+          </Key>
+          <Property Name="deg_id" Type="int" Nullable="false" />
+          <Property Name="deg_id_i" Type="int" Nullable="false" />
+          <Property Name="deg_fecha" Type="date" Nullable="false" />
+          <Property Name="deg_descripcion" Type="nchar" MaxLength="100" />
+          <Property Name="deg_id_usuarioCreacion" Type="int" />
+          <Property Name="deg_id_ope" Type="int" />
+        </EntityType>
+        <EntityType Name="deg_dtl_degustacion_detalle">
+          <Key>
+            <PropertyRef Name="deg_dtl_id" />
+          </Key>
+          <Property Name="deg_dtl_id" Type="int" Nullable="false" />
+          <Property Name="deg_dtl_id_deg" Type="int" Nullable="false" />
+          <Property Name="deg_dtl_id_p" Type="int" Nullable="false" />
+          <Property Name="deg_dtl_cantidad" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="desc_descargoInventario">
+          <Key>
+            <PropertyRef Name="desc_id" />
+          </Key>
+          <Property Name="desc_id" Type="int" Nullable="false" />
+          <Property Name="desc_id_ope" Type="int" Nullable="false" />
+          <Property Name="desc_id_i" Type="int" Nullable="false" />
+          <Property Name="desc_id_mp" Type="int" />
+          <Property Name="desc_cantidad" Type="float" />
+          <Property Name="desc_fecha" Type="date" />
+          <Property Name="desc_id_usuarioCreacion" Type="int" />
+        </EntityType>
+        <EntityType Name="di_desechoIncompleto">
+          <Key>
+            <PropertyRef Name="di_id" />
+          </Key>
+          <Property Name="di_id" Type="int" Nullable="false" />
+          <Property Name="di_id_d" Type="int" Nullable="false" />
+          <Property Name="di_id_mp" Type="int" Nullable="false" />
+          <Property Name="di_cantidad" Type="float" Nullable="false" />
+        </EntityType>
+        <EntityType Name="i_inventario">
+          <Key>
+            <PropertyRef Name="inv_id" />
+          </Key>
+          <Property Name="inv_id" Type="int" Nullable="false" />
+          <Property Name="inv_fechaInicio" Type="date" Nullable="false" />
+          <Property Name="inv_Encabezado" Type="nchar" MaxLength="100" />
+          <Property Name="inv_fechaFin" Type="date" />
+          <Property Name="inv_activo" Type="bit" />
+        </EntityType>
+        <EntityType Name="ii_inventarioInterno">
+          <Key>
+            <PropertyRef Name="ii_id" />
+          </Key>
+          <Property Name="ii_id" Type="int" Nullable="false" />
+          <Property Name="ii_id_i" Type="int" Nullable="false" />
+          <Property Name="ii_id_mp" Type="int" Nullable="false" />
+          <Property Name="ii_mp_descripcion" Type="varchar" MaxLength="50" />
+          <Property Name="ii_existencia" Type="float" />
+          <Property Name="ii_activo" Type="bit" />
+        </EntityType>
+        <EntityType Name="ir_inventarioReal">
+          <Key>
+            <PropertyRef Name="ir_id" />
+          </Key>
+          <Property Name="ir_id" Type="int" Nullable="false" />
+          <Property Name="ir_id_i" Type="int" Nullable="false" />
+          <Property Name="ir_id_mp" Type="int" Nullable="false" />
+          <Property Name="ir_mp_descripcion" Type="int" />
+          <Property Name="ir_existencia" Type="float" />
+          <Property Name="ir_activo" Type="bit" />
+          <Property Name="ir_fechaIngreso" Type="nchar" MaxLength="10" />
+          <Property Name="ir_id_usuacioCreacion" Type="nchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="mp_materiaPrima">
+          <Key>
+            <PropertyRef Name="mp_id" />
+          </Key>
+          <Property Name="mp_id" Type="int" Nullable="false" />
+          <Property Name="mp_codigo" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="mp_nombre" Type="varchar" MaxLength="50" />
+          <Property Name="mp_unidadMedida" Type="varchar" MaxLength="50" />
+          <Property Name="mp_cantidadMinima" Type="float" />
+        </EntityType>
+        <EntityType Name="ope_operacion">
+          <Key>
+            <PropertyRef Name="ope_id" />
+          </Key>
+          <Property Name="ope_id" Type="int" Nullable="false" />
+          <Property Name="ope_descripcion" Type="varchar" MaxLength="50" />
+          <Property Name="ope_tipo" Type="int" />
+        </EntityType>
+        <EntityType Name="p_producto">
+          <Key>
+            <PropertyRef Name="p_id" />
+          </Key>
+          <Property Name="p_id" Type="int" Nullable="false" />
+          <Property Name="p_id_r" Type="int" Nullable="false" />
+          <Property Name="p_nombre" Type="nchar" MaxLength="10" />
+          <Property Name="p_precio" Type="float" Nullable="false" />
+          <Property Name="p_tipo" Type="int" />
+        </EntityType>
+        <EntityType Name="pant_pantallas">
+          <Key>
+            <PropertyRef Name="pant_id" />
+          </Key>
+          <Property Name="pant_id" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="pant_descripcion" Type="nchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="pc_productoCombo">
+          <Key>
+            <PropertyRef Name="pc_id" />
+          </Key>
+          <Property Name="pc_id" Type="int" Nullable="false" />
+          <Property Name="pc_id_p" Type="int" Nullable="false" />
+          <Property Name="pc_id_pc_ps" Type="int" Nullable="false" />
+          <Property Name="pc_cantidad_ps" Type="nchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="per_premisosXrol">
+          <Key>
+            <PropertyRef Name="pxr_id" />
+          </Key>
+          <Property Name="pxr_id" Type="int" Nullable="false" />
+          <Property Name="pxrl_id_pant" Type="nchar" MaxLength="10" />
+          <Property Name="pxr_id_rol" Type="int" />
+          <Property Name="pxr_id_user" Type="int" />
+        </EntityType>
+        <EntityType Name="pmx_dtl_productMix_detalle">
+          <Key>
+            <PropertyRef Name="pmx_dtl_id" />
+          </Key>
+          <Property Name="pmx_dtl_id" Type="int" Nullable="false" />
+          <Property Name="pmx_dtl_id_pmx" Type="int" Nullable="false" />
+          <Property Name="pmx_dtl_cantidad" Type="int" Nullable="false" />
+          <Property Name="pmx_dtl_id_p" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="pmx_productMix">
+          <Key>
+            <PropertyRef Name="pmx_id" />
+          </Key>
+          <Property Name="pmx_id" Type="int" Nullable="false" />
+          <Property Name="pmx_id_i" Type="int" Nullable="false" />
+          <Property Name="pmx_id_pmx_dtl" Type="int" Nullable="false" />
+          <Property Name="pmx_fecha" Type="date" Nullable="false" />
+          <Property Name="pmx_id_usuarioCreacion" Type="nchar" MaxLength="10" />
+          <Property Name="pmx_id_ope" Type="int" />
+        </EntityType>
+        <EntityType Name="ps_productoSimple">
+          <Key>
+            <PropertyRef Name="ps_id" />
+          </Key>
+          <Property Name="ps_id" Type="int" Nullable="false" />
+          <Property Name="ps_id_p" Type="int" Nullable="false" />
+          <Property Name="ps_id_ps_mp" Type="int" Nullable="false" />
+          <Property Name="ps_cantidad_mp" Type="nchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="r_dtl_recetaDetalle">
+          <Key>
+            <PropertyRef Name="r_dtl_id" />
+          </Key>
+          <Property Name="r_dtl_id" Type="int" Nullable="false" />
+          <Property Name="r_dtl_id_r" Type="int" Nullable="false" />
+          <Property Name="r_dtl_id_mp" Type="int" Nullable="false" />
+          <Property Name="r_dtl_cantidad_mp" Type="float" Nullable="false" />
+        </EntityType>
+        <EntityType Name="r_receta">
+          <Key>
+            <PropertyRef Name="r_id" />
+          </Key>
+          <Property Name="r_id" Type="int" Nullable="false" />
+          <Property Name="r_tipo" Type="int" Nullable="false" />
+          <Property Name="r_fechaCreacion" Type="date" />
+          <Property Name="r_descripcion" Type="nchar" MaxLength="100" />
+          <Property Name="r_id_usuarioCreacion" Type="int" />
+        </EntityType>
+        <EntityType Name="rol_roles">
+          <Key>
+            <PropertyRef Name="rol_id" />
+          </Key>
+          <Property Name="rol_id" Type="int" Nullable="false" />
+          <Property Name="rol_descripcion" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="t_transferencia">
+          <Key>
+            <PropertyRef Name="t_id" />
+          </Key>
+          <Property Name="t_id" Type="int" Nullable="false" />
+          <Property Name="t_id_i" Type="int" Nullable="false" />
+          <Property Name="t_fecha" Type="date" Nullable="false" />
+          <Property Name="t_descripcion" Type="nchar" MaxLength="100" />
+          <Property Name="t_tipo" Type="int" Nullable="false" />
+          <Property Name="t_id_usuarioCreacion" Type="int" />
+          <Property Name="t_id_ope" Type="int" />
+        </EntityType>
+        <EntityType Name="te_transferenciaEntrada">
+          <Key>
+            <PropertyRef Name="te_id" />
+          </Key>
+          <Property Name="te_id" Type="int" Nullable="false" />
+          <Property Name="te_id_t" Type="int" Nullable="false" />
+          <Property Name="te_id_mp" Type="int" Nullable="false" />
+          <Property Name="te_cantidad" Type="float" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tid_tipoDesecho">
+          <Key>
+            <PropertyRef Name="tid_id" />
+          </Key>
+          <Property Name="tid_id" Type="int" Nullable="false" />
+          <Property Name="tid_descripcion" Type="nchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="tir_tipoReceta">
+          <Key>
+            <PropertyRef Name="tir_id" />
+          </Key>
+          <Property Name="tir_id" Type="int" Nullable="false" />
+          <Property Name="tir_descripcion" Type="nchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="tope_tipoOperacion">
+          <Key>
+            <PropertyRef Name="tope_id" />
+          </Key>
+          <Property Name="tope_id" Type="int" Nullable="false" />
+          <Property Name="tope_descripcion" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="ts_transferenciaSalida">
+          <Key>
+            <PropertyRef Name="ts_id" />
+          </Key>
+          <Property Name="ts_id" Type="int" Nullable="false" />
+          <Property Name="ts_id_t" Type="int" Nullable="false" />
+          <Property Name="ts_id_mp" Type="int" Nullable="false" />
+          <Property Name="ts_cantidad" Type="float" Nullable="false" />
+        </EntityType>
+        <EntityType Name="usr_usuarios">
+          <Key>
+            <PropertyRef Name="usr_id" />
+          </Key>
+          <Property Name="usr_id" Type="int" Nullable="false" />
+          <Property Name="usr_nombre" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="usr_password" Type="varchar(max)" Nullable="false" />
+          <Property Name="usr_id_rol" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="vin_variacionInventario">
+          <Key>
+            <PropertyRef Name="vin_id" />
+          </Key>
+          <Property Name="vin_id" Type="int" Nullable="false" />
+          <Property Name="vin_id_i" Type="int" Nullable="false" />
+          <Property Name="vin_id_mp" Type="int" />
+          <Property Name="vin_mp_descripcion" Type="varchar" MaxLength="50" />
+          <Property Name="vin_existenciaReal" Type="float" />
+          <Property Name="vin_existenciaInterna" Type="float" />
+          <Property Name="vin_variacion" Type="float" />
+          <Property Name="vin_id_usuarioCreacion" Type="int" />
+        </EntityType>
+        <Association Name="FK_c_compra_i_inventario">
+          <End Role="i_inventario" Type="Self.i_inventario" Multiplicity="1" />
+          <End Role="c_compra" Type="Self.c_compra" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="i_inventario">
+              <PropertyRef Name="inv_id" />
+            </Principal>
+            <Dependent Role="c_compra">
+              <PropertyRef Name="c_id_i" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_c_compra_ope_operacion">
+          <End Role="ope_operacion" Type="Self.ope_operacion" Multiplicity="0..1" />
+          <End Role="c_compra" Type="Self.c_compra" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ope_operacion">
+              <PropertyRef Name="ope_id" />
+            </Principal>
+            <Dependent Role="c_compra">
+              <PropertyRef Name="c_id_ope" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_c_dtl_compra_detalle_c_compra">
+          <End Role="c_compra" Type="Self.c_compra" Multiplicity="1" />
+          <End Role="c_dtl_compra_detalle" Type="Self.c_dtl_compra_detalle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="c_compra">
+              <PropertyRef Name="c_id" />
+            </Principal>
+            <Dependent Role="c_dtl_compra_detalle">
+              <PropertyRef Name="c_dtl_id_c" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_c_dtl_compra_detalle_mp_materiaPrima">
+          <End Role="mp_materiaPrima" Type="Self.mp_materiaPrima" Multiplicity="1" />
+          <End Role="c_dtl_compra_detalle" Type="Self.c_dtl_compra_detalle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="mp_materiaPrima">
+              <PropertyRef Name="mp_id" />
+            </Principal>
+            <Dependent Role="c_dtl_compra_detalle">
+              <PropertyRef Name="c_dtl_id_mp" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_carg_cargoInventario_i_inventario">
+          <End Role="i_inventario" Type="Self.i_inventario" Multiplicity="0..1" />
+          <End Role="carg_cargoInventario" Type="Self.carg_cargoInventario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="i_inventario">
+              <PropertyRef Name="inv_id" />
+            </Principal>
+            <Dependent Role="carg_cargoInventario">
+              <PropertyRef Name="carg_id_i" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_carg_cargoInventario_ope_operacion">
+          <End Role="ope_operacion" Type="Self.ope_operacion" Multiplicity="1" />
+          <End Role="carg_cargoInventario" Type="Self.carg_cargoInventario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ope_operacion">
+              <PropertyRef Name="ope_id" />
+            </Principal>
+            <Dependent Role="carg_cargoInventario">
+              <PropertyRef Name="carg_id_ope" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ce_comidaEmpleado_i_inventario">
+          <End Role="i_inventario" Type="Self.i_inventario" Multiplicity="1" />
+          <End Role="ce_comidaEmpleado" Type="Self.ce_comidaEmpleado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="i_inventario">
+              <PropertyRef Name="inv_id" />
+            </Principal>
+            <Dependent Role="ce_comidaEmpleado">
+              <PropertyRef Name="ce_id_i" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ce_comidaEmpleado_ope_operacion">
+          <End Role="ope_operacion" Type="Self.ope_operacion" Multiplicity="0..1" />
+          <End Role="ce_comidaEmpleado" Type="Self.ce_comidaEmpleado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ope_operacion">
+              <PropertyRef Name="ope_id" />
+            </Principal>
+            <Dependent Role="ce_comidaEmpleado">
+              <PropertyRef Name="ce_id_ope" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ce_dtl_comidaEmpleado_detalle_ce_comidaEmpleado">
+          <End Role="ce_comidaEmpleado" Type="Self.ce_comidaEmpleado" Multiplicity="1" />
+          <End Role="ce_dtl_comidaEmpleado_detalle" Type="Self.ce_dtl_comidaEmpleado_detalle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ce_comidaEmpleado">
+              <PropertyRef Name="ce_id" />
+            </Principal>
+            <Dependent Role="ce_dtl_comidaEmpleado_detalle">
+              <PropertyRef Name="ce_dtl_id_ce" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ce_dtl_comidaEmpleado_detalle_p_producto">
+          <End Role="p_producto" Type="Self.p_producto" Multiplicity="1" />
+          <End Role="ce_dtl_comidaEmpleado_detalle" Type="Self.ce_dtl_comidaEmpleado_detalle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="p_producto">
+              <PropertyRef Name="p_id" />
+            </Principal>
+            <Dependent Role="ce_dtl_comidaEmpleado_detalle">
+              <PropertyRef Name="ce_dtl_id_p" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_d_desecho_i_inventario">
+          <End Role="i_inventario" Type="Self.i_inventario" Multiplicity="1" />
+          <End Role="d_desecho" Type="Self.d_desecho" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="i_inventario">
+              <PropertyRef Name="inv_id" />
+            </Principal>
+            <Dependent Role="d_desecho">
+              <PropertyRef Name="d_id_i" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_d_desecho_ope_operacion">
+          <End Role="ope_operacion" Type="Self.ope_operacion" Multiplicity="0..1" />
+          <End Role="d_desecho" Type="Self.d_desecho" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ope_operacion">
+              <PropertyRef Name="ope_id" />
+            </Principal>
+            <Dependent Role="d_desecho">
+              <PropertyRef Name="d_id_ope" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dc_desechoCompleto_d_desecho">
+          <End Role="d_desecho" Type="Self.d_desecho" Multiplicity="1" />
+          <End Role="dc_desechoCompleto" Type="Self.dc_desechoCompleto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="d_desecho">
+              <PropertyRef Name="d_id" />
+            </Principal>
+            <Dependent Role="dc_desechoCompleto">
+              <PropertyRef Name="dc_id_d" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dc_desechoCompleto_p_producto">
+          <End Role="p_producto" Type="Self.p_producto" Multiplicity="1" />
+          <End Role="dc_desechoCompleto" Type="Self.dc_desechoCompleto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="p_producto">
+              <PropertyRef Name="p_id" />
+            </Principal>
+            <Dependent Role="dc_desechoCompleto">
+              <PropertyRef Name="dc_id_p" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_deg_degustacion_i_inventario">
+          <End Role="i_inventario" Type="Self.i_inventario" Multiplicity="1" />
+          <End Role="deg_degustacion" Type="Self.deg_degustacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="i_inventario">
+              <PropertyRef Name="inv_id" />
+            </Principal>
+            <Dependent Role="deg_degustacion">
+              <PropertyRef Name="deg_id_i" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_deg_degustacion_ope_operacion">
+          <End Role="ope_operacion" Type="Self.ope_operacion" Multiplicity="0..1" />
+          <End Role="deg_degustacion" Type="Self.deg_degustacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ope_operacion">
+              <PropertyRef Name="ope_id" />
+            </Principal>
+            <Dependent Role="deg_degustacion">
+              <PropertyRef Name="deg_id_ope" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_deg_dtl_degustacion_detalle_deg_degustacion">
+          <End Role="deg_degustacion" Type="Self.deg_degustacion" Multiplicity="1" />
+          <End Role="deg_dtl_degustacion_detalle" Type="Self.deg_dtl_degustacion_detalle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="deg_degustacion">
+              <PropertyRef Name="deg_id" />
+            </Principal>
+            <Dependent Role="deg_dtl_degustacion_detalle">
+              <PropertyRef Name="deg_dtl_id_deg" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_deg_dtl_degustacion_detalle_p_producto">
+          <End Role="p_producto" Type="Self.p_producto" Multiplicity="1" />
+          <End Role="deg_dtl_degustacion_detalle" Type="Self.deg_dtl_degustacion_detalle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="p_producto">
+              <PropertyRef Name="p_id" />
+            </Principal>
+            <Dependent Role="deg_dtl_degustacion_detalle">
+              <PropertyRef Name="deg_dtl_id_p" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_desc_descargoInventario_i_inventario">
+          <End Role="i_inventario" Type="Self.i_inventario" Multiplicity="1" />
+          <End Role="desc_descargoInventario" Type="Self.desc_descargoInventario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="i_inventario">
+              <PropertyRef Name="inv_id" />
+            </Principal>
+            <Dependent Role="desc_descargoInventario">
+              <PropertyRef Name="desc_id_i" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_desc_descargoInventario_ope_operacion">
+          <End Role="ope_operacion" Type="Self.ope_operacion" Multiplicity="1" />
+          <End Role="desc_descargoInventario" Type="Self.desc_descargoInventario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ope_operacion">
+              <PropertyRef Name="ope_id" />
+            </Principal>
+            <Dependent Role="desc_descargoInventario">
+              <PropertyRef Name="desc_id_ope" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_di_desechoIncompleto_d_desecho">
+          <End Role="d_desecho" Type="Self.d_desecho" Multiplicity="1" />
+          <End Role="di_desechoIncompleto" Type="Self.di_desechoIncompleto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="d_desecho">
+              <PropertyRef Name="d_id" />
+            </Principal>
+            <Dependent Role="di_desechoIncompleto">
+              <PropertyRef Name="di_id_d" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ii_inventarioInterno_i_inventario">
+          <End Role="i_inventario" Type="Self.i_inventario" Multiplicity="1" />
+          <End Role="ii_inventarioInterno" Type="Self.ii_inventarioInterno" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="i_inventario">
+              <PropertyRef Name="inv_id" />
+            </Principal>
+            <Dependent Role="ii_inventarioInterno">
+              <PropertyRef Name="ii_id_i" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ir_inventarioReal_i_inventario">
+          <End Role="i_inventario" Type="Self.i_inventario" Multiplicity="1" />
+          <End Role="ir_inventarioReal" Type="Self.ir_inventarioReal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="i_inventario">
+              <PropertyRef Name="inv_id" />
+            </Principal>
+            <Dependent Role="ir_inventarioReal">
+              <PropertyRef Name="ir_id_i" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ope_operacion_tope_tipoOperacion">
+          <End Role="tope_tipoOperacion" Type="Self.tope_tipoOperacion" Multiplicity="0..1" />
+          <End Role="ope_operacion" Type="Self.ope_operacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tope_tipoOperacion">
+              <PropertyRef Name="tope_id" />
+            </Principal>
+            <Dependent Role="ope_operacion">
+              <PropertyRef Name="ope_tipo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_p_producto_r_receta">
+          <End Role="r_receta" Type="Self.r_receta" Multiplicity="1" />
+          <End Role="p_producto" Type="Self.p_producto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="r_receta">
+              <PropertyRef Name="r_id" />
+            </Principal>
+            <Dependent Role="p_producto">
+              <PropertyRef Name="p_id_r" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_pc_productoCombo_p_producto">
+          <End Role="p_producto" Type="Self.p_producto" Multiplicity="1" />
+          <End Role="pc_productoCombo" Type="Self.pc_productoCombo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="p_producto">
+              <PropertyRef Name="p_id" />
+            </Principal>
+            <Dependent Role="pc_productoCombo">
+              <PropertyRef Name="pc_id_p" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_pc_productoCombo_ps_productoSimple">
+          <End Role="ps_productoSimple" Type="Self.ps_productoSimple" Multiplicity="1" />
+          <End Role="pc_productoCombo" Type="Self.pc_productoCombo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ps_productoSimple">
+              <PropertyRef Name="ps_id" />
+            </Principal>
+            <Dependent Role="pc_productoCombo">
+              <PropertyRef Name="pc_id_pc_ps" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_per_premisosXrol_pant_pantallas">
+          <End Role="pant_pantallas" Type="Self.pant_pantallas" Multiplicity="0..1" />
+          <End Role="per_premisosXrol" Type="Self.per_premisosXrol" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="pant_pantallas">
+              <PropertyRef Name="pant_id" />
+            </Principal>
+            <Dependent Role="per_premisosXrol">
+              <PropertyRef Name="pxrl_id_pant" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_per_premisosXrol_rol_roles">
+          <End Role="rol_roles" Type="Self.rol_roles" Multiplicity="0..1" />
+          <End Role="per_premisosXrol" Type="Self.per_premisosXrol" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="rol_roles">
+              <PropertyRef Name="rol_id" />
+            </Principal>
+            <Dependent Role="per_premisosXrol">
+              <PropertyRef Name="pxr_id_rol" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_per_premisosXrol_usr_usuarios">
+          <End Role="usr_usuarios" Type="Self.usr_usuarios" Multiplicity="0..1" />
+          <End Role="per_premisosXrol" Type="Self.per_premisosXrol" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="usr_usuarios">
+              <PropertyRef Name="usr_id" />
+            </Principal>
+            <Dependent Role="per_premisosXrol">
+              <PropertyRef Name="pxr_id_user" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_pmx_dtl_productMix_detalle_p_producto">
+          <End Role="p_producto" Type="Self.p_producto" Multiplicity="1" />
+          <End Role="pmx_dtl_productMix_detalle" Type="Self.pmx_dtl_productMix_detalle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="p_producto">
+              <PropertyRef Name="p_id" />
+            </Principal>
+            <Dependent Role="pmx_dtl_productMix_detalle">
+              <PropertyRef Name="pmx_dtl_id_p" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_pmx_dtl_productMix_detalle_pmx_productMix">
+          <End Role="pmx_productMix" Type="Self.pmx_productMix" Multiplicity="1" />
+          <End Role="pmx_dtl_productMix_detalle" Type="Self.pmx_dtl_productMix_detalle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="pmx_productMix">
+              <PropertyRef Name="pmx_id" />
+            </Principal>
+            <Dependent Role="pmx_dtl_productMix_detalle">
+              <PropertyRef Name="pmx_dtl_id_pmx" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_pmx_productMix_i_inventario">
+          <End Role="i_inventario" Type="Self.i_inventario" Multiplicity="1" />
+          <End Role="pmx_productMix" Type="Self.pmx_productMix" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="i_inventario">
+              <PropertyRef Name="inv_id" />
+            </Principal>
+            <Dependent Role="pmx_productMix">
+              <PropertyRef Name="pmx_id_i" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_pmx_productMix_ope_operacion">
+          <End Role="ope_operacion" Type="Self.ope_operacion" Multiplicity="0..1" />
+          <End Role="pmx_productMix" Type="Self.pmx_productMix" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ope_operacion">
+              <PropertyRef Name="ope_id" />
+            </Principal>
+            <Dependent Role="pmx_productMix">
+              <PropertyRef Name="pmx_id_ope" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ps_productoSimple_p_producto">
+          <End Role="p_producto" Type="Self.p_producto" Multiplicity="1" />
+          <End Role="ps_productoSimple" Type="Self.ps_productoSimple" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="p_producto">
+              <PropertyRef Name="p_id" />
+            </Principal>
+            <Dependent Role="ps_productoSimple">
+              <PropertyRef Name="ps_id_p" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_r_dtl_recetaDetalle_mp_materiaPrima">
+          <End Role="mp_materiaPrima" Type="Self.mp_materiaPrima" Multiplicity="1" />
+          <End Role="r_dtl_recetaDetalle" Type="Self.r_dtl_recetaDetalle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="mp_materiaPrima">
+              <PropertyRef Name="mp_id" />
+            </Principal>
+            <Dependent Role="r_dtl_recetaDetalle">
+              <PropertyRef Name="r_dtl_id_mp" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_r_dtl_recetaDetalle_r_receta">
+          <End Role="r_receta" Type="Self.r_receta" Multiplicity="1" />
+          <End Role="r_dtl_recetaDetalle" Type="Self.r_dtl_recetaDetalle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="r_receta">
+              <PropertyRef Name="r_id" />
+            </Principal>
+            <Dependent Role="r_dtl_recetaDetalle">
+              <PropertyRef Name="r_dtl_id_r" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_r_receta_tir_tipoReceta">
+          <End Role="tir_tipoReceta" Type="Self.tir_tipoReceta" Multiplicity="1" />
+          <End Role="r_receta" Type="Self.r_receta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tir_tipoReceta">
+              <PropertyRef Name="tir_id" />
+            </Principal>
+            <Dependent Role="r_receta">
+              <PropertyRef Name="r_tipo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_t_transferencia_i_inventario">
+          <End Role="i_inventario" Type="Self.i_inventario" Multiplicity="1" />
+          <End Role="t_transferencia" Type="Self.t_transferencia" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="i_inventario">
+              <PropertyRef Name="inv_id" />
+            </Principal>
+            <Dependent Role="t_transferencia">
+              <PropertyRef Name="t_id_i" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_t_transferencia_ope_operacion">
+          <End Role="ope_operacion" Type="Self.ope_operacion" Multiplicity="0..1" />
+          <End Role="t_transferencia" Type="Self.t_transferencia" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ope_operacion">
+              <PropertyRef Name="ope_id" />
+            </Principal>
+            <Dependent Role="t_transferencia">
+              <PropertyRef Name="t_id_ope" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_te_transferenciaEntrada_mp_materiaPrima">
+          <End Role="mp_materiaPrima" Type="Self.mp_materiaPrima" Multiplicity="1" />
+          <End Role="te_transferenciaEntrada" Type="Self.te_transferenciaEntrada" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="mp_materiaPrima">
+              <PropertyRef Name="mp_id" />
+            </Principal>
+            <Dependent Role="te_transferenciaEntrada">
+              <PropertyRef Name="te_id_mp" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_te_transferenciaEntrada_t_transferencia">
+          <End Role="t_transferencia" Type="Self.t_transferencia" Multiplicity="1" />
+          <End Role="te_transferenciaEntrada" Type="Self.te_transferenciaEntrada" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="t_transferencia">
+              <PropertyRef Name="t_id" />
+            </Principal>
+            <Dependent Role="te_transferenciaEntrada">
+              <PropertyRef Name="te_id_t" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ts_transferenciaSalida_mp_materiaPrima">
+          <End Role="mp_materiaPrima" Type="Self.mp_materiaPrima" Multiplicity="1" />
+          <End Role="ts_transferenciaSalida" Type="Self.ts_transferenciaSalida" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="mp_materiaPrima">
+              <PropertyRef Name="mp_id" />
+            </Principal>
+            <Dependent Role="ts_transferenciaSalida">
+              <PropertyRef Name="ts_id_mp" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ts_transferenciaSalida_t_transferencia">
+          <End Role="t_transferencia" Type="Self.t_transferencia" Multiplicity="1" />
+          <End Role="ts_transferenciaSalida" Type="Self.ts_transferenciaSalida" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="t_transferencia">
+              <PropertyRef Name="t_id" />
+            </Principal>
+            <Dependent Role="ts_transferenciaSalida">
+              <PropertyRef Name="ts_id_t" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_usr_usuarios_rol_roles">
+          <End Role="rol_roles" Type="Self.rol_roles" Multiplicity="1" />
+          <End Role="usr_usuarios" Type="Self.usr_usuarios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="rol_roles">
+              <PropertyRef Name="rol_id" />
+            </Principal>
+            <Dependent Role="usr_usuarios">
+              <PropertyRef Name="usr_id_rol" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_vin_variacionInventario_i_inventario">
+          <End Role="i_inventario" Type="Self.i_inventario" Multiplicity="1" />
+          <End Role="vin_variacionInventario" Type="Self.vin_variacionInventario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="i_inventario">
+              <PropertyRef Name="inv_id" />
+            </Principal>
+            <Dependent Role="vin_variacionInventario">
+              <PropertyRef Name="vin_id_i" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+        <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <EntityContainer Name="SCIR_SistemaInventarioModelStoreContainer">
+          <EntitySet Name="c_compra" EntityType="Self.c_compra" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="c_dtl_compra_detalle" EntityType="Self.c_dtl_compra_detalle" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="carg_cargoInventario" EntityType="Self.carg_cargoInventario" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ce_comidaEmpleado" EntityType="Self.ce_comidaEmpleado" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ce_dtl_comidaEmpleado_detalle" EntityType="Self.ce_dtl_comidaEmpleado_detalle" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="d_desecho" EntityType="Self.d_desecho" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="dc_desechoCompleto" EntityType="Self.dc_desechoCompleto" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="deg_degustacion" EntityType="Self.deg_degustacion" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="deg_dtl_degustacion_detalle" EntityType="Self.deg_dtl_degustacion_detalle" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="desc_descargoInventario" EntityType="Self.desc_descargoInventario" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="di_desechoIncompleto" EntityType="Self.di_desechoIncompleto" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="i_inventario" EntityType="Self.i_inventario" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ii_inventarioInterno" EntityType="Self.ii_inventarioInterno" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ir_inventarioReal" EntityType="Self.ir_inventarioReal" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="mp_materiaPrima" EntityType="Self.mp_materiaPrima" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ope_operacion" EntityType="Self.ope_operacion" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="p_producto" EntityType="Self.p_producto" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="pant_pantallas" EntityType="Self.pant_pantallas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="pc_productoCombo" EntityType="Self.pc_productoCombo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="per_premisosXrol" EntityType="Self.per_premisosXrol" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="pmx_dtl_productMix_detalle" EntityType="Self.pmx_dtl_productMix_detalle" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="pmx_productMix" EntityType="Self.pmx_productMix" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ps_productoSimple" EntityType="Self.ps_productoSimple" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="r_dtl_recetaDetalle" EntityType="Self.r_dtl_recetaDetalle" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="r_receta" EntityType="Self.r_receta" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="rol_roles" EntityType="Self.rol_roles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="t_transferencia" EntityType="Self.t_transferencia" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="te_transferenciaEntrada" EntityType="Self.te_transferenciaEntrada" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tid_tipoDesecho" EntityType="Self.tid_tipoDesecho" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tir_tipoReceta" EntityType="Self.tir_tipoReceta" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tope_tipoOperacion" EntityType="Self.tope_tipoOperacion" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ts_transferenciaSalida" EntityType="Self.ts_transferenciaSalida" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="usr_usuarios" EntityType="Self.usr_usuarios" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="vin_variacionInventario" EntityType="Self.vin_variacionInventario" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_c_compra_i_inventario" Association="Self.FK_c_compra_i_inventario">
+            <End Role="i_inventario" EntitySet="i_inventario" />
+            <End Role="c_compra" EntitySet="c_compra" />
+          </AssociationSet>
+          <AssociationSet Name="FK_c_compra_ope_operacion" Association="Self.FK_c_compra_ope_operacion">
+            <End Role="ope_operacion" EntitySet="ope_operacion" />
+            <End Role="c_compra" EntitySet="c_compra" />
+          </AssociationSet>
+          <AssociationSet Name="FK_c_dtl_compra_detalle_c_compra" Association="Self.FK_c_dtl_compra_detalle_c_compra">
+            <End Role="c_compra" EntitySet="c_compra" />
+            <End Role="c_dtl_compra_detalle" EntitySet="c_dtl_compra_detalle" />
+          </AssociationSet>
+          <AssociationSet Name="FK_c_dtl_compra_detalle_mp_materiaPrima" Association="Self.FK_c_dtl_compra_detalle_mp_materiaPrima">
+            <End Role="mp_materiaPrima" EntitySet="mp_materiaPrima" />
+            <End Role="c_dtl_compra_detalle" EntitySet="c_dtl_compra_detalle" />
+          </AssociationSet>
+          <AssociationSet Name="FK_carg_cargoInventario_i_inventario" Association="Self.FK_carg_cargoInventario_i_inventario">
+            <End Role="i_inventario" EntitySet="i_inventario" />
+            <End Role="carg_cargoInventario" EntitySet="carg_cargoInventario" />
+          </AssociationSet>
+          <AssociationSet Name="FK_carg_cargoInventario_ope_operacion" Association="Self.FK_carg_cargoInventario_ope_operacion">
+            <End Role="ope_operacion" EntitySet="ope_operacion" />
+            <End Role="carg_cargoInventario" EntitySet="carg_cargoInventario" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ce_comidaEmpleado_i_inventario" Association="Self.FK_ce_comidaEmpleado_i_inventario">
+            <End Role="i_inventario" EntitySet="i_inventario" />
+            <End Role="ce_comidaEmpleado" EntitySet="ce_comidaEmpleado" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ce_comidaEmpleado_ope_operacion" Association="Self.FK_ce_comidaEmpleado_ope_operacion">
+            <End Role="ope_operacion" EntitySet="ope_operacion" />
+            <End Role="ce_comidaEmpleado" EntitySet="ce_comidaEmpleado" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ce_dtl_comidaEmpleado_detalle_ce_comidaEmpleado" Association="Self.FK_ce_dtl_comidaEmpleado_detalle_ce_comidaEmpleado">
+            <End Role="ce_comidaEmpleado" EntitySet="ce_comidaEmpleado" />
+            <End Role="ce_dtl_comidaEmpleado_detalle" EntitySet="ce_dtl_comidaEmpleado_detalle" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ce_dtl_comidaEmpleado_detalle_p_producto" Association="Self.FK_ce_dtl_comidaEmpleado_detalle_p_producto">
+            <End Role="p_producto" EntitySet="p_producto" />
+            <End Role="ce_dtl_comidaEmpleado_detalle" EntitySet="ce_dtl_comidaEmpleado_detalle" />
+          </AssociationSet>
+          <AssociationSet Name="FK_d_desecho_i_inventario" Association="Self.FK_d_desecho_i_inventario">
+            <End Role="i_inventario" EntitySet="i_inventario" />
+            <End Role="d_desecho" EntitySet="d_desecho" />
+          </AssociationSet>
+          <AssociationSet Name="FK_d_desecho_ope_operacion" Association="Self.FK_d_desecho_ope_operacion">
+            <End Role="ope_operacion" EntitySet="ope_operacion" />
+            <End Role="d_desecho" EntitySet="d_desecho" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dc_desechoCompleto_d_desecho" Association="Self.FK_dc_desechoCompleto_d_desecho">
+            <End Role="d_desecho" EntitySet="d_desecho" />
+            <End Role="dc_desechoCompleto" EntitySet="dc_desechoCompleto" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dc_desechoCompleto_p_producto" Association="Self.FK_dc_desechoCompleto_p_producto">
+            <End Role="p_producto" EntitySet="p_producto" />
+            <End Role="dc_desechoCompleto" EntitySet="dc_desechoCompleto" />
+          </AssociationSet>
+          <AssociationSet Name="FK_deg_degustacion_i_inventario" Association="Self.FK_deg_degustacion_i_inventario">
+            <End Role="i_inventario" EntitySet="i_inventario" />
+            <End Role="deg_degustacion" EntitySet="deg_degustacion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_deg_degustacion_ope_operacion" Association="Self.FK_deg_degustacion_ope_operacion">
+            <End Role="ope_operacion" EntitySet="ope_operacion" />
+            <End Role="deg_degustacion" EntitySet="deg_degustacion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_deg_dtl_degustacion_detalle_deg_degustacion" Association="Self.FK_deg_dtl_degustacion_detalle_deg_degustacion">
+            <End Role="deg_degustacion" EntitySet="deg_degustacion" />
+            <End Role="deg_dtl_degustacion_detalle" EntitySet="deg_dtl_degustacion_detalle" />
+          </AssociationSet>
+          <AssociationSet Name="FK_deg_dtl_degustacion_detalle_p_producto" Association="Self.FK_deg_dtl_degustacion_detalle_p_producto">
+            <End Role="p_producto" EntitySet="p_producto" />
+            <End Role="deg_dtl_degustacion_detalle" EntitySet="deg_dtl_degustacion_detalle" />
+          </AssociationSet>
+          <AssociationSet Name="FK_desc_descargoInventario_i_inventario" Association="Self.FK_desc_descargoInventario_i_inventario">
+            <End Role="i_inventario" EntitySet="i_inventario" />
+            <End Role="desc_descargoInventario" EntitySet="desc_descargoInventario" />
+          </AssociationSet>
+          <AssociationSet Name="FK_desc_descargoInventario_ope_operacion" Association="Self.FK_desc_descargoInventario_ope_operacion">
+            <End Role="ope_operacion" EntitySet="ope_operacion" />
+            <End Role="desc_descargoInventario" EntitySet="desc_descargoInventario" />
+          </AssociationSet>
+          <AssociationSet Name="FK_di_desechoIncompleto_d_desecho" Association="Self.FK_di_desechoIncompleto_d_desecho">
+            <End Role="d_desecho" EntitySet="d_desecho" />
+            <End Role="di_desechoIncompleto" EntitySet="di_desechoIncompleto" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ii_inventarioInterno_i_inventario" Association="Self.FK_ii_inventarioInterno_i_inventario">
+            <End Role="i_inventario" EntitySet="i_inventario" />
+            <End Role="ii_inventarioInterno" EntitySet="ii_inventarioInterno" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ir_inventarioReal_i_inventario" Association="Self.FK_ir_inventarioReal_i_inventario">
+            <End Role="i_inventario" EntitySet="i_inventario" />
+            <End Role="ir_inventarioReal" EntitySet="ir_inventarioReal" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ope_operacion_tope_tipoOperacion" Association="Self.FK_ope_operacion_tope_tipoOperacion">
+            <End Role="tope_tipoOperacion" EntitySet="tope_tipoOperacion" />
+            <End Role="ope_operacion" EntitySet="ope_operacion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_p_producto_r_receta" Association="Self.FK_p_producto_r_receta">
+            <End Role="r_receta" EntitySet="r_receta" />
+            <End Role="p_producto" EntitySet="p_producto" />
+          </AssociationSet>
+          <AssociationSet Name="FK_pc_productoCombo_p_producto" Association="Self.FK_pc_productoCombo_p_producto">
+            <End Role="p_producto" EntitySet="p_producto" />
+            <End Role="pc_productoCombo" EntitySet="pc_productoCombo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_pc_productoCombo_ps_productoSimple" Association="Self.FK_pc_productoCombo_ps_productoSimple">
+            <End Role="ps_productoSimple" EntitySet="ps_productoSimple" />
+            <End Role="pc_productoCombo" EntitySet="pc_productoCombo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_per_premisosXrol_pant_pantallas" Association="Self.FK_per_premisosXrol_pant_pantallas">
+            <End Role="pant_pantallas" EntitySet="pant_pantallas" />
+            <End Role="per_premisosXrol" EntitySet="per_premisosXrol" />
+          </AssociationSet>
+          <AssociationSet Name="FK_per_premisosXrol_rol_roles" Association="Self.FK_per_premisosXrol_rol_roles">
+            <End Role="rol_roles" EntitySet="rol_roles" />
+            <End Role="per_premisosXrol" EntitySet="per_premisosXrol" />
+          </AssociationSet>
+          <AssociationSet Name="FK_per_premisosXrol_usr_usuarios" Association="Self.FK_per_premisosXrol_usr_usuarios">
+            <End Role="usr_usuarios" EntitySet="usr_usuarios" />
+            <End Role="per_premisosXrol" EntitySet="per_premisosXrol" />
+          </AssociationSet>
+          <AssociationSet Name="FK_pmx_dtl_productMix_detalle_p_producto" Association="Self.FK_pmx_dtl_productMix_detalle_p_producto">
+            <End Role="p_producto" EntitySet="p_producto" />
+            <End Role="pmx_dtl_productMix_detalle" EntitySet="pmx_dtl_productMix_detalle" />
+          </AssociationSet>
+          <AssociationSet Name="FK_pmx_dtl_productMix_detalle_pmx_productMix" Association="Self.FK_pmx_dtl_productMix_detalle_pmx_productMix">
+            <End Role="pmx_productMix" EntitySet="pmx_productMix" />
+            <End Role="pmx_dtl_productMix_detalle" EntitySet="pmx_dtl_productMix_detalle" />
+          </AssociationSet>
+          <AssociationSet Name="FK_pmx_productMix_i_inventario" Association="Self.FK_pmx_productMix_i_inventario">
+            <End Role="i_inventario" EntitySet="i_inventario" />
+            <End Role="pmx_productMix" EntitySet="pmx_productMix" />
+          </AssociationSet>
+          <AssociationSet Name="FK_pmx_productMix_ope_operacion" Association="Self.FK_pmx_productMix_ope_operacion">
+            <End Role="ope_operacion" EntitySet="ope_operacion" />
+            <End Role="pmx_productMix" EntitySet="pmx_productMix" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ps_productoSimple_p_producto" Association="Self.FK_ps_productoSimple_p_producto">
+            <End Role="p_producto" EntitySet="p_producto" />
+            <End Role="ps_productoSimple" EntitySet="ps_productoSimple" />
+          </AssociationSet>
+          <AssociationSet Name="FK_r_dtl_recetaDetalle_mp_materiaPrima" Association="Self.FK_r_dtl_recetaDetalle_mp_materiaPrima">
+            <End Role="mp_materiaPrima" EntitySet="mp_materiaPrima" />
+            <End Role="r_dtl_recetaDetalle" EntitySet="r_dtl_recetaDetalle" />
+          </AssociationSet>
+          <AssociationSet Name="FK_r_dtl_recetaDetalle_r_receta" Association="Self.FK_r_dtl_recetaDetalle_r_receta">
+            <End Role="r_receta" EntitySet="r_receta" />
+            <End Role="r_dtl_recetaDetalle" EntitySet="r_dtl_recetaDetalle" />
+          </AssociationSet>
+          <AssociationSet Name="FK_r_receta_tir_tipoReceta" Association="Self.FK_r_receta_tir_tipoReceta">
+            <End Role="tir_tipoReceta" EntitySet="tir_tipoReceta" />
+            <End Role="r_receta" EntitySet="r_receta" />
+          </AssociationSet>
+          <AssociationSet Name="FK_t_transferencia_i_inventario" Association="Self.FK_t_transferencia_i_inventario">
+            <End Role="i_inventario" EntitySet="i_inventario" />
+            <End Role="t_transferencia" EntitySet="t_transferencia" />
+          </AssociationSet>
+          <AssociationSet Name="FK_t_transferencia_ope_operacion" Association="Self.FK_t_transferencia_ope_operacion">
+            <End Role="ope_operacion" EntitySet="ope_operacion" />
+            <End Role="t_transferencia" EntitySet="t_transferencia" />
+          </AssociationSet>
+          <AssociationSet Name="FK_te_transferenciaEntrada_mp_materiaPrima" Association="Self.FK_te_transferenciaEntrada_mp_materiaPrima">
+            <End Role="mp_materiaPrima" EntitySet="mp_materiaPrima" />
+            <End Role="te_transferenciaEntrada" EntitySet="te_transferenciaEntrada" />
+          </AssociationSet>
+          <AssociationSet Name="FK_te_transferenciaEntrada_t_transferencia" Association="Self.FK_te_transferenciaEntrada_t_transferencia">
+            <End Role="t_transferencia" EntitySet="t_transferencia" />
+            <End Role="te_transferenciaEntrada" EntitySet="te_transferenciaEntrada" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ts_transferenciaSalida_mp_materiaPrima" Association="Self.FK_ts_transferenciaSalida_mp_materiaPrima">
+            <End Role="mp_materiaPrima" EntitySet="mp_materiaPrima" />
+            <End Role="ts_transferenciaSalida" EntitySet="ts_transferenciaSalida" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ts_transferenciaSalida_t_transferencia" Association="Self.FK_ts_transferenciaSalida_t_transferencia">
+            <End Role="t_transferencia" EntitySet="t_transferencia" />
+            <End Role="ts_transferenciaSalida" EntitySet="ts_transferenciaSalida" />
+          </AssociationSet>
+          <AssociationSet Name="FK_usr_usuarios_rol_roles" Association="Self.FK_usr_usuarios_rol_roles">
+            <End Role="rol_roles" EntitySet="rol_roles" />
+            <End Role="usr_usuarios" EntitySet="usr_usuarios" />
+          </AssociationSet>
+          <AssociationSet Name="FK_vin_variacionInventario_i_inventario" Association="Self.FK_vin_variacionInventario_i_inventario">
+            <End Role="i_inventario" EntitySet="i_inventario" />
+            <End Role="vin_variacionInventario" EntitySet="vin_variacionInventario" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="SCIR_SistemaInventarioModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="c_compra">
+          <Key>
+            <PropertyRef Name="c_id" />
+          </Key>
+          <Property Name="c_id" Type="Int32" Nullable="false" />
+          <Property Name="c_id_i" Type="Int32" Nullable="false" />
+          <Property Name="c_fecha" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="c_codigoFactura" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="c_descripcion" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+          <Property Name="c_id_usuarioCreacion" Type="Int32" />
+          <Property Name="c_id_ope" Type="Int32" />
+          <NavigationProperty Name="i_inventario" Relationship="Self.FK_c_compra_i_inventario" FromRole="c_compra" ToRole="i_inventario" />
+          <NavigationProperty Name="ope_operacion" Relationship="Self.FK_c_compra_ope_operacion" FromRole="c_compra" ToRole="ope_operacion" />
+          <NavigationProperty Name="c_dtl_compra_detalle" Relationship="Self.FK_c_dtl_compra_detalle_c_compra" FromRole="c_compra" ToRole="c_dtl_compra_detalle" />
+        </EntityType>
+        <EntityType Name="c_dtl_compra_detalle">
+          <Key>
+            <PropertyRef Name="c_dtl_id" />
+          </Key>
+          <Property Name="c_dtl_id" Type="Int32" Nullable="false" />
+          <Property Name="c_dtl_id_c" Type="Int32" Nullable="false" />
+          <Property Name="c_dtl_id_mp" Type="Int32" Nullable="false" />
+          <Property Name="c_dtl_cantidad" Type="Double" Nullable="false" />
+          <NavigationProperty Name="c_compra" Relationship="Self.FK_c_dtl_compra_detalle_c_compra" FromRole="c_dtl_compra_detalle" ToRole="c_compra" />
+          <NavigationProperty Name="mp_materiaPrima" Relationship="Self.FK_c_dtl_compra_detalle_mp_materiaPrima" FromRole="c_dtl_compra_detalle" ToRole="mp_materiaPrima" />
+        </EntityType>
+        <EntityType Name="carg_cargoInventario">
+          <Key>
+            <PropertyRef Name="carg_id" />
+          </Key>
+          <Property Name="carg_id" Type="Int32" Nullable="false" />
+          <Property Name="carg_id_ope" Type="Int32" Nullable="false" />
+          <Property Name="carg_id_i" Type="Int32" />
+          <Property Name="carg_id_mp" Type="Int32" />
+          <Property Name="carg_cantidad" Type="Double" />
+          <Property Name="carg_id_usuarioCreacion" Type="Int32" />
+          <NavigationProperty Name="i_inventario" Relationship="Self.FK_carg_cargoInventario_i_inventario" FromRole="carg_cargoInventario" ToRole="i_inventario" />
+          <NavigationProperty Name="ope_operacion" Relationship="Self.FK_carg_cargoInventario_ope_operacion" FromRole="carg_cargoInventario" ToRole="ope_operacion" />
+        </EntityType>
+        <EntityType Name="ce_comidaEmpleado">
+          <Key>
+            <PropertyRef Name="ce_id" />
+          </Key>
+          <Property Name="ce_id" Type="Int32" Nullable="false" />
+          <Property Name="ce_fecha" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="ce_cantidadEmpleados" Type="Int32" Nullable="false" />
+          <Property Name="ce_descripcion" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+          <Property Name="ce_id_i" Type="Int32" Nullable="false" />
+          <Property Name="ce_id_usuarioCreacion" Type="Int32" />
+          <Property Name="ce_id_ope" Type="Int32" />
+          <NavigationProperty Name="i_inventario" Relationship="Self.FK_ce_comidaEmpleado_i_inventario" FromRole="ce_comidaEmpleado" ToRole="i_inventario" />
+          <NavigationProperty Name="ope_operacion" Relationship="Self.FK_ce_comidaEmpleado_ope_operacion" FromRole="ce_comidaEmpleado" ToRole="ope_operacion" />
+          <NavigationProperty Name="ce_dtl_comidaEmpleado_detalle" Relationship="Self.FK_ce_dtl_comidaEmpleado_detalle_ce_comidaEmpleado" FromRole="ce_comidaEmpleado" ToRole="ce_dtl_comidaEmpleado_detalle" />
+        </EntityType>
+        <EntityType Name="ce_dtl_comidaEmpleado_detalle">
+          <Key>
+            <PropertyRef Name="ce_dtl_id" />
+          </Key>
+          <Property Name="ce_dtl_id" Type="Int32" Nullable="false" />
+          <Property Name="ce_dtl_id_ce" Type="Int32" Nullable="false" />
+          <Property Name="ce_dtl_id_p" Type="Int32" Nullable="false" />
+          <Property Name="ce_dtl_cantidad" Type="Double" Nullable="false" />
+          <NavigationProperty Name="ce_comidaEmpleado" Relationship="Self.FK_ce_dtl_comidaEmpleado_detalle_ce_comidaEmpleado" FromRole="ce_dtl_comidaEmpleado_detalle" ToRole="ce_comidaEmpleado" />
+          <NavigationProperty Name="p_producto" Relationship="Self.FK_ce_dtl_comidaEmpleado_detalle_p_producto" FromRole="ce_dtl_comidaEmpleado_detalle" ToRole="p_producto" />
+        </EntityType>
+        <EntityType Name="d_desecho">
+          <Key>
+            <PropertyRef Name="d_id" />
+          </Key>
+          <Property Name="d_id" Type="Int32" Nullable="false" />
+          <Property Name="d_id_i" Type="Int32" Nullable="false" />
+          <Property Name="d_fecha" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="d_descripcion" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Name="d_tipo" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="d_id_usuarioCreacion" Type="Int32" />
+          <Property Name="d_id_ope" Type="Int32" />
+          <NavigationProperty Name="i_inventario" Relationship="Self.FK_d_desecho_i_inventario" FromRole="d_desecho" ToRole="i_inventario" />
+          <NavigationProperty Name="ope_operacion" Relationship="Self.FK_d_desecho_ope_operacion" FromRole="d_desecho" ToRole="ope_operacion" />
+          <NavigationProperty Name="dc_desechoCompleto" Relationship="Self.FK_dc_desechoCompleto_d_desecho" FromRole="d_desecho" ToRole="dc_desechoCompleto" />
+          <NavigationProperty Name="di_desechoIncompleto" Relationship="Self.FK_di_desechoIncompleto_d_desecho" FromRole="d_desecho" ToRole="di_desechoIncompleto" />
+        </EntityType>
+        <EntityType Name="dc_desechoCompleto">
+          <Key>
+            <PropertyRef Name="dc_id" />
+          </Key>
+          <Property Name="dc_id" Type="Int32" Nullable="false" />
+          <Property Name="dc_id_d" Type="Int32" Nullable="false" />
+          <Property Name="dc_id_p" Type="Int32" Nullable="false" />
+          <Property Name="dc_cantidad" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="d_desecho" Relationship="Self.FK_dc_desechoCompleto_d_desecho" FromRole="dc_desechoCompleto" ToRole="d_desecho" />
+          <NavigationProperty Name="p_producto" Relationship="Self.FK_dc_desechoCompleto_p_producto" FromRole="dc_desechoCompleto" ToRole="p_producto" />
+        </EntityType>
+        <EntityType Name="deg_degustacion">
+          <Key>
+            <PropertyRef Name="deg_id" />
+          </Key>
+          <Property Name="deg_id" Type="Int32" Nullable="false" />
+          <Property Name="deg_id_i" Type="Int32" Nullable="false" />
+          <Property Name="deg_fecha" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="deg_descripcion" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+          <Property Name="deg_id_usuarioCreacion" Type="Int32" />
+          <Property Name="deg_id_ope" Type="Int32" />
+          <NavigationProperty Name="i_inventario" Relationship="Self.FK_deg_degustacion_i_inventario" FromRole="deg_degustacion" ToRole="i_inventario" />
+          <NavigationProperty Name="ope_operacion" Relationship="Self.FK_deg_degustacion_ope_operacion" FromRole="deg_degustacion" ToRole="ope_operacion" />
+          <NavigationProperty Name="deg_dtl_degustacion_detalle" Relationship="Self.FK_deg_dtl_degustacion_detalle_deg_degustacion" FromRole="deg_degustacion" ToRole="deg_dtl_degustacion_detalle" />
+        </EntityType>
+        <EntityType Name="deg_dtl_degustacion_detalle">
+          <Key>
+            <PropertyRef Name="deg_dtl_id" />
+          </Key>
+          <Property Name="deg_dtl_id" Type="Int32" Nullable="false" />
+          <Property Name="deg_dtl_id_deg" Type="Int32" Nullable="false" />
+          <Property Name="deg_dtl_id_p" Type="Int32" Nullable="false" />
+          <Property Name="deg_dtl_cantidad" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="deg_degustacion" Relationship="Self.FK_deg_dtl_degustacion_detalle_deg_degustacion" FromRole="deg_dtl_degustacion_detalle" ToRole="deg_degustacion" />
+          <NavigationProperty Name="p_producto" Relationship="Self.FK_deg_dtl_degustacion_detalle_p_producto" FromRole="deg_dtl_degustacion_detalle" ToRole="p_producto" />
+        </EntityType>
+        <EntityType Name="desc_descargoInventario">
+          <Key>
+            <PropertyRef Name="desc_id" />
+          </Key>
+          <Property Name="desc_id" Type="Int32" Nullable="false" />
+          <Property Name="desc_id_ope" Type="Int32" Nullable="false" />
+          <Property Name="desc_id_i" Type="Int32" Nullable="false" />
+          <Property Name="desc_id_mp" Type="Int32" />
+          <Property Name="desc_cantidad" Type="Double" />
+          <Property Name="desc_fecha" Type="DateTime" Precision="0" />
+          <Property Name="desc_id_usuarioCreacion" Type="Int32" />
+          <NavigationProperty Name="i_inventario" Relationship="Self.FK_desc_descargoInventario_i_inventario" FromRole="desc_descargoInventario" ToRole="i_inventario" />
+          <NavigationProperty Name="ope_operacion" Relationship="Self.FK_desc_descargoInventario_ope_operacion" FromRole="desc_descargoInventario" ToRole="ope_operacion" />
+        </EntityType>
+        <EntityType Name="di_desechoIncompleto">
+          <Key>
+            <PropertyRef Name="di_id" />
+          </Key>
+          <Property Name="di_id" Type="Int32" Nullable="false" />
+          <Property Name="di_id_d" Type="Int32" Nullable="false" />
+          <Property Name="di_id_mp" Type="Int32" Nullable="false" />
+          <Property Name="di_cantidad" Type="Double" Nullable="false" />
+          <NavigationProperty Name="d_desecho" Relationship="Self.FK_di_desechoIncompleto_d_desecho" FromRole="di_desechoIncompleto" ToRole="d_desecho" />
+        </EntityType>
+        <EntityType Name="i_inventario">
+          <Key>
+            <PropertyRef Name="inv_id" />
+          </Key>
+          <Property Name="inv_id" Type="Int32" Nullable="false" />
+          <Property Name="inv_fechaInicio" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="inv_Encabezado" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+          <Property Name="inv_fechaFin" Type="DateTime" Precision="0" />
+          <Property Name="inv_activo" Type="Boolean" />
+          <NavigationProperty Name="c_compra" Relationship="Self.FK_c_compra_i_inventario" FromRole="i_inventario" ToRole="c_compra" />
+          <NavigationProperty Name="carg_cargoInventario" Relationship="Self.FK_carg_cargoInventario_i_inventario" FromRole="i_inventario" ToRole="carg_cargoInventario" />
+          <NavigationProperty Name="ce_comidaEmpleado" Relationship="Self.FK_ce_comidaEmpleado_i_inventario" FromRole="i_inventario" ToRole="ce_comidaEmpleado" />
+          <NavigationProperty Name="d_desecho" Relationship="Self.FK_d_desecho_i_inventario" FromRole="i_inventario" ToRole="d_desecho" />
+          <NavigationProperty Name="deg_degustacion" Relationship="Self.FK_deg_degustacion_i_inventario" FromRole="i_inventario" ToRole="deg_degustacion" />
+          <NavigationProperty Name="desc_descargoInventario" Relationship="Self.FK_desc_descargoInventario_i_inventario" FromRole="i_inventario" ToRole="desc_descargoInventario" />
+          <NavigationProperty Name="ii_inventarioInterno" Relationship="Self.FK_ii_inventarioInterno_i_inventario" FromRole="i_inventario" ToRole="ii_inventarioInterno" />
+          <NavigationProperty Name="ir_inventarioReal" Relationship="Self.FK_ir_inventarioReal_i_inventario" FromRole="i_inventario" ToRole="ir_inventarioReal" />
+          <NavigationProperty Name="pmx_productMix" Relationship="Self.FK_pmx_productMix_i_inventario" FromRole="i_inventario" ToRole="pmx_productMix" />
+          <NavigationProperty Name="t_transferencia" Relationship="Self.FK_t_transferencia_i_inventario" FromRole="i_inventario" ToRole="t_transferencia" />
+          <NavigationProperty Name="vin_variacionInventario" Relationship="Self.FK_vin_variacionInventario_i_inventario" FromRole="i_inventario" ToRole="vin_variacionInventario" />
+        </EntityType>
+        <EntityType Name="ii_inventarioInterno">
+          <Key>
+            <PropertyRef Name="ii_id" />
+          </Key>
+          <Property Name="ii_id" Type="Int32" Nullable="false" />
+          <Property Name="ii_id_i" Type="Int32" Nullable="false" />
+          <Property Name="ii_id_mp" Type="Int32" Nullable="false" />
+          <Property Name="ii_mp_descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ii_existencia" Type="Double" />
+          <Property Name="ii_activo" Type="Boolean" />
+          <NavigationProperty Name="i_inventario" Relationship="Self.FK_ii_inventarioInterno_i_inventario" FromRole="ii_inventarioInterno" ToRole="i_inventario" />
+        </EntityType>
+        <EntityType Name="ir_inventarioReal">
+          <Key>
+            <PropertyRef Name="ir_id" />
+          </Key>
+          <Property Name="ir_id" Type="Int32" Nullable="false" />
+          <Property Name="ir_id_i" Type="Int32" Nullable="false" />
+          <Property Name="ir_id_mp" Type="Int32" Nullable="false" />
+          <Property Name="ir_mp_descripcion" Type="Int32" />
+          <Property Name="ir_existencia" Type="Double" />
+          <Property Name="ir_activo" Type="Boolean" />
+          <Property Name="ir_fechaIngreso" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="ir_id_usuacioCreacion" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="i_inventario" Relationship="Self.FK_ir_inventarioReal_i_inventario" FromRole="ir_inventarioReal" ToRole="i_inventario" />
+        </EntityType>
+        <EntityType Name="mp_materiaPrima">
+          <Key>
+            <PropertyRef Name="mp_id" />
+          </Key>
+          <Property Name="mp_id" Type="Int32" Nullable="false" />
+          <Property Name="mp_codigo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="mp_nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="mp_unidadMedida" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="mp_cantidadMinima" Type="Double" />
+          <NavigationProperty Name="c_dtl_compra_detalle" Relationship="Self.FK_c_dtl_compra_detalle_mp_materiaPrima" FromRole="mp_materiaPrima" ToRole="c_dtl_compra_detalle" />
+          <NavigationProperty Name="r_dtl_recetaDetalle" Relationship="Self.FK_r_dtl_recetaDetalle_mp_materiaPrima" FromRole="mp_materiaPrima" ToRole="r_dtl_recetaDetalle" />
+          <NavigationProperty Name="te_transferenciaEntrada" Relationship="Self.FK_te_transferenciaEntrada_mp_materiaPrima" FromRole="mp_materiaPrima" ToRole="te_transferenciaEntrada" />
+          <NavigationProperty Name="ts_transferenciaSalida" Relationship="Self.FK_ts_transferenciaSalida_mp_materiaPrima" FromRole="mp_materiaPrima" ToRole="ts_transferenciaSalida" />
+        </EntityType>
+        <EntityType Name="ope_operacion">
+          <Key>
+            <PropertyRef Name="ope_id" />
+          </Key>
+          <Property Name="ope_id" Type="Int32" Nullable="false" />
+          <Property Name="ope_descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ope_tipo" Type="Int32" />
+          <NavigationProperty Name="c_compra" Relationship="Self.FK_c_compra_ope_operacion" FromRole="ope_operacion" ToRole="c_compra" />
+          <NavigationProperty Name="carg_cargoInventario" Relationship="Self.FK_carg_cargoInventario_ope_operacion" FromRole="ope_operacion" ToRole="carg_cargoInventario" />
+          <NavigationProperty Name="ce_comidaEmpleado" Relationship="Self.FK_ce_comidaEmpleado_ope_operacion" FromRole="ope_operacion" ToRole="ce_comidaEmpleado" />
+          <NavigationProperty Name="d_desecho" Relationship="Self.FK_d_desecho_ope_operacion" FromRole="ope_operacion" ToRole="d_desecho" />
+          <NavigationProperty Name="deg_degustacion" Relationship="Self.FK_deg_degustacion_ope_operacion" FromRole="ope_operacion" ToRole="deg_degustacion" />
+          <NavigationProperty Name="desc_descargoInventario" Relationship="Self.FK_desc_descargoInventario_ope_operacion" FromRole="ope_operacion" ToRole="desc_descargoInventario" />
+          <NavigationProperty Name="tope_tipoOperacion" Relationship="Self.FK_ope_operacion_tope_tipoOperacion" FromRole="ope_operacion" ToRole="tope_tipoOperacion" />
+          <NavigationProperty Name="pmx_productMix" Relationship="Self.FK_pmx_productMix_ope_operacion" FromRole="ope_operacion" ToRole="pmx_productMix" />
+          <NavigationProperty Name="t_transferencia" Relationship="Self.FK_t_transferencia_ope_operacion" FromRole="ope_operacion" ToRole="t_transferencia" />
+        </EntityType>
+        <EntityType Name="p_producto">
+          <Key>
+            <PropertyRef Name="p_id" />
+          </Key>
+          <Property Name="p_id" Type="Int32" Nullable="false" />
+          <Property Name="p_id_r" Type="Int32" Nullable="false" />
+          <Property Name="p_nombre" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="p_precio" Type="Double" Nullable="false" />
+          <Property Name="p_tipo" Type="Int32" />
+          <NavigationProperty Name="ce_dtl_comidaEmpleado_detalle" Relationship="Self.FK_ce_dtl_comidaEmpleado_detalle_p_producto" FromRole="p_producto" ToRole="ce_dtl_comidaEmpleado_detalle" />
+          <NavigationProperty Name="dc_desechoCompleto" Relationship="Self.FK_dc_desechoCompleto_p_producto" FromRole="p_producto" ToRole="dc_desechoCompleto" />
+          <NavigationProperty Name="deg_dtl_degustacion_detalle" Relationship="Self.FK_deg_dtl_degustacion_detalle_p_producto" FromRole="p_producto" ToRole="deg_dtl_degustacion_detalle" />
+          <NavigationProperty Name="r_receta" Relationship="Self.FK_p_producto_r_receta" FromRole="p_producto" ToRole="r_receta" />
+          <NavigationProperty Name="pc_productoCombo" Relationship="Self.FK_pc_productoCombo_p_producto" FromRole="p_producto" ToRole="pc_productoCombo" />
+          <NavigationProperty Name="pmx_dtl_productMix_detalle" Relationship="Self.FK_pmx_dtl_productMix_detalle_p_producto" FromRole="p_producto" ToRole="pmx_dtl_productMix_detalle" />
+          <NavigationProperty Name="ps_productoSimple" Relationship="Self.FK_ps_productoSimple_p_producto" FromRole="p_producto" ToRole="ps_productoSimple" />
+        </EntityType>
+        <EntityType Name="pant_pantallas">
+          <Key>
+            <PropertyRef Name="pant_id" />
+          </Key>
+          <Property Name="pant_id" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="pant_descripcion" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="per_premisosXrol" Relationship="Self.FK_per_premisosXrol_pant_pantallas" FromRole="pant_pantallas" ToRole="per_premisosXrol" />
+        </EntityType>
+        <EntityType Name="pc_productoCombo">
+          <Key>
+            <PropertyRef Name="pc_id" />
+          </Key>
+          <Property Name="pc_id" Type="Int32" Nullable="false" />
+          <Property Name="pc_id_p" Type="Int32" Nullable="false" />
+          <Property Name="pc_id_pc_ps" Type="Int32" Nullable="false" />
+          <Property Name="pc_cantidad_ps" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="p_producto" Relationship="Self.FK_pc_productoCombo_p_producto" FromRole="pc_productoCombo" ToRole="p_producto" />
+          <NavigationProperty Name="ps_productoSimple" Relationship="Self.FK_pc_productoCombo_ps_productoSimple" FromRole="pc_productoCombo" ToRole="ps_productoSimple" />
+        </EntityType>
+        <EntityType Name="per_premisosXrol">
+          <Key>
+            <PropertyRef Name="pxr_id" />
+          </Key>
+          <Property Name="pxr_id" Type="Int32" Nullable="false" />
+          <Property Name="pxrl_id_pant" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="pxr_id_rol" Type="Int32" />
+          <Property Name="pxr_id_user" Type="Int32" />
+          <NavigationProperty Name="pant_pantallas" Relationship="Self.FK_per_premisosXrol_pant_pantallas" FromRole="per_premisosXrol" ToRole="pant_pantallas" />
+          <NavigationProperty Name="rol_roles" Relationship="Self.FK_per_premisosXrol_rol_roles" FromRole="per_premisosXrol" ToRole="rol_roles" />
+          <NavigationProperty Name="usr_usuarios" Relationship="Self.FK_per_premisosXrol_usr_usuarios" FromRole="per_premisosXrol" ToRole="usr_usuarios" />
+        </EntityType>
+        <EntityType Name="pmx_dtl_productMix_detalle">
+          <Key>
+            <PropertyRef Name="pmx_dtl_id" />
+          </Key>
+          <Property Name="pmx_dtl_id" Type="Int32" Nullable="false" />
+          <Property Name="pmx_dtl_id_pmx" Type="Int32" Nullable="false" />
+          <Property Name="pmx_dtl_cantidad" Type="Int32" Nullable="false" />
+          <Property Name="pmx_dtl_id_p" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="p_producto" Relationship="Self.FK_pmx_dtl_productMix_detalle_p_producto" FromRole="pmx_dtl_productMix_detalle" ToRole="p_producto" />
+          <NavigationProperty Name="pmx_productMix" Relationship="Self.FK_pmx_dtl_productMix_detalle_pmx_productMix" FromRole="pmx_dtl_productMix_detalle" ToRole="pmx_productMix" />
+        </EntityType>
+        <EntityType Name="pmx_productMix">
+          <Key>
+            <PropertyRef Name="pmx_id" />
+          </Key>
+          <Property Name="pmx_id" Type="Int32" Nullable="false" />
+          <Property Name="pmx_id_i" Type="Int32" Nullable="false" />
+          <Property Name="pmx_id_pmx_dtl" Type="Int32" Nullable="false" />
+          <Property Name="pmx_fecha" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="pmx_id_usuarioCreacion" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="pmx_id_ope" Type="Int32" />
+          <NavigationProperty Name="i_inventario" Relationship="Self.FK_pmx_productMix_i_inventario" FromRole="pmx_productMix" ToRole="i_inventario" />
+          <NavigationProperty Name="ope_operacion" Relationship="Self.FK_pmx_productMix_ope_operacion" FromRole="pmx_productMix" ToRole="ope_operacion" />
+          <NavigationProperty Name="pmx_dtl_productMix_detalle" Relationship="Self.FK_pmx_dtl_productMix_detalle_pmx_productMix" FromRole="pmx_productMix" ToRole="pmx_dtl_productMix_detalle" />
+        </EntityType>
+        <EntityType Name="ps_productoSimple">
+          <Key>
+            <PropertyRef Name="ps_id" />
+          </Key>
+          <Property Name="ps_id" Type="Int32" Nullable="false" />
+          <Property Name="ps_id_p" Type="Int32" Nullable="false" />
+          <Property Name="ps_id_ps_mp" Type="Int32" Nullable="false" />
+          <Property Name="ps_cantidad_mp" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="p_producto" Relationship="Self.FK_ps_productoSimple_p_producto" FromRole="ps_productoSimple" ToRole="p_producto" />
+          <NavigationProperty Name="pc_productoCombo" Relationship="Self.FK_pc_productoCombo_ps_productoSimple" FromRole="ps_productoSimple" ToRole="pc_productoCombo" />
+        </EntityType>
+        <EntityType Name="r_dtl_recetaDetalle">
+          <Key>
+            <PropertyRef Name="r_dtl_id" />
+          </Key>
+          <Property Name="r_dtl_id" Type="Int32" Nullable="false" />
+          <Property Name="r_dtl_id_r" Type="Int32" Nullable="false" />
+          <Property Name="r_dtl_id_mp" Type="Int32" Nullable="false" />
+          <Property Name="r_dtl_cantidad_mp" Type="Double" Nullable="false" />
+          <NavigationProperty Name="mp_materiaPrima" Relationship="Self.FK_r_dtl_recetaDetalle_mp_materiaPrima" FromRole="r_dtl_recetaDetalle" ToRole="mp_materiaPrima" />
+          <NavigationProperty Name="r_receta" Relationship="Self.FK_r_dtl_recetaDetalle_r_receta" FromRole="r_dtl_recetaDetalle" ToRole="r_receta" />
+        </EntityType>
+        <EntityType Name="r_receta">
+          <Key>
+            <PropertyRef Name="r_id" />
+          </Key>
+          <Property Name="r_id" Type="Int32" Nullable="false" />
+          <Property Name="r_tipo" Type="Int32" Nullable="false" />
+          <Property Name="r_fechaCreacion" Type="DateTime" Precision="0" />
+          <Property Name="r_descripcion" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+          <Property Name="r_id_usuarioCreacion" Type="Int32" />
+          <NavigationProperty Name="p_producto" Relationship="Self.FK_p_producto_r_receta" FromRole="r_receta" ToRole="p_producto" />
+          <NavigationProperty Name="r_dtl_recetaDetalle" Relationship="Self.FK_r_dtl_recetaDetalle_r_receta" FromRole="r_receta" ToRole="r_dtl_recetaDetalle" />
+          <NavigationProperty Name="tir_tipoReceta" Relationship="Self.FK_r_receta_tir_tipoReceta" FromRole="r_receta" ToRole="tir_tipoReceta" />
+        </EntityType>
+        <EntityType Name="rol_roles">
+          <Key>
+            <PropertyRef Name="rol_id" />
+          </Key>
+          <Property Name="rol_id" Type="Int32" Nullable="false" />
+          <Property Name="rol_descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="per_premisosXrol" Relationship="Self.FK_per_premisosXrol_rol_roles" FromRole="rol_roles" ToRole="per_premisosXrol" />
+          <NavigationProperty Name="usr_usuarios" Relationship="Self.FK_usr_usuarios_rol_roles" FromRole="rol_roles" ToRole="usr_usuarios" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="t_transferencia">
+          <Key>
+            <PropertyRef Name="t_id" />
+          </Key>
+          <Property Name="t_id" Type="Int32" Nullable="false" />
+          <Property Name="t_id_i" Type="Int32" Nullable="false" />
+          <Property Name="t_fecha" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="t_descripcion" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+          <Property Name="t_tipo" Type="Int32" Nullable="false" />
+          <Property Name="t_id_usuarioCreacion" Type="Int32" />
+          <Property Name="t_id_ope" Type="Int32" />
+          <NavigationProperty Name="i_inventario" Relationship="Self.FK_t_transferencia_i_inventario" FromRole="t_transferencia" ToRole="i_inventario" />
+          <NavigationProperty Name="ope_operacion" Relationship="Self.FK_t_transferencia_ope_operacion" FromRole="t_transferencia" ToRole="ope_operacion" />
+          <NavigationProperty Name="te_transferenciaEntrada" Relationship="Self.FK_te_transferenciaEntrada_t_transferencia" FromRole="t_transferencia" ToRole="te_transferenciaEntrada" />
+          <NavigationProperty Name="ts_transferenciaSalida" Relationship="Self.FK_ts_transferenciaSalida_t_transferencia" FromRole="t_transferencia" ToRole="ts_transferenciaSalida" />
+        </EntityType>
+        <EntityType Name="te_transferenciaEntrada">
+          <Key>
+            <PropertyRef Name="te_id" />
+          </Key>
+          <Property Name="te_id" Type="Int32" Nullable="false" />
+          <Property Name="te_id_t" Type="Int32" Nullable="false" />
+          <Property Name="te_id_mp" Type="Int32" Nullable="false" />
+          <Property Name="te_cantidad" Type="Double" Nullable="false" />
+          <NavigationProperty Name="mp_materiaPrima" Relationship="Self.FK_te_transferenciaEntrada_mp_materiaPrima" FromRole="te_transferenciaEntrada" ToRole="mp_materiaPrima" />
+          <NavigationProperty Name="t_transferencia" Relationship="Self.FK_te_transferenciaEntrada_t_transferencia" FromRole="te_transferenciaEntrada" ToRole="t_transferencia" />
+        </EntityType>
+        <EntityType Name="tid_tipoDesecho">
+          <Key>
+            <PropertyRef Name="tid_id" />
+          </Key>
+          <Property Name="tid_id" Type="Int32" Nullable="false" />
+          <Property Name="tid_descripcion" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+        </EntityType>
+        <EntityType Name="tir_tipoReceta">
+          <Key>
+            <PropertyRef Name="tir_id" />
+          </Key>
+          <Property Name="tir_id" Type="Int32" Nullable="false" />
+          <Property Name="tir_descripcion" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="r_receta" Relationship="Self.FK_r_receta_tir_tipoReceta" FromRole="tir_tipoReceta" ToRole="r_receta" />
+        </EntityType>
+        <EntityType Name="tope_tipoOperacion">
+          <Key>
+            <PropertyRef Name="tope_id" />
+          </Key>
+          <Property Name="tope_id" Type="Int32" Nullable="false" />
+          <Property Name="tope_descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="ope_operacion" Relationship="Self.FK_ope_operacion_tope_tipoOperacion" FromRole="tope_tipoOperacion" ToRole="ope_operacion" />
+        </EntityType>
+        <EntityType Name="ts_transferenciaSalida">
+          <Key>
+            <PropertyRef Name="ts_id" />
+          </Key>
+          <Property Name="ts_id" Type="Int32" Nullable="false" />
+          <Property Name="ts_id_t" Type="Int32" Nullable="false" />
+          <Property Name="ts_id_mp" Type="Int32" Nullable="false" />
+          <Property Name="ts_cantidad" Type="Double" Nullable="false" />
+          <NavigationProperty Name="mp_materiaPrima" Relationship="Self.FK_ts_transferenciaSalida_mp_materiaPrima" FromRole="ts_transferenciaSalida" ToRole="mp_materiaPrima" />
+          <NavigationProperty Name="t_transferencia" Relationship="Self.FK_ts_transferenciaSalida_t_transferencia" FromRole="ts_transferenciaSalida" ToRole="t_transferencia" />
+        </EntityType>
+        <EntityType Name="usr_usuarios">
+          <Key>
+            <PropertyRef Name="usr_id" />
+          </Key>
+          <Property Name="usr_id" Type="Int32" Nullable="false" />
+          <Property Name="usr_nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="usr_password" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="usr_id_rol" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="per_premisosXrol" Relationship="Self.FK_per_premisosXrol_usr_usuarios" FromRole="usr_usuarios" ToRole="per_premisosXrol" />
+          <NavigationProperty Name="rol_roles" Relationship="Self.FK_usr_usuarios_rol_roles" FromRole="usr_usuarios" ToRole="rol_roles" />
+        </EntityType>
+        <EntityType Name="vin_variacionInventario">
+          <Key>
+            <PropertyRef Name="vin_id" />
+          </Key>
+          <Property Name="vin_id" Type="Int32" Nullable="false" />
+          <Property Name="vin_id_i" Type="Int32" Nullable="false" />
+          <Property Name="vin_id_mp" Type="Int32" />
+          <Property Name="vin_mp_descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="vin_existenciaReal" Type="Double" />
+          <Property Name="vin_existenciaInterna" Type="Double" />
+          <Property Name="vin_variacion" Type="Double" />
+          <Property Name="vin_id_usuarioCreacion" Type="Int32" />
+          <NavigationProperty Name="i_inventario" Relationship="Self.FK_vin_variacionInventario_i_inventario" FromRole="vin_variacionInventario" ToRole="i_inventario" />
+        </EntityType>
+        <Association Name="FK_c_compra_i_inventario">
+          <End Role="i_inventario" Type="Self.i_inventario" Multiplicity="1" />
+          <End Role="c_compra" Type="Self.c_compra" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="i_inventario">
+              <PropertyRef Name="inv_id" />
+            </Principal>
+            <Dependent Role="c_compra">
+              <PropertyRef Name="c_id_i" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_c_compra_ope_operacion">
+          <End Role="ope_operacion" Type="Self.ope_operacion" Multiplicity="0..1" />
+          <End Role="c_compra" Type="Self.c_compra" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ope_operacion">
+              <PropertyRef Name="ope_id" />
+            </Principal>
+            <Dependent Role="c_compra">
+              <PropertyRef Name="c_id_ope" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_c_dtl_compra_detalle_c_compra">
+          <End Role="c_compra" Type="Self.c_compra" Multiplicity="1" />
+          <End Role="c_dtl_compra_detalle" Type="Self.c_dtl_compra_detalle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="c_compra">
+              <PropertyRef Name="c_id" />
+            </Principal>
+            <Dependent Role="c_dtl_compra_detalle">
+              <PropertyRef Name="c_dtl_id_c" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_c_dtl_compra_detalle_mp_materiaPrima">
+          <End Role="mp_materiaPrima" Type="Self.mp_materiaPrima" Multiplicity="1" />
+          <End Role="c_dtl_compra_detalle" Type="Self.c_dtl_compra_detalle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="mp_materiaPrima">
+              <PropertyRef Name="mp_id" />
+            </Principal>
+            <Dependent Role="c_dtl_compra_detalle">
+              <PropertyRef Name="c_dtl_id_mp" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_carg_cargoInventario_i_inventario">
+          <End Role="i_inventario" Type="Self.i_inventario" Multiplicity="0..1" />
+          <End Role="carg_cargoInventario" Type="Self.carg_cargoInventario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="i_inventario">
+              <PropertyRef Name="inv_id" />
+            </Principal>
+            <Dependent Role="carg_cargoInventario">
+              <PropertyRef Name="carg_id_i" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_carg_cargoInventario_ope_operacion">
+          <End Role="ope_operacion" Type="Self.ope_operacion" Multiplicity="1" />
+          <End Role="carg_cargoInventario" Type="Self.carg_cargoInventario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ope_operacion">
+              <PropertyRef Name="ope_id" />
+            </Principal>
+            <Dependent Role="carg_cargoInventario">
+              <PropertyRef Name="carg_id_ope" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ce_comidaEmpleado_i_inventario">
+          <End Role="i_inventario" Type="Self.i_inventario" Multiplicity="1" />
+          <End Role="ce_comidaEmpleado" Type="Self.ce_comidaEmpleado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="i_inventario">
+              <PropertyRef Name="inv_id" />
+            </Principal>
+            <Dependent Role="ce_comidaEmpleado">
+              <PropertyRef Name="ce_id_i" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ce_comidaEmpleado_ope_operacion">
+          <End Role="ope_operacion" Type="Self.ope_operacion" Multiplicity="0..1" />
+          <End Role="ce_comidaEmpleado" Type="Self.ce_comidaEmpleado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ope_operacion">
+              <PropertyRef Name="ope_id" />
+            </Principal>
+            <Dependent Role="ce_comidaEmpleado">
+              <PropertyRef Name="ce_id_ope" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ce_dtl_comidaEmpleado_detalle_ce_comidaEmpleado">
+          <End Role="ce_comidaEmpleado" Type="Self.ce_comidaEmpleado" Multiplicity="1" />
+          <End Role="ce_dtl_comidaEmpleado_detalle" Type="Self.ce_dtl_comidaEmpleado_detalle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ce_comidaEmpleado">
+              <PropertyRef Name="ce_id" />
+            </Principal>
+            <Dependent Role="ce_dtl_comidaEmpleado_detalle">
+              <PropertyRef Name="ce_dtl_id_ce" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ce_dtl_comidaEmpleado_detalle_p_producto">
+          <End Role="p_producto" Type="Self.p_producto" Multiplicity="1" />
+          <End Role="ce_dtl_comidaEmpleado_detalle" Type="Self.ce_dtl_comidaEmpleado_detalle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="p_producto">
+              <PropertyRef Name="p_id" />
+            </Principal>
+            <Dependent Role="ce_dtl_comidaEmpleado_detalle">
+              <PropertyRef Name="ce_dtl_id_p" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_d_desecho_i_inventario">
+          <End Role="i_inventario" Type="Self.i_inventario" Multiplicity="1" />
+          <End Role="d_desecho" Type="Self.d_desecho" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="i_inventario">
+              <PropertyRef Name="inv_id" />
+            </Principal>
+            <Dependent Role="d_desecho">
+              <PropertyRef Name="d_id_i" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_d_desecho_ope_operacion">
+          <End Role="ope_operacion" Type="Self.ope_operacion" Multiplicity="0..1" />
+          <End Role="d_desecho" Type="Self.d_desecho" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ope_operacion">
+              <PropertyRef Name="ope_id" />
+            </Principal>
+            <Dependent Role="d_desecho">
+              <PropertyRef Name="d_id_ope" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dc_desechoCompleto_d_desecho">
+          <End Role="d_desecho" Type="Self.d_desecho" Multiplicity="1" />
+          <End Role="dc_desechoCompleto" Type="Self.dc_desechoCompleto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="d_desecho">
+              <PropertyRef Name="d_id" />
+            </Principal>
+            <Dependent Role="dc_desechoCompleto">
+              <PropertyRef Name="dc_id_d" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_di_desechoIncompleto_d_desecho">
+          <End Role="d_desecho" Type="Self.d_desecho" Multiplicity="1" />
+          <End Role="di_desechoIncompleto" Type="Self.di_desechoIncompleto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="d_desecho">
+              <PropertyRef Name="d_id" />
+            </Principal>
+            <Dependent Role="di_desechoIncompleto">
+              <PropertyRef Name="di_id_d" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dc_desechoCompleto_p_producto">
+          <End Role="p_producto" Type="Self.p_producto" Multiplicity="1" />
+          <End Role="dc_desechoCompleto" Type="Self.dc_desechoCompleto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="p_producto">
+              <PropertyRef Name="p_id" />
+            </Principal>
+            <Dependent Role="dc_desechoCompleto">
+              <PropertyRef Name="dc_id_p" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_deg_degustacion_i_inventario">
+          <End Role="i_inventario" Type="Self.i_inventario" Multiplicity="1" />
+          <End Role="deg_degustacion" Type="Self.deg_degustacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="i_inventario">
+              <PropertyRef Name="inv_id" />
+            </Principal>
+            <Dependent Role="deg_degustacion">
+              <PropertyRef Name="deg_id_i" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_deg_degustacion_ope_operacion">
+          <End Role="ope_operacion" Type="Self.ope_operacion" Multiplicity="0..1" />
+          <End Role="deg_degustacion" Type="Self.deg_degustacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ope_operacion">
+              <PropertyRef Name="ope_id" />
+            </Principal>
+            <Dependent Role="deg_degustacion">
+              <PropertyRef Name="deg_id_ope" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_deg_dtl_degustacion_detalle_deg_degustacion">
+          <End Role="deg_degustacion" Type="Self.deg_degustacion" Multiplicity="1" />
+          <End Role="deg_dtl_degustacion_detalle" Type="Self.deg_dtl_degustacion_detalle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="deg_degustacion">
+              <PropertyRef Name="deg_id" />
+            </Principal>
+            <Dependent Role="deg_dtl_degustacion_detalle">
+              <PropertyRef Name="deg_dtl_id_deg" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_deg_dtl_degustacion_detalle_p_producto">
+          <End Role="p_producto" Type="Self.p_producto" Multiplicity="1" />
+          <End Role="deg_dtl_degustacion_detalle" Type="Self.deg_dtl_degustacion_detalle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="p_producto">
+              <PropertyRef Name="p_id" />
+            </Principal>
+            <Dependent Role="deg_dtl_degustacion_detalle">
+              <PropertyRef Name="deg_dtl_id_p" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_desc_descargoInventario_i_inventario">
+          <End Role="i_inventario" Type="Self.i_inventario" Multiplicity="1" />
+          <End Role="desc_descargoInventario" Type="Self.desc_descargoInventario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="i_inventario">
+              <PropertyRef Name="inv_id" />
+            </Principal>
+            <Dependent Role="desc_descargoInventario">
+              <PropertyRef Name="desc_id_i" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_desc_descargoInventario_ope_operacion">
+          <End Role="ope_operacion" Type="Self.ope_operacion" Multiplicity="1" />
+          <End Role="desc_descargoInventario" Type="Self.desc_descargoInventario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ope_operacion">
+              <PropertyRef Name="ope_id" />
+            </Principal>
+            <Dependent Role="desc_descargoInventario">
+              <PropertyRef Name="desc_id_ope" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ii_inventarioInterno_i_inventario">
+          <End Role="i_inventario" Type="Self.i_inventario" Multiplicity="1" />
+          <End Role="ii_inventarioInterno" Type="Self.ii_inventarioInterno" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="i_inventario">
+              <PropertyRef Name="inv_id" />
+            </Principal>
+            <Dependent Role="ii_inventarioInterno">
+              <PropertyRef Name="ii_id_i" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ir_inventarioReal_i_inventario">
+          <End Role="i_inventario" Type="Self.i_inventario" Multiplicity="1" />
+          <End Role="ir_inventarioReal" Type="Self.ir_inventarioReal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="i_inventario">
+              <PropertyRef Name="inv_id" />
+            </Principal>
+            <Dependent Role="ir_inventarioReal">
+              <PropertyRef Name="ir_id_i" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_pmx_productMix_i_inventario">
+          <End Role="i_inventario" Type="Self.i_inventario" Multiplicity="1" />
+          <End Role="pmx_productMix" Type="Self.pmx_productMix" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="i_inventario">
+              <PropertyRef Name="inv_id" />
+            </Principal>
+            <Dependent Role="pmx_productMix">
+              <PropertyRef Name="pmx_id_i" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_t_transferencia_i_inventario">
+          <End Role="i_inventario" Type="Self.i_inventario" Multiplicity="1" />
+          <End Role="t_transferencia" Type="Self.t_transferencia" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="i_inventario">
+              <PropertyRef Name="inv_id" />
+            </Principal>
+            <Dependent Role="t_transferencia">
+              <PropertyRef Name="t_id_i" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_vin_variacionInventario_i_inventario">
+          <End Role="i_inventario" Type="Self.i_inventario" Multiplicity="1" />
+          <End Role="vin_variacionInventario" Type="Self.vin_variacionInventario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="i_inventario">
+              <PropertyRef Name="inv_id" />
+            </Principal>
+            <Dependent Role="vin_variacionInventario">
+              <PropertyRef Name="vin_id_i" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_r_dtl_recetaDetalle_mp_materiaPrima">
+          <End Role="mp_materiaPrima" Type="Self.mp_materiaPrima" Multiplicity="1" />
+          <End Role="r_dtl_recetaDetalle" Type="Self.r_dtl_recetaDetalle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="mp_materiaPrima">
+              <PropertyRef Name="mp_id" />
+            </Principal>
+            <Dependent Role="r_dtl_recetaDetalle">
+              <PropertyRef Name="r_dtl_id_mp" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_te_transferenciaEntrada_mp_materiaPrima">
+          <End Role="mp_materiaPrima" Type="Self.mp_materiaPrima" Multiplicity="1" />
+          <End Role="te_transferenciaEntrada" Type="Self.te_transferenciaEntrada" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="mp_materiaPrima">
+              <PropertyRef Name="mp_id" />
+            </Principal>
+            <Dependent Role="te_transferenciaEntrada">
+              <PropertyRef Name="te_id_mp" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ts_transferenciaSalida_mp_materiaPrima">
+          <End Role="mp_materiaPrima" Type="Self.mp_materiaPrima" Multiplicity="1" />
+          <End Role="ts_transferenciaSalida" Type="Self.ts_transferenciaSalida" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="mp_materiaPrima">
+              <PropertyRef Name="mp_id" />
+            </Principal>
+            <Dependent Role="ts_transferenciaSalida">
+              <PropertyRef Name="ts_id_mp" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ope_operacion_tope_tipoOperacion">
+          <End Role="tope_tipoOperacion" Type="Self.tope_tipoOperacion" Multiplicity="0..1" />
+          <End Role="ope_operacion" Type="Self.ope_operacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tope_tipoOperacion">
+              <PropertyRef Name="tope_id" />
+            </Principal>
+            <Dependent Role="ope_operacion">
+              <PropertyRef Name="ope_tipo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_pmx_productMix_ope_operacion">
+          <End Role="ope_operacion" Type="Self.ope_operacion" Multiplicity="0..1" />
+          <End Role="pmx_productMix" Type="Self.pmx_productMix" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ope_operacion">
+              <PropertyRef Name="ope_id" />
+            </Principal>
+            <Dependent Role="pmx_productMix">
+              <PropertyRef Name="pmx_id_ope" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_t_transferencia_ope_operacion">
+          <End Role="ope_operacion" Type="Self.ope_operacion" Multiplicity="0..1" />
+          <End Role="t_transferencia" Type="Self.t_transferencia" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ope_operacion">
+              <PropertyRef Name="ope_id" />
+            </Principal>
+            <Dependent Role="t_transferencia">
+              <PropertyRef Name="t_id_ope" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_p_producto_r_receta">
+          <End Role="r_receta" Type="Self.r_receta" Multiplicity="1" />
+          <End Role="p_producto" Type="Self.p_producto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="r_receta">
+              <PropertyRef Name="r_id" />
+            </Principal>
+            <Dependent Role="p_producto">
+              <PropertyRef Name="p_id_r" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_pc_productoCombo_p_producto">
+          <End Role="p_producto" Type="Self.p_producto" Multiplicity="1" />
+          <End Role="pc_productoCombo" Type="Self.pc_productoCombo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="p_producto">
+              <PropertyRef Name="p_id" />
+            </Principal>
+            <Dependent Role="pc_productoCombo">
+              <PropertyRef Name="pc_id_p" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_pmx_dtl_productMix_detalle_p_producto">
+          <End Role="p_producto" Type="Self.p_producto" Multiplicity="1" />
+          <End Role="pmx_dtl_productMix_detalle" Type="Self.pmx_dtl_productMix_detalle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="p_producto">
+              <PropertyRef Name="p_id" />
+            </Principal>
+            <Dependent Role="pmx_dtl_productMix_detalle">
+              <PropertyRef Name="pmx_dtl_id_p" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ps_productoSimple_p_producto">
+          <End Role="p_producto" Type="Self.p_producto" Multiplicity="1" />
+          <End Role="ps_productoSimple" Type="Self.ps_productoSimple" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="p_producto">
+              <PropertyRef Name="p_id" />
+            </Principal>
+            <Dependent Role="ps_productoSimple">
+              <PropertyRef Name="ps_id_p" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_per_premisosXrol_pant_pantallas">
+          <End Role="pant_pantallas" Type="Self.pant_pantallas" Multiplicity="0..1" />
+          <End Role="per_premisosXrol" Type="Self.per_premisosXrol" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="pant_pantallas">
+              <PropertyRef Name="pant_id" />
+            </Principal>
+            <Dependent Role="per_premisosXrol">
+              <PropertyRef Name="pxrl_id_pant" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_pc_productoCombo_ps_productoSimple">
+          <End Role="ps_productoSimple" Type="Self.ps_productoSimple" Multiplicity="1" />
+          <End Role="pc_productoCombo" Type="Self.pc_productoCombo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ps_productoSimple">
+              <PropertyRef Name="ps_id" />
+            </Principal>
+            <Dependent Role="pc_productoCombo">
+              <PropertyRef Name="pc_id_pc_ps" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_per_premisosXrol_rol_roles">
+          <End Role="rol_roles" Type="Self.rol_roles" Multiplicity="0..1" />
+          <End Role="per_premisosXrol" Type="Self.per_premisosXrol" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="rol_roles">
+              <PropertyRef Name="rol_id" />
+            </Principal>
+            <Dependent Role="per_premisosXrol">
+              <PropertyRef Name="pxr_id_rol" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_per_premisosXrol_usr_usuarios">
+          <End Role="usr_usuarios" Type="Self.usr_usuarios" Multiplicity="0..1" />
+          <End Role="per_premisosXrol" Type="Self.per_premisosXrol" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="usr_usuarios">
+              <PropertyRef Name="usr_id" />
+            </Principal>
+            <Dependent Role="per_premisosXrol">
+              <PropertyRef Name="pxr_id_user" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_pmx_dtl_productMix_detalle_pmx_productMix">
+          <End Role="pmx_productMix" Type="Self.pmx_productMix" Multiplicity="1" />
+          <End Role="pmx_dtl_productMix_detalle" Type="Self.pmx_dtl_productMix_detalle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="pmx_productMix">
+              <PropertyRef Name="pmx_id" />
+            </Principal>
+            <Dependent Role="pmx_dtl_productMix_detalle">
+              <PropertyRef Name="pmx_dtl_id_pmx" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_r_dtl_recetaDetalle_r_receta">
+          <End Role="r_receta" Type="Self.r_receta" Multiplicity="1" />
+          <End Role="r_dtl_recetaDetalle" Type="Self.r_dtl_recetaDetalle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="r_receta">
+              <PropertyRef Name="r_id" />
+            </Principal>
+            <Dependent Role="r_dtl_recetaDetalle">
+              <PropertyRef Name="r_dtl_id_r" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_r_receta_tir_tipoReceta">
+          <End Role="tir_tipoReceta" Type="Self.tir_tipoReceta" Multiplicity="1" />
+          <End Role="r_receta" Type="Self.r_receta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tir_tipoReceta">
+              <PropertyRef Name="tir_id" />
+            </Principal>
+            <Dependent Role="r_receta">
+              <PropertyRef Name="r_tipo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_usr_usuarios_rol_roles">
+          <End Role="rol_roles" Type="Self.rol_roles" Multiplicity="1" />
+          <End Role="usr_usuarios" Type="Self.usr_usuarios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="rol_roles">
+              <PropertyRef Name="rol_id" />
+            </Principal>
+            <Dependent Role="usr_usuarios">
+              <PropertyRef Name="usr_id_rol" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_te_transferenciaEntrada_t_transferencia">
+          <End Role="t_transferencia" Type="Self.t_transferencia" Multiplicity="1" />
+          <End Role="te_transferenciaEntrada" Type="Self.te_transferenciaEntrada" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="t_transferencia">
+              <PropertyRef Name="t_id" />
+            </Principal>
+            <Dependent Role="te_transferenciaEntrada">
+              <PropertyRef Name="te_id_t" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ts_transferenciaSalida_t_transferencia">
+          <End Role="t_transferencia" Type="Self.t_transferencia" Multiplicity="1" />
+          <End Role="ts_transferenciaSalida" Type="Self.ts_transferenciaSalida" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="t_transferencia">
+              <PropertyRef Name="t_id" />
+            </Principal>
+            <Dependent Role="ts_transferenciaSalida">
+              <PropertyRef Name="ts_id_t" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="SCIR_SistemaInventarioEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="c_compra" EntityType="Self.c_compra" />
+          <EntitySet Name="c_dtl_compra_detalle" EntityType="Self.c_dtl_compra_detalle" />
+          <EntitySet Name="carg_cargoInventario" EntityType="Self.carg_cargoInventario" />
+          <EntitySet Name="ce_comidaEmpleado" EntityType="Self.ce_comidaEmpleado" />
+          <EntitySet Name="ce_dtl_comidaEmpleado_detalle" EntityType="Self.ce_dtl_comidaEmpleado_detalle" />
+          <EntitySet Name="d_desecho" EntityType="Self.d_desecho" />
+          <EntitySet Name="dc_desechoCompleto" EntityType="Self.dc_desechoCompleto" />
+          <EntitySet Name="deg_degustacion" EntityType="Self.deg_degustacion" />
+          <EntitySet Name="deg_dtl_degustacion_detalle" EntityType="Self.deg_dtl_degustacion_detalle" />
+          <EntitySet Name="desc_descargoInventario" EntityType="Self.desc_descargoInventario" />
+          <EntitySet Name="di_desechoIncompleto" EntityType="Self.di_desechoIncompleto" />
+          <EntitySet Name="i_inventario" EntityType="Self.i_inventario" />
+          <EntitySet Name="ii_inventarioInterno" EntityType="Self.ii_inventarioInterno" />
+          <EntitySet Name="ir_inventarioReal" EntityType="Self.ir_inventarioReal" />
+          <EntitySet Name="mp_materiaPrima" EntityType="Self.mp_materiaPrima" />
+          <EntitySet Name="ope_operacion" EntityType="Self.ope_operacion" />
+          <EntitySet Name="p_producto" EntityType="Self.p_producto" />
+          <EntitySet Name="pant_pantallas" EntityType="Self.pant_pantallas" />
+          <EntitySet Name="pc_productoCombo" EntityType="Self.pc_productoCombo" />
+          <EntitySet Name="per_premisosXrol" EntityType="Self.per_premisosXrol" />
+          <EntitySet Name="pmx_dtl_productMix_detalle" EntityType="Self.pmx_dtl_productMix_detalle" />
+          <EntitySet Name="pmx_productMix" EntityType="Self.pmx_productMix" />
+          <EntitySet Name="ps_productoSimple" EntityType="Self.ps_productoSimple" />
+          <EntitySet Name="r_dtl_recetaDetalle" EntityType="Self.r_dtl_recetaDetalle" />
+          <EntitySet Name="r_receta" EntityType="Self.r_receta" />
+          <EntitySet Name="rol_roles" EntityType="Self.rol_roles" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <EntitySet Name="t_transferencia" EntityType="Self.t_transferencia" />
+          <EntitySet Name="te_transferenciaEntrada" EntityType="Self.te_transferenciaEntrada" />
+          <EntitySet Name="tid_tipoDesecho" EntityType="Self.tid_tipoDesecho" />
+          <EntitySet Name="tir_tipoReceta" EntityType="Self.tir_tipoReceta" />
+          <EntitySet Name="tope_tipoOperacion" EntityType="Self.tope_tipoOperacion" />
+          <EntitySet Name="ts_transferenciaSalida" EntityType="Self.ts_transferenciaSalida" />
+          <EntitySet Name="usr_usuarios" EntityType="Self.usr_usuarios" />
+          <EntitySet Name="vin_variacionInventario" EntityType="Self.vin_variacionInventario" />
+          <AssociationSet Name="FK_c_compra_i_inventario" Association="Self.FK_c_compra_i_inventario">
+            <End Role="i_inventario" EntitySet="i_inventario" />
+            <End Role="c_compra" EntitySet="c_compra" />
+          </AssociationSet>
+          <AssociationSet Name="FK_c_compra_ope_operacion" Association="Self.FK_c_compra_ope_operacion">
+            <End Role="ope_operacion" EntitySet="ope_operacion" />
+            <End Role="c_compra" EntitySet="c_compra" />
+          </AssociationSet>
+          <AssociationSet Name="FK_c_dtl_compra_detalle_c_compra" Association="Self.FK_c_dtl_compra_detalle_c_compra">
+            <End Role="c_compra" EntitySet="c_compra" />
+            <End Role="c_dtl_compra_detalle" EntitySet="c_dtl_compra_detalle" />
+          </AssociationSet>
+          <AssociationSet Name="FK_c_dtl_compra_detalle_mp_materiaPrima" Association="Self.FK_c_dtl_compra_detalle_mp_materiaPrima">
+            <End Role="mp_materiaPrima" EntitySet="mp_materiaPrima" />
+            <End Role="c_dtl_compra_detalle" EntitySet="c_dtl_compra_detalle" />
+          </AssociationSet>
+          <AssociationSet Name="FK_carg_cargoInventario_i_inventario" Association="Self.FK_carg_cargoInventario_i_inventario">
+            <End Role="i_inventario" EntitySet="i_inventario" />
+            <End Role="carg_cargoInventario" EntitySet="carg_cargoInventario" />
+          </AssociationSet>
+          <AssociationSet Name="FK_carg_cargoInventario_ope_operacion" Association="Self.FK_carg_cargoInventario_ope_operacion">
+            <End Role="ope_operacion" EntitySet="ope_operacion" />
+            <End Role="carg_cargoInventario" EntitySet="carg_cargoInventario" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ce_comidaEmpleado_i_inventario" Association="Self.FK_ce_comidaEmpleado_i_inventario">
+            <End Role="i_inventario" EntitySet="i_inventario" />
+            <End Role="ce_comidaEmpleado" EntitySet="ce_comidaEmpleado" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ce_comidaEmpleado_ope_operacion" Association="Self.FK_ce_comidaEmpleado_ope_operacion">
+            <End Role="ope_operacion" EntitySet="ope_operacion" />
+            <End Role="ce_comidaEmpleado" EntitySet="ce_comidaEmpleado" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ce_dtl_comidaEmpleado_detalle_ce_comidaEmpleado" Association="Self.FK_ce_dtl_comidaEmpleado_detalle_ce_comidaEmpleado">
+            <End Role="ce_comidaEmpleado" EntitySet="ce_comidaEmpleado" />
+            <End Role="ce_dtl_comidaEmpleado_detalle" EntitySet="ce_dtl_comidaEmpleado_detalle" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ce_dtl_comidaEmpleado_detalle_p_producto" Association="Self.FK_ce_dtl_comidaEmpleado_detalle_p_producto">
+            <End Role="p_producto" EntitySet="p_producto" />
+            <End Role="ce_dtl_comidaEmpleado_detalle" EntitySet="ce_dtl_comidaEmpleado_detalle" />
+          </AssociationSet>
+          <AssociationSet Name="FK_d_desecho_i_inventario" Association="Self.FK_d_desecho_i_inventario">
+            <End Role="i_inventario" EntitySet="i_inventario" />
+            <End Role="d_desecho" EntitySet="d_desecho" />
+          </AssociationSet>
+          <AssociationSet Name="FK_d_desecho_ope_operacion" Association="Self.FK_d_desecho_ope_operacion">
+            <End Role="ope_operacion" EntitySet="ope_operacion" />
+            <End Role="d_desecho" EntitySet="d_desecho" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dc_desechoCompleto_d_desecho" Association="Self.FK_dc_desechoCompleto_d_desecho">
+            <End Role="d_desecho" EntitySet="d_desecho" />
+            <End Role="dc_desechoCompleto" EntitySet="dc_desechoCompleto" />
+          </AssociationSet>
+          <AssociationSet Name="FK_di_desechoIncompleto_d_desecho" Association="Self.FK_di_desechoIncompleto_d_desecho">
+            <End Role="d_desecho" EntitySet="d_desecho" />
+            <End Role="di_desechoIncompleto" EntitySet="di_desechoIncompleto" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dc_desechoCompleto_p_producto" Association="Self.FK_dc_desechoCompleto_p_producto">
+            <End Role="p_producto" EntitySet="p_producto" />
+            <End Role="dc_desechoCompleto" EntitySet="dc_desechoCompleto" />
+          </AssociationSet>
+          <AssociationSet Name="FK_deg_degustacion_i_inventario" Association="Self.FK_deg_degustacion_i_inventario">
+            <End Role="i_inventario" EntitySet="i_inventario" />
+            <End Role="deg_degustacion" EntitySet="deg_degustacion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_deg_degustacion_ope_operacion" Association="Self.FK_deg_degustacion_ope_operacion">
+            <End Role="ope_operacion" EntitySet="ope_operacion" />
+            <End Role="deg_degustacion" EntitySet="deg_degustacion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_deg_dtl_degustacion_detalle_deg_degustacion" Association="Self.FK_deg_dtl_degustacion_detalle_deg_degustacion">
+            <End Role="deg_degustacion" EntitySet="deg_degustacion" />
+            <End Role="deg_dtl_degustacion_detalle" EntitySet="deg_dtl_degustacion_detalle" />
+          </AssociationSet>
+          <AssociationSet Name="FK_deg_dtl_degustacion_detalle_p_producto" Association="Self.FK_deg_dtl_degustacion_detalle_p_producto">
+            <End Role="p_producto" EntitySet="p_producto" />
+            <End Role="deg_dtl_degustacion_detalle" EntitySet="deg_dtl_degustacion_detalle" />
+          </AssociationSet>
+          <AssociationSet Name="FK_desc_descargoInventario_i_inventario" Association="Self.FK_desc_descargoInventario_i_inventario">
+            <End Role="i_inventario" EntitySet="i_inventario" />
+            <End Role="desc_descargoInventario" EntitySet="desc_descargoInventario" />
+          </AssociationSet>
+          <AssociationSet Name="FK_desc_descargoInventario_ope_operacion" Association="Self.FK_desc_descargoInventario_ope_operacion">
+            <End Role="ope_operacion" EntitySet="ope_operacion" />
+            <End Role="desc_descargoInventario" EntitySet="desc_descargoInventario" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ii_inventarioInterno_i_inventario" Association="Self.FK_ii_inventarioInterno_i_inventario">
+            <End Role="i_inventario" EntitySet="i_inventario" />
+            <End Role="ii_inventarioInterno" EntitySet="ii_inventarioInterno" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ir_inventarioReal_i_inventario" Association="Self.FK_ir_inventarioReal_i_inventario">
+            <End Role="i_inventario" EntitySet="i_inventario" />
+            <End Role="ir_inventarioReal" EntitySet="ir_inventarioReal" />
+          </AssociationSet>
+          <AssociationSet Name="FK_pmx_productMix_i_inventario" Association="Self.FK_pmx_productMix_i_inventario">
+            <End Role="i_inventario" EntitySet="i_inventario" />
+            <End Role="pmx_productMix" EntitySet="pmx_productMix" />
+          </AssociationSet>
+          <AssociationSet Name="FK_t_transferencia_i_inventario" Association="Self.FK_t_transferencia_i_inventario">
+            <End Role="i_inventario" EntitySet="i_inventario" />
+            <End Role="t_transferencia" EntitySet="t_transferencia" />
+          </AssociationSet>
+          <AssociationSet Name="FK_vin_variacionInventario_i_inventario" Association="Self.FK_vin_variacionInventario_i_inventario">
+            <End Role="i_inventario" EntitySet="i_inventario" />
+            <End Role="vin_variacionInventario" EntitySet="vin_variacionInventario" />
+          </AssociationSet>
+          <AssociationSet Name="FK_r_dtl_recetaDetalle_mp_materiaPrima" Association="Self.FK_r_dtl_recetaDetalle_mp_materiaPrima">
+            <End Role="mp_materiaPrima" EntitySet="mp_materiaPrima" />
+            <End Role="r_dtl_recetaDetalle" EntitySet="r_dtl_recetaDetalle" />
+          </AssociationSet>
+          <AssociationSet Name="FK_te_transferenciaEntrada_mp_materiaPrima" Association="Self.FK_te_transferenciaEntrada_mp_materiaPrima">
+            <End Role="mp_materiaPrima" EntitySet="mp_materiaPrima" />
+            <End Role="te_transferenciaEntrada" EntitySet="te_transferenciaEntrada" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ts_transferenciaSalida_mp_materiaPrima" Association="Self.FK_ts_transferenciaSalida_mp_materiaPrima">
+            <End Role="mp_materiaPrima" EntitySet="mp_materiaPrima" />
+            <End Role="ts_transferenciaSalida" EntitySet="ts_transferenciaSalida" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ope_operacion_tope_tipoOperacion" Association="Self.FK_ope_operacion_tope_tipoOperacion">
+            <End Role="tope_tipoOperacion" EntitySet="tope_tipoOperacion" />
+            <End Role="ope_operacion" EntitySet="ope_operacion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_pmx_productMix_ope_operacion" Association="Self.FK_pmx_productMix_ope_operacion">
+            <End Role="ope_operacion" EntitySet="ope_operacion" />
+            <End Role="pmx_productMix" EntitySet="pmx_productMix" />
+          </AssociationSet>
+          <AssociationSet Name="FK_t_transferencia_ope_operacion" Association="Self.FK_t_transferencia_ope_operacion">
+            <End Role="ope_operacion" EntitySet="ope_operacion" />
+            <End Role="t_transferencia" EntitySet="t_transferencia" />
+          </AssociationSet>
+          <AssociationSet Name="FK_p_producto_r_receta" Association="Self.FK_p_producto_r_receta">
+            <End Role="r_receta" EntitySet="r_receta" />
+            <End Role="p_producto" EntitySet="p_producto" />
+          </AssociationSet>
+          <AssociationSet Name="FK_pc_productoCombo_p_producto" Association="Self.FK_pc_productoCombo_p_producto">
+            <End Role="p_producto" EntitySet="p_producto" />
+            <End Role="pc_productoCombo" EntitySet="pc_productoCombo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_pmx_dtl_productMix_detalle_p_producto" Association="Self.FK_pmx_dtl_productMix_detalle_p_producto">
+            <End Role="p_producto" EntitySet="p_producto" />
+            <End Role="pmx_dtl_productMix_detalle" EntitySet="pmx_dtl_productMix_detalle" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ps_productoSimple_p_producto" Association="Self.FK_ps_productoSimple_p_producto">
+            <End Role="p_producto" EntitySet="p_producto" />
+            <End Role="ps_productoSimple" EntitySet="ps_productoSimple" />
+          </AssociationSet>
+          <AssociationSet Name="FK_per_premisosXrol_pant_pantallas" Association="Self.FK_per_premisosXrol_pant_pantallas">
+            <End Role="pant_pantallas" EntitySet="pant_pantallas" />
+            <End Role="per_premisosXrol" EntitySet="per_premisosXrol" />
+          </AssociationSet>
+          <AssociationSet Name="FK_pc_productoCombo_ps_productoSimple" Association="Self.FK_pc_productoCombo_ps_productoSimple">
+            <End Role="ps_productoSimple" EntitySet="ps_productoSimple" />
+            <End Role="pc_productoCombo" EntitySet="pc_productoCombo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_per_premisosXrol_rol_roles" Association="Self.FK_per_premisosXrol_rol_roles">
+            <End Role="rol_roles" EntitySet="rol_roles" />
+            <End Role="per_premisosXrol" EntitySet="per_premisosXrol" />
+          </AssociationSet>
+          <AssociationSet Name="FK_per_premisosXrol_usr_usuarios" Association="Self.FK_per_premisosXrol_usr_usuarios">
+            <End Role="usr_usuarios" EntitySet="usr_usuarios" />
+            <End Role="per_premisosXrol" EntitySet="per_premisosXrol" />
+          </AssociationSet>
+          <AssociationSet Name="FK_pmx_dtl_productMix_detalle_pmx_productMix" Association="Self.FK_pmx_dtl_productMix_detalle_pmx_productMix">
+            <End Role="pmx_productMix" EntitySet="pmx_productMix" />
+            <End Role="pmx_dtl_productMix_detalle" EntitySet="pmx_dtl_productMix_detalle" />
+          </AssociationSet>
+          <AssociationSet Name="FK_r_dtl_recetaDetalle_r_receta" Association="Self.FK_r_dtl_recetaDetalle_r_receta">
+            <End Role="r_receta" EntitySet="r_receta" />
+            <End Role="r_dtl_recetaDetalle" EntitySet="r_dtl_recetaDetalle" />
+          </AssociationSet>
+          <AssociationSet Name="FK_r_receta_tir_tipoReceta" Association="Self.FK_r_receta_tir_tipoReceta">
+            <End Role="tir_tipoReceta" EntitySet="tir_tipoReceta" />
+            <End Role="r_receta" EntitySet="r_receta" />
+          </AssociationSet>
+          <AssociationSet Name="FK_usr_usuarios_rol_roles" Association="Self.FK_usr_usuarios_rol_roles">
+            <End Role="rol_roles" EntitySet="rol_roles" />
+            <End Role="usr_usuarios" EntitySet="usr_usuarios" />
+          </AssociationSet>
+          <AssociationSet Name="FK_te_transferenciaEntrada_t_transferencia" Association="Self.FK_te_transferenciaEntrada_t_transferencia">
+            <End Role="t_transferencia" EntitySet="t_transferencia" />
+            <End Role="te_transferenciaEntrada" EntitySet="te_transferenciaEntrada" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ts_transferenciaSalida_t_transferencia" Association="Self.FK_ts_transferenciaSalida_t_transferencia">
+            <End Role="t_transferencia" EntitySet="t_transferencia" />
+            <End Role="ts_transferenciaSalida" EntitySet="ts_transferenciaSalida" />
+          </AssociationSet>
+          <FunctionImport Name="sp_alterdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_creatediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_dropdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(SCIR_SistemaInventarioModel.sp_helpdiagramdefinition_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(SCIR_SistemaInventarioModel.sp_helpdiagrams_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_renamediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="new_diagramname" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_upgraddiagrams" />
+        </EntityContainer>
+        <ComplexType Name="sp_helpdiagramdefinition_Result">
+          <Property Type="Int32" Name="version" Nullable="true" />
+          <Property Type="Binary" Name="definition" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_helpdiagrams_Result">
+          <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+          <Property Type="Int32" Name="OwnerID" Nullable="false" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="SCIR_SistemaInventarioModelStoreContainer" CdmEntityContainer="SCIR_SistemaInventarioEntities">
+          <EntitySetMapping Name="c_compra">
+            <EntityTypeMapping TypeName="SCIR_SistemaInventarioModel.c_compra">
+              <MappingFragment StoreEntitySet="c_compra">
+                <ScalarProperty Name="c_id" ColumnName="c_id" />
+                <ScalarProperty Name="c_id_i" ColumnName="c_id_i" />
+                <ScalarProperty Name="c_fecha" ColumnName="c_fecha" />
+                <ScalarProperty Name="c_codigoFactura" ColumnName="c_codigoFactura" />
+                <ScalarProperty Name="c_descripcion" ColumnName="c_descripcion" />
+                <ScalarProperty Name="c_id_usuarioCreacion" ColumnName="c_id_usuarioCreacion" />
+                <ScalarProperty Name="c_id_ope" ColumnName="c_id_ope" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="c_dtl_compra_detalle">
+            <EntityTypeMapping TypeName="SCIR_SistemaInventarioModel.c_dtl_compra_detalle">
+              <MappingFragment StoreEntitySet="c_dtl_compra_detalle">
+                <ScalarProperty Name="c_dtl_id" ColumnName="c_dtl_id" />
+                <ScalarProperty Name="c_dtl_id_c" ColumnName="c_dtl_id_c" />
+                <ScalarProperty Name="c_dtl_id_mp" ColumnName="c_dtl_id_mp" />
+                <ScalarProperty Name="c_dtl_cantidad" ColumnName="c_dtl_cantidad" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="carg_cargoInventario">
+            <EntityTypeMapping TypeName="SCIR_SistemaInventarioModel.carg_cargoInventario">
+              <MappingFragment StoreEntitySet="carg_cargoInventario">
+                <ScalarProperty Name="carg_id" ColumnName="carg_id" />
+                <ScalarProperty Name="carg_id_ope" ColumnName="carg_id_ope" />
+                <ScalarProperty Name="carg_id_i" ColumnName="carg_id_i" />
+                <ScalarProperty Name="carg_id_mp" ColumnName="carg_id_mp" />
+                <ScalarProperty Name="carg_cantidad" ColumnName="carg_cantidad" />
+                <ScalarProperty Name="carg_id_usuarioCreacion" ColumnName="carg_id_usuarioCreacion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ce_comidaEmpleado">
+            <EntityTypeMapping TypeName="SCIR_SistemaInventarioModel.ce_comidaEmpleado">
+              <MappingFragment StoreEntitySet="ce_comidaEmpleado">
+                <ScalarProperty Name="ce_id" ColumnName="ce_id" />
+                <ScalarProperty Name="ce_fecha" ColumnName="ce_fecha" />
+                <ScalarProperty Name="ce_cantidadEmpleados" ColumnName="ce_cantidadEmpleados" />
+                <ScalarProperty Name="ce_descripcion" ColumnName="ce_descripcion" />
+                <ScalarProperty Name="ce_id_i" ColumnName="ce_id_i" />
+                <ScalarProperty Name="ce_id_usuarioCreacion" ColumnName="ce_id_usuarioCreacion" />
+                <ScalarProperty Name="ce_id_ope" ColumnName="ce_id_ope" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ce_dtl_comidaEmpleado_detalle">
+            <EntityTypeMapping TypeName="SCIR_SistemaInventarioModel.ce_dtl_comidaEmpleado_detalle">
+              <MappingFragment StoreEntitySet="ce_dtl_comidaEmpleado_detalle">
+                <ScalarProperty Name="ce_dtl_id" ColumnName="ce_dtl_id" />
+                <ScalarProperty Name="ce_dtl_id_ce" ColumnName="ce_dtl_id_ce" />
+                <ScalarProperty Name="ce_dtl_id_p" ColumnName="ce_dtl_id_p" />
+                <ScalarProperty Name="ce_dtl_cantidad" ColumnName="ce_dtl_cantidad" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="d_desecho">
+            <EntityTypeMapping TypeName="SCIR_SistemaInventarioModel.d_desecho">
+              <MappingFragment StoreEntitySet="d_desecho">
+                <ScalarProperty Name="d_id" ColumnName="d_id" />
+                <ScalarProperty Name="d_id_i" ColumnName="d_id_i" />
+                <ScalarProperty Name="d_fecha" ColumnName="d_fecha" />
+                <ScalarProperty Name="d_descripcion" ColumnName="d_descripcion" />
+                <ScalarProperty Name="d_tipo" ColumnName="d_tipo" />
+                <ScalarProperty Name="d_id_usuarioCreacion" ColumnName="d_id_usuarioCreacion" />
+                <ScalarProperty Name="d_id_ope" ColumnName="d_id_ope" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="dc_desechoCompleto">
+            <EntityTypeMapping TypeName="SCIR_SistemaInventarioModel.dc_desechoCompleto">
+              <MappingFragment StoreEntitySet="dc_desechoCompleto">
+                <ScalarProperty Name="dc_id" ColumnName="dc_id" />
+                <ScalarProperty Name="dc_id_d" ColumnName="dc_id_d" />
+                <ScalarProperty Name="dc_id_p" ColumnName="dc_id_p" />
+                <ScalarProperty Name="dc_cantidad" ColumnName="dc_cantidad" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="deg_degustacion">
+            <EntityTypeMapping TypeName="SCIR_SistemaInventarioModel.deg_degustacion">
+              <MappingFragment StoreEntitySet="deg_degustacion">
+                <ScalarProperty Name="deg_id" ColumnName="deg_id" />
+                <ScalarProperty Name="deg_id_i" ColumnName="deg_id_i" />
+                <ScalarProperty Name="deg_fecha" ColumnName="deg_fecha" />
+                <ScalarProperty Name="deg_descripcion" ColumnName="deg_descripcion" />
+                <ScalarProperty Name="deg_id_usuarioCreacion" ColumnName="deg_id_usuarioCreacion" />
+                <ScalarProperty Name="deg_id_ope" ColumnName="deg_id_ope" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="deg_dtl_degustacion_detalle">
+            <EntityTypeMapping TypeName="SCIR_SistemaInventarioModel.deg_dtl_degustacion_detalle">
+              <MappingFragment StoreEntitySet="deg_dtl_degustacion_detalle">
+                <ScalarProperty Name="deg_dtl_id" ColumnName="deg_dtl_id" />
+                <ScalarProperty Name="deg_dtl_id_deg" ColumnName="deg_dtl_id_deg" />
+                <ScalarProperty Name="deg_dtl_id_p" ColumnName="deg_dtl_id_p" />
+                <ScalarProperty Name="deg_dtl_cantidad" ColumnName="deg_dtl_cantidad" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="desc_descargoInventario">
+            <EntityTypeMapping TypeName="SCIR_SistemaInventarioModel.desc_descargoInventario">
+              <MappingFragment StoreEntitySet="desc_descargoInventario">
+                <ScalarProperty Name="desc_id" ColumnName="desc_id" />
+                <ScalarProperty Name="desc_id_ope" ColumnName="desc_id_ope" />
+                <ScalarProperty Name="desc_id_i" ColumnName="desc_id_i" />
+                <ScalarProperty Name="desc_id_mp" ColumnName="desc_id_mp" />
+                <ScalarProperty Name="desc_cantidad" ColumnName="desc_cantidad" />
+                <ScalarProperty Name="desc_fecha" ColumnName="desc_fecha" />
+                <ScalarProperty Name="desc_id_usuarioCreacion" ColumnName="desc_id_usuarioCreacion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="di_desechoIncompleto">
+            <EntityTypeMapping TypeName="SCIR_SistemaInventarioModel.di_desechoIncompleto">
+              <MappingFragment StoreEntitySet="di_desechoIncompleto">
+                <ScalarProperty Name="di_id" ColumnName="di_id" />
+                <ScalarProperty Name="di_id_d" ColumnName="di_id_d" />
+                <ScalarProperty Name="di_id_mp" ColumnName="di_id_mp" />
+                <ScalarProperty Name="di_cantidad" ColumnName="di_cantidad" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="i_inventario">
+            <EntityTypeMapping TypeName="SCIR_SistemaInventarioModel.i_inventario">
+              <MappingFragment StoreEntitySet="i_inventario">
+                <ScalarProperty Name="inv_id" ColumnName="inv_id" />
+                <ScalarProperty Name="inv_fechaInicio" ColumnName="inv_fechaInicio" />
+                <ScalarProperty Name="inv_Encabezado" ColumnName="inv_Encabezado" />
+                <ScalarProperty Name="inv_fechaFin" ColumnName="inv_fechaFin" />
+                <ScalarProperty Name="inv_activo" ColumnName="inv_activo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ii_inventarioInterno">
+            <EntityTypeMapping TypeName="SCIR_SistemaInventarioModel.ii_inventarioInterno">
+              <MappingFragment StoreEntitySet="ii_inventarioInterno">
+                <ScalarProperty Name="ii_id" ColumnName="ii_id" />
+                <ScalarProperty Name="ii_id_i" ColumnName="ii_id_i" />
+                <ScalarProperty Name="ii_id_mp" ColumnName="ii_id_mp" />
+                <ScalarProperty Name="ii_mp_descripcion" ColumnName="ii_mp_descripcion" />
+                <ScalarProperty Name="ii_existencia" ColumnName="ii_existencia" />
+                <ScalarProperty Name="ii_activo" ColumnName="ii_activo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ir_inventarioReal">
+            <EntityTypeMapping TypeName="SCIR_SistemaInventarioModel.ir_inventarioReal">
+              <MappingFragment StoreEntitySet="ir_inventarioReal">
+                <ScalarProperty Name="ir_id" ColumnName="ir_id" />
+                <ScalarProperty Name="ir_id_i" ColumnName="ir_id_i" />
+                <ScalarProperty Name="ir_id_mp" ColumnName="ir_id_mp" />
+                <ScalarProperty Name="ir_mp_descripcion" ColumnName="ir_mp_descripcion" />
+                <ScalarProperty Name="ir_existencia" ColumnName="ir_existencia" />
+                <ScalarProperty Name="ir_activo" ColumnName="ir_activo" />
+                <ScalarProperty Name="ir_fechaIngreso" ColumnName="ir_fechaIngreso" />
+                <ScalarProperty Name="ir_id_usuacioCreacion" ColumnName="ir_id_usuacioCreacion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="mp_materiaPrima">
+            <EntityTypeMapping TypeName="SCIR_SistemaInventarioModel.mp_materiaPrima">
+              <MappingFragment StoreEntitySet="mp_materiaPrima">
+                <ScalarProperty Name="mp_id" ColumnName="mp_id" />
+                <ScalarProperty Name="mp_codigo" ColumnName="mp_codigo" />
+                <ScalarProperty Name="mp_nombre" ColumnName="mp_nombre" />
+                <ScalarProperty Name="mp_unidadMedida" ColumnName="mp_unidadMedida" />
+                <ScalarProperty Name="mp_cantidadMinima" ColumnName="mp_cantidadMinima" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ope_operacion">
+            <EntityTypeMapping TypeName="SCIR_SistemaInventarioModel.ope_operacion">
+              <MappingFragment StoreEntitySet="ope_operacion">
+                <ScalarProperty Name="ope_id" ColumnName="ope_id" />
+                <ScalarProperty Name="ope_descripcion" ColumnName="ope_descripcion" />
+                <ScalarProperty Name="ope_tipo" ColumnName="ope_tipo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="p_producto">
+            <EntityTypeMapping TypeName="SCIR_SistemaInventarioModel.p_producto">
+              <MappingFragment StoreEntitySet="p_producto">
+                <ScalarProperty Name="p_id" ColumnName="p_id" />
+                <ScalarProperty Name="p_id_r" ColumnName="p_id_r" />
+                <ScalarProperty Name="p_nombre" ColumnName="p_nombre" />
+                <ScalarProperty Name="p_precio" ColumnName="p_precio" />
+                <ScalarProperty Name="p_tipo" ColumnName="p_tipo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="pant_pantallas">
+            <EntityTypeMapping TypeName="SCIR_SistemaInventarioModel.pant_pantallas">
+              <MappingFragment StoreEntitySet="pant_pantallas">
+                <ScalarProperty Name="pant_id" ColumnName="pant_id" />
+                <ScalarProperty Name="pant_descripcion" ColumnName="pant_descripcion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="pc_productoCombo">
+            <EntityTypeMapping TypeName="SCIR_SistemaInventarioModel.pc_productoCombo">
+              <MappingFragment StoreEntitySet="pc_productoCombo">
+                <ScalarProperty Name="pc_id" ColumnName="pc_id" />
+                <ScalarProperty Name="pc_id_p" ColumnName="pc_id_p" />
+                <ScalarProperty Name="pc_id_pc_ps" ColumnName="pc_id_pc_ps" />
+                <ScalarProperty Name="pc_cantidad_ps" ColumnName="pc_cantidad_ps" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="per_premisosXrol">
+            <EntityTypeMapping TypeName="SCIR_SistemaInventarioModel.per_premisosXrol">
+              <MappingFragment StoreEntitySet="per_premisosXrol">
+                <ScalarProperty Name="pxr_id" ColumnName="pxr_id" />
+                <ScalarProperty Name="pxrl_id_pant" ColumnName="pxrl_id_pant" />
+                <ScalarProperty Name="pxr_id_rol" ColumnName="pxr_id_rol" />
+                <ScalarProperty Name="pxr_id_user" ColumnName="pxr_id_user" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="pmx_dtl_productMix_detalle">
+            <EntityTypeMapping TypeName="SCIR_SistemaInventarioModel.pmx_dtl_productMix_detalle">
+              <MappingFragment StoreEntitySet="pmx_dtl_productMix_detalle">
+                <ScalarProperty Name="pmx_dtl_id" ColumnName="pmx_dtl_id" />
+                <ScalarProperty Name="pmx_dtl_id_pmx" ColumnName="pmx_dtl_id_pmx" />
+                <ScalarProperty Name="pmx_dtl_cantidad" ColumnName="pmx_dtl_cantidad" />
+                <ScalarProperty Name="pmx_dtl_id_p" ColumnName="pmx_dtl_id_p" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="pmx_productMix">
+            <EntityTypeMapping TypeName="SCIR_SistemaInventarioModel.pmx_productMix">
+              <MappingFragment StoreEntitySet="pmx_productMix">
+                <ScalarProperty Name="pmx_id" ColumnName="pmx_id" />
+                <ScalarProperty Name="pmx_id_i" ColumnName="pmx_id_i" />
+                <ScalarProperty Name="pmx_id_pmx_dtl" ColumnName="pmx_id_pmx_dtl" />
+                <ScalarProperty Name="pmx_fecha" ColumnName="pmx_fecha" />
+                <ScalarProperty Name="pmx_id_usuarioCreacion" ColumnName="pmx_id_usuarioCreacion" />
+                <ScalarProperty Name="pmx_id_ope" ColumnName="pmx_id_ope" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ps_productoSimple">
+            <EntityTypeMapping TypeName="SCIR_SistemaInventarioModel.ps_productoSimple">
+              <MappingFragment StoreEntitySet="ps_productoSimple">
+                <ScalarProperty Name="ps_id" ColumnName="ps_id" />
+                <ScalarProperty Name="ps_id_p" ColumnName="ps_id_p" />
+                <ScalarProperty Name="ps_id_ps_mp" ColumnName="ps_id_ps_mp" />
+                <ScalarProperty Name="ps_cantidad_mp" ColumnName="ps_cantidad_mp" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="r_dtl_recetaDetalle">
+            <EntityTypeMapping TypeName="SCIR_SistemaInventarioModel.r_dtl_recetaDetalle">
+              <MappingFragment StoreEntitySet="r_dtl_recetaDetalle">
+                <ScalarProperty Name="r_dtl_id" ColumnName="r_dtl_id" />
+                <ScalarProperty Name="r_dtl_id_r" ColumnName="r_dtl_id_r" />
+                <ScalarProperty Name="r_dtl_id_mp" ColumnName="r_dtl_id_mp" />
+                <ScalarProperty Name="r_dtl_cantidad_mp" ColumnName="r_dtl_cantidad_mp" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="r_receta">
+            <EntityTypeMapping TypeName="SCIR_SistemaInventarioModel.r_receta">
+              <MappingFragment StoreEntitySet="r_receta">
+                <ScalarProperty Name="r_id" ColumnName="r_id" />
+                <ScalarProperty Name="r_tipo" ColumnName="r_tipo" />
+                <ScalarProperty Name="r_fechaCreacion" ColumnName="r_fechaCreacion" />
+                <ScalarProperty Name="r_descripcion" ColumnName="r_descripcion" />
+                <ScalarProperty Name="r_id_usuarioCreacion" ColumnName="r_id_usuarioCreacion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="rol_roles">
+            <EntityTypeMapping TypeName="SCIR_SistemaInventarioModel.rol_roles">
+              <MappingFragment StoreEntitySet="rol_roles">
+                <ScalarProperty Name="rol_id" ColumnName="rol_id" />
+                <ScalarProperty Name="rol_descripcion" ColumnName="rol_descripcion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="SCIR_SistemaInventarioModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="t_transferencia">
+            <EntityTypeMapping TypeName="SCIR_SistemaInventarioModel.t_transferencia">
+              <MappingFragment StoreEntitySet="t_transferencia">
+                <ScalarProperty Name="t_id" ColumnName="t_id" />
+                <ScalarProperty Name="t_id_i" ColumnName="t_id_i" />
+                <ScalarProperty Name="t_fecha" ColumnName="t_fecha" />
+                <ScalarProperty Name="t_descripcion" ColumnName="t_descripcion" />
+                <ScalarProperty Name="t_tipo" ColumnName="t_tipo" />
+                <ScalarProperty Name="t_id_usuarioCreacion" ColumnName="t_id_usuarioCreacion" />
+                <ScalarProperty Name="t_id_ope" ColumnName="t_id_ope" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="te_transferenciaEntrada">
+            <EntityTypeMapping TypeName="SCIR_SistemaInventarioModel.te_transferenciaEntrada">
+              <MappingFragment StoreEntitySet="te_transferenciaEntrada">
+                <ScalarProperty Name="te_id" ColumnName="te_id" />
+                <ScalarProperty Name="te_id_t" ColumnName="te_id_t" />
+                <ScalarProperty Name="te_id_mp" ColumnName="te_id_mp" />
+                <ScalarProperty Name="te_cantidad" ColumnName="te_cantidad" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tid_tipoDesecho">
+            <EntityTypeMapping TypeName="SCIR_SistemaInventarioModel.tid_tipoDesecho">
+              <MappingFragment StoreEntitySet="tid_tipoDesecho">
+                <ScalarProperty Name="tid_id" ColumnName="tid_id" />
+                <ScalarProperty Name="tid_descripcion" ColumnName="tid_descripcion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tir_tipoReceta">
+            <EntityTypeMapping TypeName="SCIR_SistemaInventarioModel.tir_tipoReceta">
+              <MappingFragment StoreEntitySet="tir_tipoReceta">
+                <ScalarProperty Name="tir_id" ColumnName="tir_id" />
+                <ScalarProperty Name="tir_descripcion" ColumnName="tir_descripcion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tope_tipoOperacion">
+            <EntityTypeMapping TypeName="SCIR_SistemaInventarioModel.tope_tipoOperacion">
+              <MappingFragment StoreEntitySet="tope_tipoOperacion">
+                <ScalarProperty Name="tope_id" ColumnName="tope_id" />
+                <ScalarProperty Name="tope_descripcion" ColumnName="tope_descripcion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ts_transferenciaSalida">
+            <EntityTypeMapping TypeName="SCIR_SistemaInventarioModel.ts_transferenciaSalida">
+              <MappingFragment StoreEntitySet="ts_transferenciaSalida">
+                <ScalarProperty Name="ts_id" ColumnName="ts_id" />
+                <ScalarProperty Name="ts_id_t" ColumnName="ts_id_t" />
+                <ScalarProperty Name="ts_id_mp" ColumnName="ts_id_mp" />
+                <ScalarProperty Name="ts_cantidad" ColumnName="ts_cantidad" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="usr_usuarios">
+            <EntityTypeMapping TypeName="SCIR_SistemaInventarioModel.usr_usuarios">
+              <MappingFragment StoreEntitySet="usr_usuarios">
+                <ScalarProperty Name="usr_id" ColumnName="usr_id" />
+                <ScalarProperty Name="usr_nombre" ColumnName="usr_nombre" />
+                <ScalarProperty Name="usr_password" ColumnName="usr_password" />
+                <ScalarProperty Name="usr_id_rol" ColumnName="usr_id_rol" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vin_variacionInventario">
+            <EntityTypeMapping TypeName="SCIR_SistemaInventarioModel.vin_variacionInventario">
+              <MappingFragment StoreEntitySet="vin_variacionInventario">
+                <ScalarProperty Name="vin_id" ColumnName="vin_id" />
+                <ScalarProperty Name="vin_id_i" ColumnName="vin_id_i" />
+                <ScalarProperty Name="vin_id_mp" ColumnName="vin_id_mp" />
+                <ScalarProperty Name="vin_mp_descripcion" ColumnName="vin_mp_descripcion" />
+                <ScalarProperty Name="vin_existenciaReal" ColumnName="vin_existenciaReal" />
+                <ScalarProperty Name="vin_existenciaInterna" ColumnName="vin_existenciaInterna" />
+                <ScalarProperty Name="vin_variacion" ColumnName="vin_variacion" />
+                <ScalarProperty Name="vin_id_usuarioCreacion" ColumnName="vin_id_usuarioCreacion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="SCIR_SistemaInventarioModel.Store.sp_alterdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="SCIR_SistemaInventarioModel.Store.sp_creatediagram" />
+          <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="SCIR_SistemaInventarioModel.Store.sp_dropdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="SCIR_SistemaInventarioModel.Store.sp_helpdiagramdefinition">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SCIR_SistemaInventarioModel.sp_helpdiagramdefinition_Result">
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="SCIR_SistemaInventarioModel.Store.sp_helpdiagrams">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SCIR_SistemaInventarioModel.sp_helpdiagrams_Result">
+                <ScalarProperty Name="Database" ColumnName="Database" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Owner" ColumnName="Owner" />
+                <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="SCIR_SistemaInventarioModel.Store.sp_renamediagram" />
+          <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="SCIR_SistemaInventarioModel.Store.sp_upgraddiagrams" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

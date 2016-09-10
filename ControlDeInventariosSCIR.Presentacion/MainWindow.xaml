@@ -1,0 +1,23 @@
+﻿<Window x:Class="ControlDeInventariosSCIR.Presentacion.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="MainWindow" Height="422.368" Width="639.474">
+    <Grid OpacityMask="#FF31DCAE">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="321*"/>
+            <ColumnDefinition Width="53*"/>
+            <ColumnDefinition Width="143*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+                <GradientStop Color="#FF0050FB" Offset="0.988"/>
+                <GradientStop Color="#FFF2551A" Offset="0.052"/>
+            </LinearGradientBrush>
+        </Grid.Background>
+        <Label x:Name="lbUser" Content="Usuario:" HorizontalAlignment="Left" Margin="132,140,0,0" VerticalAlignment="Top" Height="30" Width="139" FontSize="14" FontWeight="Bold" Foreground="White"/>
+        <Label x:Name="lbUser_Copy" Content="Contraseña:" HorizontalAlignment="Left" Margin="132,193,0,0" VerticalAlignment="Top" Height="30" Width="139" FontSize="14" FontWeight="Bold" Foreground="White"/>
+        <TextBox x:Name="txtUser" Grid.ColumnSpan="2" HorizontalAlignment="Left" Height="23" Margin="276,140,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="171"/>
+        <PasswordBox x:Name="txtPasswor"  Grid.ColumnSpan="2" HorizontalAlignment="Left" Height="23" Margin="276,200,0,0"  VerticalAlignment="Top" Width="171"/>
+        <Button Content="Ingresar" HorizontalAlignment="Left" Margin="350,254,0,0" VerticalAlignment="Top" Width="97" Height="28" Grid.ColumnSpan="2"/>
+    </Grid>
+</Window>

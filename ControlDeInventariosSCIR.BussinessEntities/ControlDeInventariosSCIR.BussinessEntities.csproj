@@ -1,0 +1,212 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{25F63CB9-B0AB-48A5-9B4B-6664B6C0680E}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ControlDeInventariosSCIR.BussinessEntities</RootNamespace>
+    <AssemblyName>ControlDeInventariosSCIR.BussinessEntities</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="carg_cargoInventario.cs">
+      <DependentUpon>SCIRModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ce_comidaEmpleado.cs">
+      <DependentUpon>SCIRModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ce_dtl_comidaEmpleado_detalle.cs">
+      <DependentUpon>SCIRModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ComunDB.cs" />
+    <Compile Include="c_compra.cs">
+      <DependentUpon>SCIRModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="c_dtl_compra_detalle.cs">
+      <DependentUpon>SCIRModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="dc_desechoCompleto.cs">
+      <DependentUpon>SCIRModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="deg_degustacion.cs">
+      <DependentUpon>SCIRModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="deg_dtl_degustacion_detalle.cs">
+      <DependentUpon>SCIRModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="desc_descargoInventario.cs">
+      <DependentUpon>SCIRModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="di_desechoIncompleto.cs">
+      <DependentUpon>SCIRModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="d_desecho.cs">
+      <DependentUpon>SCIRModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ii_inventarioInterno.cs">
+      <DependentUpon>SCIRModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ir_inventarioReal.cs">
+      <DependentUpon>SCIRModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="i_inventario.cs">
+      <DependentUpon>SCIRModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="mp_materiaPrima.cs">
+      <DependentUpon>SCIRModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ope_operacion.cs">
+      <DependentUpon>SCIRModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="pant_pantallas.cs">
+      <DependentUpon>SCIRModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="pc_productoCombo.cs">
+      <DependentUpon>SCIRModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="per_premisosXrol.cs">
+      <DependentUpon>SCIRModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="pmx_dtl_productMix_detalle.cs">
+      <DependentUpon>SCIRModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="pmx_productMix.cs">
+      <DependentUpon>SCIRModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ps_productoSimple.cs">
+      <DependentUpon>SCIRModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="p_producto.cs">
+      <DependentUpon>SCIRModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="rol_roles.cs">
+      <DependentUpon>SCIRModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="r_dtl_recetaDetalle.cs">
+      <DependentUpon>SCIRModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="r_receta.cs">
+      <DependentUpon>SCIRModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SCIRModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SCIRModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SCIRModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SCIRModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SCIRModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SCIRModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="sp_helpdiagramdefinition_Result.cs">
+      <DependentUpon>SCIRModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_helpdiagrams_Result.cs">
+      <DependentUpon>SCIRModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sysdiagrams.cs">
+      <DependentUpon>SCIRModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="te_transferenciaEntrada.cs">
+      <DependentUpon>SCIRModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tid_tipoDesecho.cs">
+      <DependentUpon>SCIRModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tir_tipoReceta.cs">
+      <DependentUpon>SCIRModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tope_tipoOperacion.cs">
+      <DependentUpon>SCIRModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ts_transferenciaSalida.cs">
+      <DependentUpon>SCIRModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="t_transferencia.cs">
+      <DependentUpon>SCIRModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="usr_usuarios.cs">
+      <DependentUpon>SCIRModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="vin_variacionInventario.cs">
+      <DependentUpon>SCIRModel.tt</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EntityDeploy Include="SCIRModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>SCIRModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.Config" />
+    <None Include="packages.config" />
+    <None Include="SCIRModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>SCIRModel.edmx</DependentUpon>
+      <LastGenOutput>SCIRModel.Context.cs</LastGenOutput>
+    </None>
+    <None Include="SCIRModel.edmx.diagram">
+      <DependentUpon>SCIRModel.edmx</DependentUpon>
+    </None>
+    <None Include="SCIRModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>SCIRModel.edmx</DependentUpon>
+      <LastGenOutput>SCIRModel.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
