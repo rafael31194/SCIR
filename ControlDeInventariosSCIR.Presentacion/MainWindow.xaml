@@ -18,6 +18,6 @@
         <Label x:Name="lbUser_Copy" Content="Contraseña:" HorizontalAlignment="Left" Margin="132,193,0,0" VerticalAlignment="Top" Height="30" Width="139" FontSize="14" FontWeight="Bold" Foreground="White"/>
         <TextBox x:Name="txtUser" Grid.ColumnSpan="2" HorizontalAlignment="Left" Height="23" Margin="276,140,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="171"/>
         <PasswordBox x:Name="txtPasswor"  Grid.ColumnSpan="2" HorizontalAlignment="Left" Height="23" Margin="276,200,0,0"  VerticalAlignment="Top" Width="171"/>
-        <Button Content="Ingresar" HorizontalAlignment="Left" Margin="350,254,0,0" VerticalAlignment="Top" Width="97" Height="28" Grid.ColumnSpan="2"/>
+        <Button Content="Ingresar" HorizontalAlignment="Left" Margin="350,254,0,0" VerticalAlignment="Top" Width="97" Height="28" Grid.ColumnSpan="2" Click="Button_Click"/>
     </Grid>
 </Window>

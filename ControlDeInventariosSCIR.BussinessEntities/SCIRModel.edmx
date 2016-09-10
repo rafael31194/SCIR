@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="SCIR_SistemaInventarioModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="SCIR_SistemaInventarioModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="c_compra">
           <Key>
             <PropertyRef Name="c_id" />
@@ -66,9 +66,9 @@
           <Property Name="d_id_i" Type="int" Nullable="false" />
           <Property Name="d_fecha" Type="date" Nullable="false" />
           <Property Name="d_descripcion" Type="nchar" MaxLength="50" />
-          <Property Name="d_tipo" Type="nchar" MaxLength="10" />
           <Property Name="d_id_usuarioCreacion" Type="int" />
           <Property Name="d_id_ope" Type="int" />
+          <Property Name="id_tipoDesecho" Type="int" />
         </EntityType>
         <EntityType Name="dc_desechoCompleto">
           <Key>
@@ -163,6 +163,7 @@
           <Property Name="mp_nombre" Type="varchar" MaxLength="50" />
           <Property Name="mp_unidadMedida" Type="varchar" MaxLength="50" />
           <Property Name="mp_cantidadMinima" Type="float" />
+          <Property Name="mp_estado" Type="bit" />
         </EntityType>
         <EntityType Name="ope_operacion">
           <Key>
@@ -305,7 +306,7 @@
             <PropertyRef Name="tir_id" />
           </Key>
           <Property Name="tir_id" Type="int" Nullable="false" />
-          <Property Name="tir_descripcion" Type="nchar" MaxLength="10" />
+          <Property Name="tir_descripcion" Type="varchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="tope_tipoOperacion">
           <Key>
@@ -486,6 +487,18 @@
             </Principal>
             <Dependent Role="d_desecho">
               <PropertyRef Name="d_id_ope" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_d_desecho_tid_tipoDesecho">
+          <End Role="tid_tipoDesecho" Type="Self.tid_tipoDesecho" Multiplicity="0..1" />
+          <End Role="d_desecho" Type="Self.d_desecho" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tid_tipoDesecho">
+              <PropertyRef Name="tid_id" />
+            </Principal>
+            <Dependent Role="d_desecho">
+              <PropertyRef Name="id_tipoDesecho" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -922,10 +935,77 @@
           <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
           <Parameter Name="owner_id" Type="int" Mode="In" />
         </Function>
+        <Function Name="sp_Login" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="username" Type="varchar" Mode="In" />
+          <Parameter Name="password" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="sp_mp_insert_NuevaMateriaPrima" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="mp_codigo" Type="varchar" Mode="In" />
+          <Parameter Name="mp_nombre" Type="varchar" Mode="In" />
+          <Parameter Name="mp_unidadMedida" Type="varchar" Mode="In" />
+          <Parameter Name="mp_cantidadMinima" Type="float" Mode="In" />
+          <Parameter Name="mp_estado" Type="bit" Mode="In" />
+        </Function>
+        <Function Name="sp_mp_select_all" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="sp_mp_select_where_MateriaPrimaPorID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="mp_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_mp_select_where_MateriaPrimaPorNombre" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="mp_nombre" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="sp_mp_update_MateriaPrima" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="mp_id" Type="int" Mode="In" />
+          <Parameter Name="mp_codigo" Type="int" Mode="In" />
+          <Parameter Name="mp_nombre" Type="varchar" Mode="In" />
+          <Parameter Name="mp_unidadMedida" Type="varchar" Mode="In" />
+          <Parameter Name="mp_cantidadMinima" Type="float" Mode="In" />
+          <Parameter Name="mp_estado" Type="bit" Mode="In" />
+        </Function>
         <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
           <Parameter Name="owner_id" Type="int" Mode="In" />
           <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_trans_delete_TransferenciaEntradaSalida" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="t_id" Type="int" Mode="In" />
+          <Parameter Name="t_tipo" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_trans_insert_NuevaTransferencia" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="t_id_i" Type="int" Mode="In" />
+          <Parameter Name="t_fecha" Type="date" Mode="In" />
+          <Parameter Name="t_descripcion" Type="varchar" Mode="In" />
+          <Parameter Name="t_tipo" Type="int" Mode="In" />
+          <Parameter Name="t_id_usuarioCreacion" Type="int" Mode="In" />
+          <Parameter Name="t_id_ope" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_trans_insert_TransferenciaEntradas" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="t_id" Type="int" Mode="In" />
+          <Parameter Name="t_mp_id" Type="int" Mode="In" />
+          <Parameter Name="t_mp_cantidad" Type="float" Mode="In" />
+        </Function>
+        <Function Name="sp_trans_insert_TransferenciaSalida" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="t_id" Type="int" Mode="In" />
+          <Parameter Name="t_mp_id" Type="int" Mode="In" />
+          <Parameter Name="t_mp_cantidad" Type="float" Mode="In" />
+        </Function>
+        <Function Name="sp_trans_select_all_EntradasSalidas" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="sp_trans_select_where_EntradasSalidas" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="t_id" Type="int" Mode="In" />
+          <Parameter Name="t_tipo" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_trans_update_TransferenciaEntrada" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="t_id" Type="int" Mode="In" />
+          <Parameter Name="t_mp_id" Type="int" Mode="In" />
+          <Parameter Name="t_mp_cantidad" Type="float" Mode="In" />
+          <Parameter Name="t_mp_idNuevo" Type="int" Mode="In" />
+          <Parameter Name="t_mp_cantidadNuevo" Type="float" Mode="In" />
+        </Function>
+        <Function Name="sp_trans_update_TransferenciaSalida" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="t_id" Type="int" Mode="In" />
+          <Parameter Name="t_mp_id" Type="int" Mode="In" />
+          <Parameter Name="t_mp_cantidad" Type="float" Mode="In" />
+          <Parameter Name="t_mp_idNuevo" Type="int" Mode="In" />
+          <Parameter Name="t_mp_cantidadNuevo" Type="float" Mode="In" />
         </Function>
         <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <EntityContainer Name="SCIR_SistemaInventarioModelStoreContainer">
@@ -1010,6 +1090,10 @@
           </AssociationSet>
           <AssociationSet Name="FK_d_desecho_ope_operacion" Association="Self.FK_d_desecho_ope_operacion">
             <End Role="ope_operacion" EntitySet="ope_operacion" />
+            <End Role="d_desecho" EntitySet="d_desecho" />
+          </AssociationSet>
+          <AssociationSet Name="FK_d_desecho_tid_tipoDesecho" Association="Self.FK_d_desecho_tid_tipoDesecho">
+            <End Role="tid_tipoDesecho" EntitySet="tid_tipoDesecho" />
             <End Role="d_desecho" EntitySet="d_desecho" />
           </AssociationSet>
           <AssociationSet Name="FK_dc_desechoCompleto_d_desecho" Association="Self.FK_dc_desechoCompleto_d_desecho">
@@ -1149,8 +1233,7 @@
             <End Role="vin_variacionInventario" EntitySet="vin_variacionInventario" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="SCIR_SistemaInventarioModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -1227,13 +1310,14 @@
           <Property Name="d_id_i" Type="Int32" Nullable="false" />
           <Property Name="d_fecha" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="d_descripcion" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
-          <Property Name="d_tipo" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
           <Property Name="d_id_usuarioCreacion" Type="Int32" />
           <Property Name="d_id_ope" Type="Int32" />
           <NavigationProperty Name="i_inventario" Relationship="Self.FK_d_desecho_i_inventario" FromRole="d_desecho" ToRole="i_inventario" />
           <NavigationProperty Name="ope_operacion" Relationship="Self.FK_d_desecho_ope_operacion" FromRole="d_desecho" ToRole="ope_operacion" />
           <NavigationProperty Name="dc_desechoCompleto" Relationship="Self.FK_dc_desechoCompleto_d_desecho" FromRole="d_desecho" ToRole="dc_desechoCompleto" />
           <NavigationProperty Name="di_desechoIncompleto" Relationship="Self.FK_di_desechoIncompleto_d_desecho" FromRole="d_desecho" ToRole="di_desechoIncompleto" />
+          <Property Name="id_tipoDesecho" Type="Int32" />
+          <NavigationProperty Name="tid_tipoDesecho" Relationship="SCIR_SistemaInventarioModel.FK_d_desecho_tid_tipoDesecho" FromRole="d_desecho" ToRole="tid_tipoDesecho" />
         </EntityType>
         <EntityType Name="dc_desechoCompleto">
           <Key>
@@ -1355,6 +1439,7 @@
           <NavigationProperty Name="r_dtl_recetaDetalle" Relationship="Self.FK_r_dtl_recetaDetalle_mp_materiaPrima" FromRole="mp_materiaPrima" ToRole="r_dtl_recetaDetalle" />
           <NavigationProperty Name="te_transferenciaEntrada" Relationship="Self.FK_te_transferenciaEntrada_mp_materiaPrima" FromRole="mp_materiaPrima" ToRole="te_transferenciaEntrada" />
           <NavigationProperty Name="ts_transferenciaSalida" Relationship="Self.FK_ts_transferenciaSalida_mp_materiaPrima" FromRole="mp_materiaPrima" ToRole="ts_transferenciaSalida" />
+          <Property Name="mp_estado" Type="Boolean" />
         </EntityType>
         <EntityType Name="ope_operacion">
           <Key>
@@ -1533,13 +1618,14 @@
           </Key>
           <Property Name="tid_id" Type="Int32" Nullable="false" />
           <Property Name="tid_descripcion" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="d_desecho" Relationship="SCIR_SistemaInventarioModel.FK_d_desecho_tid_tipoDesecho" FromRole="tid_tipoDesecho" ToRole="d_desecho" />
         </EntityType>
         <EntityType Name="tir_tipoReceta">
           <Key>
             <PropertyRef Name="tir_id" />
           </Key>
           <Property Name="tir_id" Type="Int32" Nullable="false" />
-          <Property Name="tir_descripcion" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="tir_descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="r_receta" Relationship="Self.FK_r_receta_tir_tipoReceta" FromRole="tir_tipoReceta" ToRole="r_receta" />
         </EntityType>
         <EntityType Name="tope_tipoOperacion">
@@ -2388,6 +2474,77 @@
             <Parameter Name="new_diagramname" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="sp_upgraddiagrams" />
+          <AssociationSet Name="FK_d_desecho_tid_tipoDesecho" Association="SCIR_SistemaInventarioModel.FK_d_desecho_tid_tipoDesecho">
+            <End Role="tid_tipoDesecho" EntitySet="tid_tipoDesecho" />
+            <End Role="d_desecho" EntitySet="d_desecho" />
+          </AssociationSet>
+          <FunctionImport Name="sp_Login" ReturnType="Collection(String)">
+            <Parameter Name="username" Mode="In" Type="String" />
+            <Parameter Name="password" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_mp_insert_NuevaMateriaPrima">
+            <Parameter Name="mp_codigo" Mode="In" Type="String" />
+            <Parameter Name="mp_nombre" Mode="In" Type="String" />
+            <Parameter Name="mp_unidadMedida" Mode="In" Type="String" />
+            <Parameter Name="mp_cantidadMinima" Mode="In" Type="Double" />
+            <Parameter Name="mp_estado" Mode="In" Type="Boolean" />
+          </FunctionImport>
+          <FunctionImport Name="sp_mp_select_all" ReturnType="Collection(SCIR_SistemaInventarioModel.sp_mp_select_all_Result)" />
+          <FunctionImport Name="sp_mp_select_where_MateriaPrimaPorID" ReturnType="Collection(SCIR_SistemaInventarioModel.sp_mp_select_where_MateriaPrimaPorID_Result)">
+          <Parameter Name="mp_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_mp_select_where_MateriaPrimaPorNombre" ReturnType="Collection(SCIR_SistemaInventarioModel.sp_mp_select_where_MateriaPrimaPorNombre_Result)">
+          <Parameter Name="mp_nombre" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_mp_update_MateriaPrima">
+            <Parameter Name="mp_id" Mode="In" Type="Int32" />
+            <Parameter Name="mp_codigo" Mode="In" Type="Int32" />
+            <Parameter Name="mp_nombre" Mode="In" Type="String" />
+            <Parameter Name="mp_unidadMedida" Mode="In" Type="String" />
+            <Parameter Name="mp_cantidadMinima" Mode="In" Type="Double" />
+            <Parameter Name="mp_estado" Mode="In" Type="Boolean" />
+          </FunctionImport>
+          <FunctionImport Name="sp_trans_delete_TransferenciaEntradaSalida">
+            <Parameter Name="t_id" Mode="In" Type="Int32" />
+            <Parameter Name="t_tipo" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_trans_insert_NuevaTransferencia">
+            <Parameter Name="t_id_i" Mode="In" Type="Int32" />
+            <Parameter Name="t_fecha" Mode="In" Type="DateTime" />
+            <Parameter Name="t_descripcion" Mode="In" Type="String" />
+            <Parameter Name="t_tipo" Mode="In" Type="Int32" />
+            <Parameter Name="t_id_usuarioCreacion" Mode="In" Type="Int32" />
+            <Parameter Name="t_id_ope" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_trans_insert_TransferenciaEntradas">
+            <Parameter Name="t_id" Mode="In" Type="Int32" />
+            <Parameter Name="t_mp_id" Mode="In" Type="Int32" />
+            <Parameter Name="t_mp_cantidad" Mode="In" Type="Double" />
+          </FunctionImport>
+          <FunctionImport Name="sp_trans_insert_TransferenciaSalida">
+            <Parameter Name="t_id" Mode="In" Type="Int32" />
+            <Parameter Name="t_mp_id" Mode="In" Type="Int32" />
+            <Parameter Name="t_mp_cantidad" Mode="In" Type="Double" />
+          </FunctionImport>
+          <FunctionImport Name="sp_trans_select_all_EntradasSalidas" ReturnType="Collection(SCIR_SistemaInventarioModel.sp_trans_select_all_EntradasSalidas_Result)" />
+          <FunctionImport Name="sp_trans_select_where_EntradasSalidas" ReturnType="Collection(SCIR_SistemaInventarioModel.sp_trans_select_where_EntradasSalidas_Result)">
+            <Parameter Name="t_id" Mode="In" Type="Int32" />
+            <Parameter Name="t_tipo" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_trans_update_TransferenciaEntrada">
+            <Parameter Name="t_id" Mode="In" Type="Int32" />
+            <Parameter Name="t_mp_id" Mode="In" Type="Int32" />
+            <Parameter Name="t_mp_cantidad" Mode="In" Type="Double" />
+            <Parameter Name="t_mp_idNuevo" Mode="In" Type="Int32" />
+            <Parameter Name="t_mp_cantidadNuevo" Mode="In" Type="Double" />
+          </FunctionImport>
+          <FunctionImport Name="sp_trans_update_TransferenciaSalida">
+            <Parameter Name="t_id" Mode="In" Type="Int32" />
+            <Parameter Name="t_mp_id" Mode="In" Type="Int32" />
+            <Parameter Name="t_mp_cantidad" Mode="In" Type="Double" />
+            <Parameter Name="t_mp_idNuevo" Mode="In" Type="Int32" />
+            <Parameter Name="t_mp_cantidadNuevo" Mode="In" Type="Double" />
+          </FunctionImport>
         </EntityContainer>
         <ComplexType Name="sp_helpdiagramdefinition_Result">
           <Property Type="Int32" Name="version" Nullable="true" />
@@ -2399,6 +2556,54 @@
           <Property Type="Int32" Name="ID" Nullable="false" />
           <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
           <Property Type="Int32" Name="OwnerID" Nullable="false" />
+        </ComplexType>
+        <Association Name="FK_d_desecho_tid_tipoDesecho">
+          <End Type="SCIR_SistemaInventarioModel.tid_tipoDesecho" Role="tid_tipoDesecho" Multiplicity="0..1" />
+          <End Type="SCIR_SistemaInventarioModel.d_desecho" Role="d_desecho" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tid_tipoDesecho">
+              <PropertyRef Name="tid_id" />
+            </Principal>
+            <Dependent Role="d_desecho">
+              <PropertyRef Name="id_tipoDesecho" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <ComplexType Name="sp_mp_select_all_Result">
+          <Property Type="Int32" Name="mp_id" Nullable="false" />
+          <Property Type="String" Name="mp_codigo" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="mp_nombre" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="mp_unidadMedida" Nullable="true" MaxLength="50" />
+          <Property Type="Double" Name="mp_cantidadMinima" Nullable="true" />
+          <Property Type="Boolean" Name="mp_estado" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_mp_select_where_MateriaPrimaPorID_Result">
+          <Property Type="Int32" Name="mp_id" Nullable="false" />
+          <Property Type="String" Name="mp_codigo" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="mp_nombre" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="mp_unidadMedida" Nullable="true" MaxLength="50" />
+          <Property Type="Double" Name="mp_cantidadMinima" Nullable="true" />
+          <Property Type="Boolean" Name="mp_estado" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_mp_select_where_MateriaPrimaPorNombre_Result">
+          <Property Type="Int32" Name="mp_id" Nullable="false" />
+          <Property Type="String" Name="mp_codigo" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="mp_nombre" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="mp_unidadMedida" Nullable="true" MaxLength="50" />
+          <Property Type="Double" Name="mp_cantidadMinima" Nullable="true" />
+          <Property Type="Boolean" Name="mp_estado" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_trans_select_all_EntradasSalidas_Result">
+          <Property Type="Int32" Name="t_id" Nullable="false" />
+          <Property Type="DateTime" Name="t_fecha" Nullable="false" />
+          <Property Type="String" Name="t_descripcion" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="t_tipo" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="sp_trans_select_where_EntradasSalidas_Result">
+          <Property Type="Int32" Name="t_id" Nullable="false" />
+          <Property Type="DateTime" Name="t_fecha" Nullable="false" />
+          <Property Type="String" Name="t_descripcion" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="t_tipo" Nullable="false" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -2467,11 +2672,11 @@
           <EntitySetMapping Name="d_desecho">
             <EntityTypeMapping TypeName="SCIR_SistemaInventarioModel.d_desecho">
               <MappingFragment StoreEntitySet="d_desecho">
+                <ScalarProperty Name="id_tipoDesecho" ColumnName="id_tipoDesecho" />
                 <ScalarProperty Name="d_id" ColumnName="d_id" />
                 <ScalarProperty Name="d_id_i" ColumnName="d_id_i" />
                 <ScalarProperty Name="d_fecha" ColumnName="d_fecha" />
                 <ScalarProperty Name="d_descripcion" ColumnName="d_descripcion" />
-                <ScalarProperty Name="d_tipo" ColumnName="d_tipo" />
                 <ScalarProperty Name="d_id_usuarioCreacion" ColumnName="d_id_usuarioCreacion" />
                 <ScalarProperty Name="d_id_ope" ColumnName="d_id_ope" />
               </MappingFragment>
@@ -2572,6 +2777,7 @@
           <EntitySetMapping Name="mp_materiaPrima">
             <EntityTypeMapping TypeName="SCIR_SistemaInventarioModel.mp_materiaPrima">
               <MappingFragment StoreEntitySet="mp_materiaPrima">
+                <ScalarProperty Name="mp_estado" ColumnName="mp_estado" />
                 <ScalarProperty Name="mp_id" ColumnName="mp_id" />
                 <ScalarProperty Name="mp_codigo" ColumnName="mp_codigo" />
                 <ScalarProperty Name="mp_nombre" ColumnName="mp_nombre" />
@@ -2805,6 +3011,71 @@
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="SCIR_SistemaInventarioModel.Store.sp_renamediagram" />
           <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="SCIR_SistemaInventarioModel.Store.sp_upgraddiagrams" />
+          <FunctionImportMapping FunctionImportName="sp_Login" FunctionName="SCIR_SistemaInventarioModel.Store.sp_Login" />
+          <FunctionImportMapping FunctionImportName="sp_mp_insert_NuevaMateriaPrima" FunctionName="SCIR_SistemaInventarioModel.Store.sp_mp_insert_NuevaMateriaPrima" />
+          <FunctionImportMapping FunctionImportName="sp_mp_select_all" FunctionName="SCIR_SistemaInventarioModel.Store.sp_mp_select_all">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SCIR_SistemaInventarioModel.sp_mp_select_all_Result">
+                <ScalarProperty Name="mp_id" ColumnName="mp_id" />
+                <ScalarProperty Name="mp_codigo" ColumnName="mp_codigo" />
+                <ScalarProperty Name="mp_nombre" ColumnName="mp_nombre" />
+                <ScalarProperty Name="mp_unidadMedida" ColumnName="mp_unidadMedida" />
+                <ScalarProperty Name="mp_cantidadMinima" ColumnName="mp_cantidadMinima" />
+                <ScalarProperty Name="mp_estado" ColumnName="mp_estado" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_mp_select_where_MateriaPrimaPorID" FunctionName="SCIR_SistemaInventarioModel.Store.sp_mp_select_where_MateriaPrimaPorID">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SCIR_SistemaInventarioModel.sp_mp_select_where_MateriaPrimaPorID_Result">
+                <ScalarProperty Name="mp_id" ColumnName="mp_id" />
+                <ScalarProperty Name="mp_codigo" ColumnName="mp_codigo" />
+                <ScalarProperty Name="mp_nombre" ColumnName="mp_nombre" />
+                <ScalarProperty Name="mp_unidadMedida" ColumnName="mp_unidadMedida" />
+                <ScalarProperty Name="mp_cantidadMinima" ColumnName="mp_cantidadMinima" />
+                <ScalarProperty Name="mp_estado" ColumnName="mp_estado" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_mp_select_where_MateriaPrimaPorNombre" FunctionName="SCIR_SistemaInventarioModel.Store.sp_mp_select_where_MateriaPrimaPorNombre">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SCIR_SistemaInventarioModel.sp_mp_select_where_MateriaPrimaPorNombre_Result">
+                <ScalarProperty Name="mp_id" ColumnName="mp_id" />
+                <ScalarProperty Name="mp_codigo" ColumnName="mp_codigo" />
+                <ScalarProperty Name="mp_nombre" ColumnName="mp_nombre" />
+                <ScalarProperty Name="mp_unidadMedida" ColumnName="mp_unidadMedida" />
+                <ScalarProperty Name="mp_cantidadMinima" ColumnName="mp_cantidadMinima" />
+                <ScalarProperty Name="mp_estado" ColumnName="mp_estado" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_mp_update_MateriaPrima" FunctionName="SCIR_SistemaInventarioModel.Store.sp_mp_update_MateriaPrima" />
+          <FunctionImportMapping FunctionImportName="sp_trans_delete_TransferenciaEntradaSalida" FunctionName="SCIR_SistemaInventarioModel.Store.sp_trans_delete_TransferenciaEntradaSalida" />
+          <FunctionImportMapping FunctionImportName="sp_trans_insert_NuevaTransferencia" FunctionName="SCIR_SistemaInventarioModel.Store.sp_trans_insert_NuevaTransferencia" />
+          <FunctionImportMapping FunctionImportName="sp_trans_insert_TransferenciaEntradas" FunctionName="SCIR_SistemaInventarioModel.Store.sp_trans_insert_TransferenciaEntradas" />
+          <FunctionImportMapping FunctionImportName="sp_trans_insert_TransferenciaSalida" FunctionName="SCIR_SistemaInventarioModel.Store.sp_trans_insert_TransferenciaSalida" />
+          <FunctionImportMapping FunctionImportName="sp_trans_select_all_EntradasSalidas" FunctionName="SCIR_SistemaInventarioModel.Store.sp_trans_select_all_EntradasSalidas">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SCIR_SistemaInventarioModel.sp_trans_select_all_EntradasSalidas_Result">
+                <ScalarProperty Name="t_id" ColumnName="t_id" />
+                <ScalarProperty Name="t_fecha" ColumnName="t_fecha" />
+                <ScalarProperty Name="t_descripcion" ColumnName="t_descripcion" />
+                <ScalarProperty Name="t_tipo" ColumnName="t_tipo" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_trans_select_where_EntradasSalidas" FunctionName="SCIR_SistemaInventarioModel.Store.sp_trans_select_where_EntradasSalidas">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SCIR_SistemaInventarioModel.sp_trans_select_where_EntradasSalidas_Result">
+                <ScalarProperty Name="t_id" ColumnName="t_id" />
+                <ScalarProperty Name="t_fecha" ColumnName="t_fecha" />
+                <ScalarProperty Name="t_descripcion" ColumnName="t_descripcion" />
+                <ScalarProperty Name="t_tipo" ColumnName="t_tipo" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_trans_update_TransferenciaEntrada" FunctionName="SCIR_SistemaInventarioModel.Store.sp_trans_update_TransferenciaEntrada" />
+          <FunctionImportMapping FunctionImportName="sp_trans_update_TransferenciaSalida" FunctionName="SCIR_SistemaInventarioModel.Store.sp_trans_update_TransferenciaSalida" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

@@ -166,5 +166,239 @@ namespace ControlDeInventariosSCIR.BussinessEntities
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_upgraddiagrams");
         }
+    
+        public virtual ObjectResult<string> sp_Login(string username, string password)
+        {
+            var usernameParameter = username != null ?
+                new ObjectParameter("username", username) :
+                new ObjectParameter("username", typeof(string));
+    
+            var passwordParameter = password != null ?
+                new ObjectParameter("password", password) :
+                new ObjectParameter("password", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("sp_Login", usernameParameter, passwordParameter);
+        }
+    
+        public virtual int sp_mp_insert_NuevaMateriaPrima(string mp_codigo, string mp_nombre, string mp_unidadMedida, Nullable<double> mp_cantidadMinima, Nullable<bool> mp_estado)
+        {
+            var mp_codigoParameter = mp_codigo != null ?
+                new ObjectParameter("mp_codigo", mp_codigo) :
+                new ObjectParameter("mp_codigo", typeof(string));
+    
+            var mp_nombreParameter = mp_nombre != null ?
+                new ObjectParameter("mp_nombre", mp_nombre) :
+                new ObjectParameter("mp_nombre", typeof(string));
+    
+            var mp_unidadMedidaParameter = mp_unidadMedida != null ?
+                new ObjectParameter("mp_unidadMedida", mp_unidadMedida) :
+                new ObjectParameter("mp_unidadMedida", typeof(string));
+    
+            var mp_cantidadMinimaParameter = mp_cantidadMinima.HasValue ?
+                new ObjectParameter("mp_cantidadMinima", mp_cantidadMinima) :
+                new ObjectParameter("mp_cantidadMinima", typeof(double));
+    
+            var mp_estadoParameter = mp_estado.HasValue ?
+                new ObjectParameter("mp_estado", mp_estado) :
+                new ObjectParameter("mp_estado", typeof(bool));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_mp_insert_NuevaMateriaPrima", mp_codigoParameter, mp_nombreParameter, mp_unidadMedidaParameter, mp_cantidadMinimaParameter, mp_estadoParameter);
+        }
+    
+        public virtual ObjectResult<sp_mp_select_all_Result> sp_mp_select_all()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_mp_select_all_Result>("sp_mp_select_all");
+        }
+    
+        public virtual ObjectResult<sp_mp_select_where_MateriaPrimaPorID_Result> sp_mp_select_where_MateriaPrimaPorID(Nullable<int> mp_id)
+        {
+            var mp_idParameter = mp_id.HasValue ?
+                new ObjectParameter("mp_id", mp_id) :
+                new ObjectParameter("mp_id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_mp_select_where_MateriaPrimaPorID_Result>("sp_mp_select_where_MateriaPrimaPorID", mp_idParameter);
+        }
+    
+        public virtual ObjectResult<sp_mp_select_where_MateriaPrimaPorNombre_Result> sp_mp_select_where_MateriaPrimaPorNombre(string mp_nombre)
+        {
+            var mp_nombreParameter = mp_nombre != null ?
+                new ObjectParameter("mp_nombre", mp_nombre) :
+                new ObjectParameter("mp_nombre", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_mp_select_where_MateriaPrimaPorNombre_Result>("sp_mp_select_where_MateriaPrimaPorNombre", mp_nombreParameter);
+        }
+    
+        public virtual int sp_mp_update_MateriaPrima(Nullable<int> mp_id, Nullable<int> mp_codigo, string mp_nombre, string mp_unidadMedida, Nullable<double> mp_cantidadMinima, Nullable<bool> mp_estado)
+        {
+            var mp_idParameter = mp_id.HasValue ?
+                new ObjectParameter("mp_id", mp_id) :
+                new ObjectParameter("mp_id", typeof(int));
+    
+            var mp_codigoParameter = mp_codigo.HasValue ?
+                new ObjectParameter("mp_codigo", mp_codigo) :
+                new ObjectParameter("mp_codigo", typeof(int));
+    
+            var mp_nombreParameter = mp_nombre != null ?
+                new ObjectParameter("mp_nombre", mp_nombre) :
+                new ObjectParameter("mp_nombre", typeof(string));
+    
+            var mp_unidadMedidaParameter = mp_unidadMedida != null ?
+                new ObjectParameter("mp_unidadMedida", mp_unidadMedida) :
+                new ObjectParameter("mp_unidadMedida", typeof(string));
+    
+            var mp_cantidadMinimaParameter = mp_cantidadMinima.HasValue ?
+                new ObjectParameter("mp_cantidadMinima", mp_cantidadMinima) :
+                new ObjectParameter("mp_cantidadMinima", typeof(double));
+    
+            var mp_estadoParameter = mp_estado.HasValue ?
+                new ObjectParameter("mp_estado", mp_estado) :
+                new ObjectParameter("mp_estado", typeof(bool));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_mp_update_MateriaPrima", mp_idParameter, mp_codigoParameter, mp_nombreParameter, mp_unidadMedidaParameter, mp_cantidadMinimaParameter, mp_estadoParameter);
+        }
+    
+        public virtual int sp_trans_delete_TransferenciaEntradaSalida(Nullable<int> t_id, Nullable<int> t_tipo)
+        {
+            var t_idParameter = t_id.HasValue ?
+                new ObjectParameter("t_id", t_id) :
+                new ObjectParameter("t_id", typeof(int));
+    
+            var t_tipoParameter = t_tipo.HasValue ?
+                new ObjectParameter("t_tipo", t_tipo) :
+                new ObjectParameter("t_tipo", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_trans_delete_TransferenciaEntradaSalida", t_idParameter, t_tipoParameter);
+        }
+    
+        public virtual int sp_trans_insert_NuevaTransferencia(Nullable<int> t_id_i, Nullable<System.DateTime> t_fecha, string t_descripcion, Nullable<int> t_tipo, Nullable<int> t_id_usuarioCreacion, Nullable<int> t_id_ope)
+        {
+            var t_id_iParameter = t_id_i.HasValue ?
+                new ObjectParameter("t_id_i", t_id_i) :
+                new ObjectParameter("t_id_i", typeof(int));
+    
+            var t_fechaParameter = t_fecha.HasValue ?
+                new ObjectParameter("t_fecha", t_fecha) :
+                new ObjectParameter("t_fecha", typeof(System.DateTime));
+    
+            var t_descripcionParameter = t_descripcion != null ?
+                new ObjectParameter("t_descripcion", t_descripcion) :
+                new ObjectParameter("t_descripcion", typeof(string));
+    
+            var t_tipoParameter = t_tipo.HasValue ?
+                new ObjectParameter("t_tipo", t_tipo) :
+                new ObjectParameter("t_tipo", typeof(int));
+    
+            var t_id_usuarioCreacionParameter = t_id_usuarioCreacion.HasValue ?
+                new ObjectParameter("t_id_usuarioCreacion", t_id_usuarioCreacion) :
+                new ObjectParameter("t_id_usuarioCreacion", typeof(int));
+    
+            var t_id_opeParameter = t_id_ope.HasValue ?
+                new ObjectParameter("t_id_ope", t_id_ope) :
+                new ObjectParameter("t_id_ope", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_trans_insert_NuevaTransferencia", t_id_iParameter, t_fechaParameter, t_descripcionParameter, t_tipoParameter, t_id_usuarioCreacionParameter, t_id_opeParameter);
+        }
+    
+        public virtual int sp_trans_insert_TransferenciaEntradas(Nullable<int> t_id, Nullable<int> t_mp_id, Nullable<double> t_mp_cantidad)
+        {
+            var t_idParameter = t_id.HasValue ?
+                new ObjectParameter("t_id", t_id) :
+                new ObjectParameter("t_id", typeof(int));
+    
+            var t_mp_idParameter = t_mp_id.HasValue ?
+                new ObjectParameter("t_mp_id", t_mp_id) :
+                new ObjectParameter("t_mp_id", typeof(int));
+    
+            var t_mp_cantidadParameter = t_mp_cantidad.HasValue ?
+                new ObjectParameter("t_mp_cantidad", t_mp_cantidad) :
+                new ObjectParameter("t_mp_cantidad", typeof(double));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_trans_insert_TransferenciaEntradas", t_idParameter, t_mp_idParameter, t_mp_cantidadParameter);
+        }
+    
+        public virtual int sp_trans_insert_TransferenciaSalida(Nullable<int> t_id, Nullable<int> t_mp_id, Nullable<double> t_mp_cantidad)
+        {
+            var t_idParameter = t_id.HasValue ?
+                new ObjectParameter("t_id", t_id) :
+                new ObjectParameter("t_id", typeof(int));
+    
+            var t_mp_idParameter = t_mp_id.HasValue ?
+                new ObjectParameter("t_mp_id", t_mp_id) :
+                new ObjectParameter("t_mp_id", typeof(int));
+    
+            var t_mp_cantidadParameter = t_mp_cantidad.HasValue ?
+                new ObjectParameter("t_mp_cantidad", t_mp_cantidad) :
+                new ObjectParameter("t_mp_cantidad", typeof(double));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_trans_insert_TransferenciaSalida", t_idParameter, t_mp_idParameter, t_mp_cantidadParameter);
+        }
+    
+        public virtual ObjectResult<sp_trans_select_all_EntradasSalidas_Result> sp_trans_select_all_EntradasSalidas()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_trans_select_all_EntradasSalidas_Result>("sp_trans_select_all_EntradasSalidas");
+        }
+    
+        public virtual ObjectResult<sp_trans_select_where_EntradasSalidas_Result> sp_trans_select_where_EntradasSalidas(Nullable<int> t_id, Nullable<int> t_tipo)
+        {
+            var t_idParameter = t_id.HasValue ?
+                new ObjectParameter("t_id", t_id) :
+                new ObjectParameter("t_id", typeof(int));
+    
+            var t_tipoParameter = t_tipo.HasValue ?
+                new ObjectParameter("t_tipo", t_tipo) :
+                new ObjectParameter("t_tipo", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_trans_select_where_EntradasSalidas_Result>("sp_trans_select_where_EntradasSalidas", t_idParameter, t_tipoParameter);
+        }
+    
+        public virtual int sp_trans_update_TransferenciaEntrada(Nullable<int> t_id, Nullable<int> t_mp_id, Nullable<double> t_mp_cantidad, Nullable<int> t_mp_idNuevo, Nullable<double> t_mp_cantidadNuevo)
+        {
+            var t_idParameter = t_id.HasValue ?
+                new ObjectParameter("t_id", t_id) :
+                new ObjectParameter("t_id", typeof(int));
+    
+            var t_mp_idParameter = t_mp_id.HasValue ?
+                new ObjectParameter("t_mp_id", t_mp_id) :
+                new ObjectParameter("t_mp_id", typeof(int));
+    
+            var t_mp_cantidadParameter = t_mp_cantidad.HasValue ?
+                new ObjectParameter("t_mp_cantidad", t_mp_cantidad) :
+                new ObjectParameter("t_mp_cantidad", typeof(double));
+    
+            var t_mp_idNuevoParameter = t_mp_idNuevo.HasValue ?
+                new ObjectParameter("t_mp_idNuevo", t_mp_idNuevo) :
+                new ObjectParameter("t_mp_idNuevo", typeof(int));
+    
+            var t_mp_cantidadNuevoParameter = t_mp_cantidadNuevo.HasValue ?
+                new ObjectParameter("t_mp_cantidadNuevo", t_mp_cantidadNuevo) :
+                new ObjectParameter("t_mp_cantidadNuevo", typeof(double));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_trans_update_TransferenciaEntrada", t_idParameter, t_mp_idParameter, t_mp_cantidadParameter, t_mp_idNuevoParameter, t_mp_cantidadNuevoParameter);
+        }
+    
+        public virtual int sp_trans_update_TransferenciaSalida(Nullable<int> t_id, Nullable<int> t_mp_id, Nullable<double> t_mp_cantidad, Nullable<int> t_mp_idNuevo, Nullable<double> t_mp_cantidadNuevo)
+        {
+            var t_idParameter = t_id.HasValue ?
+                new ObjectParameter("t_id", t_id) :
+                new ObjectParameter("t_id", typeof(int));
+    
+            var t_mp_idParameter = t_mp_id.HasValue ?
+                new ObjectParameter("t_mp_id", t_mp_id) :
+                new ObjectParameter("t_mp_id", typeof(int));
+    
+            var t_mp_cantidadParameter = t_mp_cantidad.HasValue ?
+                new ObjectParameter("t_mp_cantidad", t_mp_cantidad) :
+                new ObjectParameter("t_mp_cantidad", typeof(double));
+    
+            var t_mp_idNuevoParameter = t_mp_idNuevo.HasValue ?
+                new ObjectParameter("t_mp_idNuevo", t_mp_idNuevo) :
+                new ObjectParameter("t_mp_idNuevo", typeof(int));
+    
+            var t_mp_cantidadNuevoParameter = t_mp_cantidadNuevo.HasValue ?
+                new ObjectParameter("t_mp_cantidadNuevo", t_mp_cantidadNuevo) :
+                new ObjectParameter("t_mp_cantidadNuevo", typeof(double));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_trans_update_TransferenciaSalida", t_idParameter, t_mp_idParameter, t_mp_cantidadParameter, t_mp_idNuevoParameter, t_mp_cantidadNuevoParameter);
+        }
     }
 }

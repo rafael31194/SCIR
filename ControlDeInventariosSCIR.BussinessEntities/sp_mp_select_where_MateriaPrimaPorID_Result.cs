@@ -10,18 +10,14 @@
 namespace ControlDeInventariosSCIR.BussinessEntities
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class tid_tipoDesecho
+    public partial class sp_mp_select_where_MateriaPrimaPorID_Result
     {
-        public tid_tipoDesecho()
-        {
-            this.d_desecho = new HashSet<d_desecho>();
-        }
-    
-        public int tid_id { get; set; }
-        public string tid_descripcion { get; set; }
-    
-        public virtual ICollection<d_desecho> d_desecho { get; set; }
+        public int mp_id { get; set; }
+        public string mp_codigo { get; set; }
+        public string mp_nombre { get; set; }
+        public string mp_unidadMedida { get; set; }
+        public Nullable<double> mp_cantidadMinima { get; set; }
+        public Nullable<bool> mp_estado { get; set; }
     }
 }

@@ -27,6 +27,7 @@ namespace ControlDeInventariosSCIR.BussinessEntities
         public string mp_nombre { get; set; }
         public string mp_unidadMedida { get; set; }
         public Nullable<double> mp_cantidadMinima { get; set; }
+        public Nullable<bool> mp_estado { get; set; }
     
         public virtual ICollection<c_dtl_compra_detalle> c_dtl_compra_detalle { get; set; }
         public virtual ICollection<r_dtl_recetaDetalle> r_dtl_recetaDetalle { get; set; }

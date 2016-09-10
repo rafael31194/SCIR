@@ -93,6 +93,20 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ControlDeInventariosSCIR.BussinesLogic\ControlDeInventariosSCIR.BussinesLogic.csproj">
+      <Project>{7152c9e1-bc06-467c-92f5-caf9dd20efe7}</Project>
+      <Name>ControlDeInventariosSCIR.BussinesLogic</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ControlDeInventariosSCIR.BussinessEntities\ControlDeInventariosSCIR.BussinessEntities.csproj">
+      <Project>{25f63cb9-b0ab-48a5-9b4b-6664b6c0680e}</Project>
+      <Name>ControlDeInventariosSCIR.BussinessEntities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ControlDeInventariosSCIR.DataAccess\ControlDeInventariosSCIR.DataAccess.csproj">
+      <Project>{4f33efd5-8bc5-46a0-88cc-741105e20966}</Project>
+      <Name>ControlDeInventariosSCIR.DataAccess</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

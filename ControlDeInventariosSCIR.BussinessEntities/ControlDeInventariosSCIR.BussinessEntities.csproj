@@ -147,6 +147,21 @@
     <Compile Include="sp_helpdiagrams_Result.cs">
       <DependentUpon>SCIRModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="sp_mp_select_all_Result.cs">
+      <DependentUpon>SCIRModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_mp_select_where_MateriaPrimaPorID_Result.cs">
+      <DependentUpon>SCIRModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_mp_select_where_MateriaPrimaPorNombre_Result.cs">
+      <DependentUpon>SCIRModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_trans_select_all_EntradasSalidas_Result.cs">
+      <DependentUpon>SCIRModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_trans_select_where_EntradasSalidas_Result.cs">
+      <DependentUpon>SCIRModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="sysdiagrams.cs">
       <DependentUpon>SCIRModel.tt</DependentUpon>
     </Compile>

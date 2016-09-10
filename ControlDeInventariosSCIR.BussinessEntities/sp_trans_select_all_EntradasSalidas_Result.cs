@@ -10,18 +10,12 @@
 namespace ControlDeInventariosSCIR.BussinessEntities
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class tid_tipoDesecho
+    public partial class sp_trans_select_all_EntradasSalidas_Result
     {
-        public tid_tipoDesecho()
-        {
-            this.d_desecho = new HashSet<d_desecho>();
-        }
-    
-        public int tid_id { get; set; }
-        public string tid_descripcion { get; set; }
-    
-        public virtual ICollection<d_desecho> d_desecho { get; set; }
+        public int t_id { get; set; }
+        public System.DateTime t_fecha { get; set; }
+        public string t_descripcion { get; set; }
+        public int t_tipo { get; set; }
     }
 }
