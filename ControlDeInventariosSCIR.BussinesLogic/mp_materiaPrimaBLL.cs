@@ -12,10 +12,10 @@ namespace ControlDeInventariosSCIR.BussinesLogic
     {
         MateriaPrimaDAL _mpDAL = new MateriaPrimaDAL();
 
-        public DataSet SelectmpALL(int mp_id )
-        {
-            return _mpDAL.SelectMateriaPrimaAll(mp_id);
-        }
+        //public DataSet SelectmpALL(int mp_id )
+        //{
+        //    return _mpDAL.SelectMateriaPrimaAll(mp_id);
+        //}
       
         
     }
