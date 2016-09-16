@@ -30,11 +30,12 @@ namespace ControlDeInventariosSCIR.DataAccess
             {
 
                 user.per_premisosXrol = entiti.Database.SqlQuery<per_premisosXrol>("sp_LoginPermisosXRol @id_rol", new SqlParameter("@id_rol", FILAS.usr_id)).ToArray<per_premisosXrol>();
+                return user;
                 
             }
             
             //ObjectResult ob = new ObjectResult();
-            return user;
+            return null;
 
         }
 

@@ -53,6 +53,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="win_MenuPrincipal.xaml.cs">
+      <DependentUpon>win_MenuPrincipal.xaml</DependentUpon>
+    </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -65,6 +68,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="win_MenuPrincipal.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -106,6 +113,27 @@
       <Project>{4f33efd5-8bc5-46a0-88cc-741105e20966}</Project>
       <Name>ControlDeInventariosSCIR.DataAccess</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="MateriaPrima\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Imagenes\transferencias.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Imagenes\desechos.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Imagenes\materiaPrima.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Imagenes\compras.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Imagenes\usuarios.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Imagenes\logout.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

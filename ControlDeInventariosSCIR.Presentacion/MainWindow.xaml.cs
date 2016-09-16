@@ -42,7 +42,17 @@ namespace ControlDeInventariosSCIR.Presentacion
             user.usr_nombre=this.txtUser.Text;
             LoginBLL log = new LoginBLL();
             var retorno=log.login(user);
+            if (retorno!=null)
+            {
+                win_MenuPrincipal menu = new win_MenuPrincipal(user);
+                menu.Show();
+                this.Close();
 
+            }
+            else
+            {
+                MessageBox.Show("Usuario o Contraseña invalidos.\n Intente de nuevo.","ERROR",MessageBoxButton.OK,MessageBoxImage.Exclamation);
+            }
             
 
         }
