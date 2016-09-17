@@ -42,7 +42,8 @@ namespace ControlDeInventariosSCIR.Presentacion
             user.usr_nombre=this.txtUser.Text;
             LoginBLL log = new LoginBLL();
             var retorno=log.login(user);
-
+            Menu menu = new Menu();
+            menu.Show();
             
 
         }

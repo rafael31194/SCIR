@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="SCIR_SistemaInventarioModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="SCIR_SistemaInventarioModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="c_compra">
           <Key>
             <PropertyRef Name="c_id" />
@@ -917,6 +917,18 @@
           <Parameter Name="version" Type="int" Mode="In" />
           <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
         </Function>
+        <Function Name="sp_c_compra_Update_" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="c_id" Type="int" Mode="In" />
+          <Parameter Name="c_id_i" Type="int" Mode="In" />
+          <Parameter Name="c_codigoFactura" Type="nchar" Mode="In" />
+          <Parameter Name="c_descripcion" Type="nchar" Mode="In" />
+          <Parameter Name="c_id_usuarioCreacion" Type="int" Mode="In" />
+          <Parameter Name="c_id_ope" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_compra_select_where_CompraporID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="c_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_compras_select_all" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
           <Parameter Name="owner_id" Type="int" Mode="In" />
@@ -938,6 +950,9 @@
         <Function Name="sp_Login" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="username" Type="varchar" Mode="In" />
           <Parameter Name="password" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="sp_LoginPermisosXRol" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id_rol" Type="int" Mode="In" />
         </Function>
         <Function Name="sp_mp_insert_NuevaMateriaPrima" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="mp_codigo" Type="varchar" Mode="In" />
@@ -992,6 +1007,10 @@
         <Function Name="sp_trans_select_where_EntradasSalidas" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="t_id" Type="int" Mode="In" />
           <Parameter Name="t_tipo" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_trans_select_where_fechatipo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="p_fecha" Type="date" Mode="In" />
+          <Parameter Name="p_tipo" Type="int" Mode="In" />
         </Function>
         <Function Name="sp_trans_update_TransferenciaEntrada" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="t_id" Type="int" Mode="In" />
@@ -2545,6 +2564,33 @@
             <Parameter Name="t_mp_idNuevo" Mode="In" Type="Int32" />
             <Parameter Name="t_mp_cantidadNuevo" Mode="In" Type="Double" />
           </FunctionImport>
+          <FunctionImport Name="sp_LoginPermisosXRol" ReturnType="Collection(SCIR_SistemaInventarioModel.sp_LoginPermisosXRol_Result)">
+          <Parameter Name="id_rol" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_trans_select_where_fechatipo" ReturnType="Collection(SCIR_SistemaInventarioModel.sp_trans_select_where_fechatipo_Result)">
+            <Parameter Name="p_fecha" Mode="In" Type="DateTime" />
+            <Parameter Name="p_tipo" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_compras_select_all" ReturnType="Collection(SCIR_SistemaInventarioModel.sp_compras_select_all_Result)" />
+          <FunctionImport Name="sp_compra_select_where_CompraporID" ReturnType="Collection(SCIR_SistemaInventarioModel.sp_compra_select_where_CompraporID_Result)">
+          <Parameter Name="c_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_compra_update_compra">
+            <Parameter Name="c_id" Mode="In" Type="Int32" />
+            <Parameter Name="c_id_i" Mode="In" Type="Int32" />
+            <Parameter Name="c_codigoFactura" Mode="In" Type="String" />
+            <Parameter Name="c_descripcion" Mode="In" Type="String" />
+            <Parameter Name="c_id_usuarioCreacion" Mode="In" Type="Int32" />
+            <Parameter Name="c_id_ope" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_c_compra_Update_">
+            <Parameter Name="c_id" Mode="In" Type="Int32" />
+            <Parameter Name="c_id_i" Mode="In" Type="Int32" />
+            <Parameter Name="c_codigoFactura" Mode="In" Type="String" />
+            <Parameter Name="c_descripcion" Mode="In" Type="String" />
+            <Parameter Name="c_id_usuarioCreacion" Mode="In" Type="Int32" />
+            <Parameter Name="c_id_ope" Mode="In" Type="Int32" />
+          </FunctionImport>
         </EntityContainer>
         <ComplexType Name="sp_helpdiagramdefinition_Result">
           <Property Type="Int32" Name="version" Nullable="true" />
@@ -2604,6 +2650,39 @@
           <Property Type="DateTime" Name="t_fecha" Nullable="false" />
           <Property Type="String" Name="t_descripcion" Nullable="true" MaxLength="100" />
           <Property Type="Int32" Name="t_tipo" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="sp_LoginPermisosXRol_Result">
+          <Property Type="Int32" Name="pxr_id" Nullable="false" />
+          <Property Type="String" Name="pxrl_id_pant" Nullable="true" MaxLength="10" />
+          <Property Type="Int32" Name="pxr_id_rol" Nullable="true" />
+          <Property Type="Int32" Name="pxr_id_user" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_trans_select_where_fechatipo_Result">
+          <Property Type="Int32" Name="t_id" Nullable="false" />
+          <Property Type="Int32" Name="t_id_i" Nullable="false" />
+          <Property Type="DateTime" Name="t_fecha" Nullable="false" />
+          <Property Type="String" Name="t_descripcion" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="t_tipo" Nullable="false" />
+          <Property Type="Int32" Name="t_id_usuarioCreacion" Nullable="true" />
+          <Property Type="Int32" Name="t_id_ope" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_compras_select_all_Result">
+          <Property Type="Int32" Name="c_id" Nullable="false" />
+          <Property Type="Int32" Name="c_id_i" Nullable="false" />
+          <Property Type="DateTime" Name="c_fecha" Nullable="false" />
+          <Property Type="String" Name="c_codigoFactura" Nullable="false" MaxLength="10" />
+          <Property Type="String" Name="c_descripcion" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="c_id_usuarioCreacion" Nullable="true" />
+          <Property Type="Int32" Name="c_id_ope" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_compra_select_where_CompraporID_Result">
+          <Property Type="Int32" Name="c_id" Nullable="false" />
+          <Property Type="Int32" Name="c_id_i" Nullable="false" />
+          <Property Type="DateTime" Name="c_fecha" Nullable="false" />
+          <Property Type="String" Name="c_codigoFactura" Nullable="false" MaxLength="10" />
+          <Property Type="String" Name="c_descripcion" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="c_id_usuarioCreacion" Nullable="true" />
+          <Property Type="Int32" Name="c_id_ope" Nullable="true" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -3076,6 +3155,56 @@
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="sp_trans_update_TransferenciaEntrada" FunctionName="SCIR_SistemaInventarioModel.Store.sp_trans_update_TransferenciaEntrada" />
           <FunctionImportMapping FunctionImportName="sp_trans_update_TransferenciaSalida" FunctionName="SCIR_SistemaInventarioModel.Store.sp_trans_update_TransferenciaSalida" />
+          <FunctionImportMapping FunctionImportName="sp_LoginPermisosXRol" FunctionName="SCIR_SistemaInventarioModel.Store.sp_LoginPermisosXRol">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SCIR_SistemaInventarioModel.sp_LoginPermisosXRol_Result">
+                <ScalarProperty Name="pxr_id" ColumnName="pxr_id" />
+                <ScalarProperty Name="pxrl_id_pant" ColumnName="pxrl_id_pant" />
+                <ScalarProperty Name="pxr_id_rol" ColumnName="pxr_id_rol" />
+                <ScalarProperty Name="pxr_id_user" ColumnName="pxr_id_user" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_trans_select_where_fechatipo" FunctionName="SCIR_SistemaInventarioModel.Store.sp_trans_select_where_fechatipo">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SCIR_SistemaInventarioModel.sp_trans_select_where_fechatipo_Result">
+                <ScalarProperty Name="t_id" ColumnName="t_id" />
+                <ScalarProperty Name="t_id_i" ColumnName="t_id_i" />
+                <ScalarProperty Name="t_fecha" ColumnName="t_fecha" />
+                <ScalarProperty Name="t_descripcion" ColumnName="t_descripcion" />
+                <ScalarProperty Name="t_tipo" ColumnName="t_tipo" />
+                <ScalarProperty Name="t_id_usuarioCreacion" ColumnName="t_id_usuarioCreacion" />
+                <ScalarProperty Name="t_id_ope" ColumnName="t_id_ope" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_compras_select_all" FunctionName="SCIR_SistemaInventarioModel.Store.sp_compras_select_all">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SCIR_SistemaInventarioModel.sp_compras_select_all_Result">
+                <ScalarProperty Name="c_id" ColumnName="c_id" />
+                <ScalarProperty Name="c_id_i" ColumnName="c_id_i" />
+                <ScalarProperty Name="c_fecha" ColumnName="c_fecha" />
+                <ScalarProperty Name="c_codigoFactura" ColumnName="c_codigoFactura" />
+                <ScalarProperty Name="c_descripcion" ColumnName="c_descripcion" />
+                <ScalarProperty Name="c_id_usuarioCreacion" ColumnName="c_id_usuarioCreacion" />
+                <ScalarProperty Name="c_id_ope" ColumnName="c_id_ope" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_compra_select_where_CompraporID" FunctionName="SCIR_SistemaInventarioModel.Store.sp_compra_select_where_CompraporID">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SCIR_SistemaInventarioModel.sp_compra_select_where_CompraporID_Result">
+                <ScalarProperty Name="c_id" ColumnName="c_id" />
+                <ScalarProperty Name="c_id_i" ColumnName="c_id_i" />
+                <ScalarProperty Name="c_fecha" ColumnName="c_fecha" />
+                <ScalarProperty Name="c_codigoFactura" ColumnName="c_codigoFactura" />
+                <ScalarProperty Name="c_descripcion" ColumnName="c_descripcion" />
+                <ScalarProperty Name="c_id_usuarioCreacion" ColumnName="c_id_usuarioCreacion" />
+                <ScalarProperty Name="c_id_ope" ColumnName="c_id_ope" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_c_compra_Update_" FunctionName="SCIR_SistemaInventarioModel.Store.sp_c_compra_Update_" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
