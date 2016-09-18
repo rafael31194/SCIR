@@ -53,6 +53,15 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="win_di_EditarDesechoIncompleto.xaml.cs">
+      <DependentUpon>win_di_EditarDesechoIncompleto.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="win_di_GestionarDesechoIncompleto.xaml.cs">
+      <DependentUpon>win_di_GestionarDesechoIncompleto.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="win_di_NuevoDesechoIncompleto.xaml.cs">
+      <DependentUpon>win_di_NuevoDesechoIncompleto.xaml</DependentUpon>
+    </Compile>
     <Compile Include="win_MenuPrincipal.xaml.cs">
       <DependentUpon>win_MenuPrincipal.xaml</DependentUpon>
     </Compile>
@@ -68,6 +77,18 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="win_di_EditarDesechoIncompleto.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="win_di_GestionarDesechoIncompleto.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="win_di_NuevoDesechoIncompleto.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="win_MenuPrincipal.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
