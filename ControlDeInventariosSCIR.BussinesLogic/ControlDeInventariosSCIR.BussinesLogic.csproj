@@ -41,6 +41,7 @@
   <ItemGroup>
     <Compile Include="Class1.cs" />
     <Compile Include="ComprasBLL.cs" />
+    <Compile Include="InventarioBLL.cs" />
     <Compile Include="LoginBLL.cs" />
     <Compile Include="mp_materiaPrimaBLL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

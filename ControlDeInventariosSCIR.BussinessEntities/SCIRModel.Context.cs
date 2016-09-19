@@ -494,5 +494,15 @@ namespace ControlDeInventariosSCIR.BussinessEntities
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_c_compra_Update_", c_idParameter, c_id_iParameter, c_codigoFacturaParameter, c_descripcionParameter, c_id_usuarioCreacionParameter, c_id_opeParameter);
         }
+    
+        public virtual ObjectResult<string> sp_mp_select_nombre()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("sp_mp_select_nombre");
+        }
+    
+        public virtual ObjectResult<sp_i_inventario_select_all_Result> sp_i_inventario_select_all()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_i_inventario_select_all_Result>("sp_i_inventario_select_all");
+        }
     }
 }

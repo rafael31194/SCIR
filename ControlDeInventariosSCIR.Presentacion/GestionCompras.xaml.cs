@@ -81,6 +81,13 @@ namespace ControlDeInventariosSCIR.Presentacion
             gcompra.ItemsSource = (IEnumerable<c_compra>)retorno;
         }
 
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            win_compraDetalle_insertar detalle = new win_compraDetalle_insertar();
+            detalle.Show();
+
+        }
+
        
 
 

@@ -153,6 +153,9 @@
     <Compile Include="sp_helpdiagrams_Result.cs">
       <DependentUpon>SCIRModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="sp_i_inventario_select_all_Result.cs">
+      <DependentUpon>SCIRModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="sp_LoginPermisosXRol_Result.cs">
       <DependentUpon>SCIRModel.tt</DependentUpon>
     </Compile>

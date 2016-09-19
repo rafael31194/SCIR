@@ -20,7 +20,7 @@
             </Grid>
         </DockPanel>
         <Button Content="Cancelar" Margin="11,0,0,0" Grid.Row="2" VerticalAlignment="Top" Grid.Column="3" HorizontalAlignment="Left" Width="75" Background="#FFBDBBBB" Height="25"/>
-        <Button x:Name="bteditar" Content="Editar" Grid.Row="2" Margin="0,0,0,4" HorizontalAlignment="Left" Width="100" Background="#FFBDBBBB" Click="bteditar_Click" />
+        <Button x:Name="bteditar" Content="Editar" Grid.Row="2" Margin="0,0,0,4" HorizontalAlignment="Left" Width="100" Background="#FFBDBBBB"  />
 
         <Label Content="Fecha Compra"  HorizontalAlignment="Left" Margin="10,25,0,0" Grid.Row="1" VerticalAlignment="Top" Width="122"/>
         <Label Content="Id Inventario" HorizontalAlignment="Left" Height="24" Margin="10,226,0,0" Grid.Row="1" VerticalAlignment="Top" Width="122"/>

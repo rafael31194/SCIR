@@ -44,7 +44,9 @@
   <ItemGroup>
     <Compile Include="Class1.cs" />
     <Compile Include="ComprasDAL.cs" />
+    <Compile Include="InventarioDAL.cs" />
     <Compile Include="LoginDAL.cs" />
+    <Compile Include="MateriaPrimaDAL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

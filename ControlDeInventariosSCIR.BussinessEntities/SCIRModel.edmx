@@ -947,6 +947,7 @@
           <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
           <Parameter Name="owner_id" Type="int" Mode="In" />
         </Function>
+        <Function Name="sp_i_inventario_select_all" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="sp_Login" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="username" Type="varchar" Mode="In" />
           <Parameter Name="password" Type="varchar" Mode="In" />
@@ -962,6 +963,7 @@
           <Parameter Name="mp_estado" Type="bit" Mode="In" />
         </Function>
         <Function Name="sp_mp_select_all" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="sp_mp_select_nombre" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="sp_mp_select_where_MateriaPrimaPorID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="mp_id" Type="int" Mode="In" />
         </Function>
@@ -2591,6 +2593,8 @@
             <Parameter Name="c_id_usuarioCreacion" Mode="In" Type="Int32" />
             <Parameter Name="c_id_ope" Mode="In" Type="Int32" />
           </FunctionImport>
+          <FunctionImport Name="sp_mp_select_nombre" ReturnType="Collection(String)" />
+          <FunctionImport Name="sp_i_inventario_select_all" ReturnType="Collection(SCIR_SistemaInventarioModel.sp_i_inventario_select_all_Result)" />
         </EntityContainer>
         <ComplexType Name="sp_helpdiagramdefinition_Result">
           <Property Type="Int32" Name="version" Nullable="true" />
@@ -2683,6 +2687,13 @@
           <Property Type="String" Name="c_descripcion" Nullable="true" MaxLength="100" />
           <Property Type="Int32" Name="c_id_usuarioCreacion" Nullable="true" />
           <Property Type="Int32" Name="c_id_ope" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_i_inventario_select_all_Result">
+          <Property Type="Int32" Name="inv_id" Nullable="false" />
+          <Property Type="DateTime" Name="inv_fechaInicio" Nullable="false" />
+          <Property Type="String" Name="inv_Encabezado" Nullable="true" MaxLength="100" />
+          <Property Type="DateTime" Name="inv_fechaFin" Nullable="true" />
+          <Property Type="Boolean" Name="inv_activo" Nullable="true" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -3205,6 +3216,18 @@
             </ResultMapping>
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="sp_c_compra_Update_" FunctionName="SCIR_SistemaInventarioModel.Store.sp_c_compra_Update_" />
+          <FunctionImportMapping FunctionImportName="sp_mp_select_nombre" FunctionName="SCIR_SistemaInventarioModel.Store.sp_mp_select_nombre" />
+          <FunctionImportMapping FunctionImportName="sp_i_inventario_select_all" FunctionName="SCIR_SistemaInventarioModel.Store.sp_i_inventario_select_all">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SCIR_SistemaInventarioModel.sp_i_inventario_select_all_Result">
+                <ScalarProperty Name="inv_id" ColumnName="inv_id" />
+                <ScalarProperty Name="inv_fechaInicio" ColumnName="inv_fechaInicio" />
+                <ScalarProperty Name="inv_Encabezado" ColumnName="inv_Encabezado" />
+                <ScalarProperty Name="inv_fechaFin" ColumnName="inv_fechaFin" />
+                <ScalarProperty Name="inv_activo" ColumnName="inv_activo" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

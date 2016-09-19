@@ -25,5 +25,6 @@ namespace ControlDeInventariosSCIR.BussinesLogic
             return ComprasDAL.Actualizar(compra);
         }
 
+        
     }
 }
