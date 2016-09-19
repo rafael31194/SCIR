@@ -45,6 +45,7 @@
     <Compile Include="Class1.cs" />
     <Compile Include="LoginDAL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="usr_UsuariosDAL.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ControlDeInventariosSCIR.BussinessEntities\ControlDeInventariosSCIR.BussinessEntities.csproj">

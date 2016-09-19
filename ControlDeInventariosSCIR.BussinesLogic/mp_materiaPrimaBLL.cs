@@ -10,7 +10,7 @@ namespace ControlDeInventariosSCIR.BussinesLogic
 {
     public class mp_materiaPrimaBLL
     {
-        MateriaPrimaDAL _mpDAL = new MateriaPrimaDAL();
+        //MateriaPrimaDAL _mpDAL = new MateriaPrimaDAL();
 
         //public DataSet SelectmpALL(int mp_id )
         //{
