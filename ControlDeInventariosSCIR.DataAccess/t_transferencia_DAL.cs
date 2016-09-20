@@ -10,11 +10,27 @@ namespace ControlDeInventariosSCIR.DataAccess
 {
     public class t_transferencia_DAL
     {
-        public static void insertar(t_transferencia tU)
+        public static int insertar(t_transferencia tU)
         {
             SCIR_SistemaInventarioEntities DB = new SCIR_SistemaInventarioEntities();
+
+            var ultimo = DB.t_transferencia.OrderByDescending(u => u.t_id).FirstOrDefault();
+            tU.t_id = ultimo.t_id + 1;
+            
+            try
+            {
+                DB.sp_trans_insert_NuevaTransferencia(tU.t_id,1, tU.t_fecha, tU.t_descripcion, 1, 1, 1);  
+                 var idUltimo = DB.t_transferencia.OrderByDescending(u => u.t_id).FirstOrDefault();
+                 return idUltimo.t_id;
+            }
+            catch (Exception ex)
+            {
+                Console.Write(ex.Message);
+                return -1; //por si da error
+                
+            }
             //DB.sp_trans_insert_NuevaTransferencia(tU.t_id_i,tU.t_fecha,tU.t_descripcion,tU.t_tipo,tU.t_id_usuarioCreacion,tU.t_id_ope);
-            DB.sp_trans_insert_NuevaTransferencia(9,1, tU.t_fecha, tU.t_descripcion, 1, 1, 1);  
+          
         }
         public static List<t_transferencia> GetDatos(t_transferencia trans)
         {

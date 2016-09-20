@@ -13,6 +13,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Data;
 
 namespace ControlDeInventariosSCIR.Presentacion
 {
@@ -26,9 +27,8 @@ namespace ControlDeInventariosSCIR.Presentacion
         public struct MyData
         {
             public int id { set; get; }
-            public string cod_mp { set; get; }
             public int cantidad_mp { set; get; }
-            public DateTime nombre_mp { set; get; }
+            public String nombre_mp { set; get; }
             public DateTime nextrun { set; get; }
         }
 
@@ -38,19 +38,18 @@ namespace ControlDeInventariosSCIR.Presentacion
             List<mp_materiaPrima> mpList = new List<mp_materiaPrima>();
             DataGridTextColumn col1 = new DataGridTextColumn();
             DataGridTextColumn col2 = new DataGridTextColumn();
-            DataGridTextColumn col3 = new DataGridTextColumn();
+          
 
             transferencia2.Columns.Add(col1);
             transferencia2.Columns.Add(col2);
-            transferencia2.Columns.Add(col3);
+           
 
-            col1.Binding = new Binding("cod_mp");
-            col2.Binding = new Binding("cantidad_mp");
-            col3.Binding = new Binding("nombre_mp");
+            
+            col1.Binding = new Binding("cantidad_mp");
+            col2.Binding = new Binding("nombre_mp");
 
-            col1.Header = "COD";
-            col2.Header = "cantidad_mp";
-            col3.Header = "nombre_mp";
+            col1.Header = "cantidad_mp";
+            col2.Header = "nombre_mp";
         }
         //Funciones para aceptar solo numeros
         private void NumericOnly(System.Object sender, System.Windows.Input.TextCompositionEventArgs e)
@@ -81,7 +80,7 @@ namespace ControlDeInventariosSCIR.Presentacion
             t_transferencia trans = new t_transferencia();
             trans.t_fecha = (DateTime)fechadate.SelectedDate;
             trans.t_descripcion = txt_descripcion.Text;
-            trans.t_tipo = cbx_tipo.SelectedIndex;
+            trans.t_tipo = (int)cbx_tipo.SelectedValue;
 
             //MANDAR EL OBJETO A LA CAPA BLL
             
@@ -89,7 +88,39 @@ namespace ControlDeInventariosSCIR.Presentacion
                 MessageBoxResult result = MessageBox.Show("Estas seguro de Guardar el registro", "Confirmar", MessageBoxButton.YesNo, MessageBoxImage.Question);
                 if (result.ToString() == "Yes")
                 {
-                    t_transferencia_BLL.insertar_t_transferencia_BLL(trans);
+                    int id=t_transferencia_BLL.insertar_t_transferencia_BLL(trans);
+
+                    try
+                    {
+                        foreach (DataRowView dr in transferencia2.Items)
+                        {
+
+
+                            //agregar detalle de transeferencia
+
+
+
+                            //dr[0].ToString()
+                            
+                           
+
+                                //user.usr_id = Convert.ToInt32(dr[0].ToString());
+                                //user.usr_nombre = dr[1].ToString();
+                                //user.usr_id_rol = Convert.ToInt32(dr[3].ToString());
+
+                                //nuevo = new win_usr_NuevoUsuario(this, user);
+                               
+                            
+
+                        }
+                        
+                    }
+                    catch (Exception)
+                    {
+                        MessageBox.Show("Ocurrio un error al recorrer la tabla", "ERROR", MessageBoxButton.OK, MessageBoxImage.Error);
+                    }
+
+
                     MessageBox.Show("Registro Guardado");
                     this.Close();
 
@@ -100,7 +131,7 @@ namespace ControlDeInventariosSCIR.Presentacion
         private void btnAgregar_mp_insertarTransferencia_Click_1(object sender, RoutedEventArgs e)
         {
            //Insertando al datagrid
-            transferencia2.Items.Add(new MyData { id = i++, cod_mp = cbx_tipo.SelectedIndex.ToString(), cantidad_mp = Convert.ToInt32(txtCant.Text), nombre_mp = new DateTime() });
+            transferencia2.Items.Add(new MyData { id = i++, cantidad_mp = Convert.ToInt32(txtCant.Text), nombre_mp = ( cb_mp.Text) });
            
         }
 
@@ -120,6 +151,17 @@ namespace ControlDeInventariosSCIR.Presentacion
         private void btnCancelar_Transferencia_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+
+            ControlDeInventariosSCIR.Presentacion.DataSetConsultas dataSetConsultas = ((ControlDeInventariosSCIR.Presentacion.DataSetConsultas)(this.FindResource("dataSetConsultas")));
+            // Load data into the table mp_materiaPrima. You can modify this code as needed.
+            ControlDeInventariosSCIR.Presentacion.DataSetConsultasTableAdapters.mp_materiaPrimaTableAdapter dataSetConsultasmp_materiaPrimaTableAdapter = new ControlDeInventariosSCIR.Presentacion.DataSetConsultasTableAdapters.mp_materiaPrimaTableAdapter();
+            dataSetConsultasmp_materiaPrimaTableAdapter.Fill(dataSetConsultas.mp_materiaPrima);
+            System.Windows.Data.CollectionViewSource mp_materiaPrimaViewSource = ((System.Windows.Data.CollectionViewSource)(this.FindResource("mp_materiaPrimaViewSource")));
+            mp_materiaPrimaViewSource.View.MoveCurrentToFirst();
         }
 
       
