@@ -1,0 +1,26 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:local="clr-namespace:ControlDeInventariosSCIR.Presentacion" x:Class="ControlDeInventariosSCIR.Presentacion.win_usr_Usuarios"
+        Title="win_usr_Usuarios" Height="443.85" Width="644.963" Loaded="Window_Loaded">
+    <Window.Resources>
+        <local:DataSetConsultas x:Key="dataSetConsultas"/>
+        <CollectionViewSource x:Key="usr_UsuariosGestionarViewSource" Source="{Binding usr_UsuariosGestionar, Source={StaticResource dataSetConsultas}}"/>
+    </Window.Resources>
+    <Grid Margin="0,0,2,3" DataContext="{StaticResource usr_UsuariosGestionarViewSource}">
+        <Button x:Name="btnNuevoUsuario" Content="Nuevo Usuario" HorizontalAlignment="Left" Margin="55,66,0,0" VerticalAlignment="Top" Width="105" Height="37" Click="btnNuevoUsuario_Click"/>
+        <Button x:Name="btnRegresar" Content="REGRESAR" HorizontalAlignment="Left" Height="29" Margin="437,347,0,0" VerticalAlignment="Top" Width="80" Click="btnRegresar_Click"/>
+        <DataGrid x:Name="usr_UsuariosGestionarDataGrid" AutoGenerateColumns="False"  EnableRowVirtualization="False" ItemsSource="{Binding}" Margin="131,147,94,86" RowDetailsVisibilityMode="VisibleWhenSelected" MouseDoubleClick="usr_UsuariosGestionarDataGrid_MouseDoubleClick" IsReadOnly="True">
+            <DataGrid.Columns>
+                <DataGridTextColumn x:Name="iDColumn" Binding="{Binding ID}" Header="ID" Width="50"/>
+                <DataGridTextColumn x:Name="uSUARIOColumn" Binding="{Binding USUARIO}" Header="USUARIO" Width="150"/>
+                <DataGridTextColumn x:Name="rOLColumn" Binding="{Binding ROL}" Header="ROL" Width="200"/>
+                <DataGridTextColumn x:Name="rol_idColumn" Binding="{Binding rol_id}" Header="rol id" Width="0" />
+            </DataGrid.Columns>
+        </DataGrid>
+        <Label Content="GESTION DE USUARIOS" HorizontalAlignment="Left" Margin="29,19,0,0" VerticalAlignment="Top" FontSize="24"/>
+
+
+
+    </Grid>
+</Window>

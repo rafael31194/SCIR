@@ -25,11 +25,14 @@ namespace ControlDeInventariosSCIR.DataAccess
             //}
             //return rs as DataSet;
             
+            
             var FILAS=entiti.Database.SqlQuery<usr_usuarios>("sp_Login @username ,@password",new SqlParameter ("@username",user.usr_nombre),new SqlParameter("@password",user.usr_password)).ToArray<usr_usuarios>().FirstOrDefault();
             if (FILAS != null)
             {
 
                 user.per_premisosXrol = entiti.Database.SqlQuery<per_premisosXrol>("sp_LoginPermisosXRol @id_rol", new SqlParameter("@id_rol", FILAS.usr_id)).ToArray<per_premisosXrol>();
+                user.usr_id_rol = FILAS.usr_id_rol;
+                user.usr_id = FILAS.usr_id;
                 return user;
                 
             }

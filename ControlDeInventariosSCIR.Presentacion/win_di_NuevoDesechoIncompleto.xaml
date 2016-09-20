@@ -1,0 +1,31 @@
+﻿<Window x:Class="ControlDeInventariosSCIR.Presentacion.win_di_NuevoDesechoIncompleto"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="win_di_NuevoDesechoIncompleto" Height="450" Width="550">
+    <Grid>
+        <Label x:Name="lblTitulo_di_NuevoDesechoIncompleto" Content="Nuevo Desecho Incompleto" HorizontalAlignment="Center" Margin="0,10,0,0" VerticalAlignment="Top" FontSize="18"/>
+        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="139" Margin="20,60,0,0" VerticalAlignment="Top" Width="325">
+            <Canvas Margin="-1">
+                <Label x:Name="lblFecha_di_NuevoDesechoIncompleto" Content="Fecha: " HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="10" Canvas.Top="19"/>
+                <Label x:Name="lblDescripcion_di_NuevoDesechoIncompleto" Content="Descripcion: " Canvas.Left="10" Canvas.Top="54"/>
+                <DatePicker x:Name="date_di_NuevoDesechoIncompleto" Canvas.Left="61" Canvas.Top="19"/>
+                <TextBox x:Name="txtDescripcion_di_NuevoDesechoIncompleto" Height="62" Canvas.Left="88" TextWrapping="Wrap" Text="TextBox" Canvas.Top="58" Width="220"/>
+                <Button x:Name="btnCrear_di_NuevoDesechoIncompleto" Content="CREAR" Canvas.Left="221" Canvas.Top="21" Width="87"/>
+            </Canvas>
+        </Border>
+        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="139" Margin="360,60,0,0" VerticalAlignment="Top" Width="163">
+            <StackPanel Margin="-1">
+                <Label x:Name="lblMateriaPrima_di_NuevoDesechoIncompleto" Content="Materia prima:"/>
+                <ComboBox Margin="10,0"/>
+                <Label x:Name="lblCantidad_di_NuevoDesechoIncompleto" Content="Cantidad:"/>
+                <TextBox x:Name="txtCantidad_di_NuevoDesechoIncompleto" Height="23" TextWrapping="Wrap" Text="TextBox" Margin="10,0"/>
+                <Button x:Name="btnAgregar_di_NuevoDesechoIncompleto" Content="AGREGAR" Margin="25,10,25,0"/>
+            </StackPanel>
+        </Border>
+        <DataGrid x:Name="gridMateriasPrimas_di_NuevoDesechoIncompleto" HorizontalAlignment="Left" Margin="20,215,0,0" VerticalAlignment="Top" Height="155" Width="503"/>
+        <Canvas HorizontalAlignment="Center" Height="20" Margin="0,389,0,0" VerticalAlignment="Top" Width="197">
+            <Button x:Name="btnGuardar_di_NuevoDesechoIncompleto" Content="GUARDAR" HorizontalAlignment="Left" VerticalAlignment="Top" Width="74"/>
+            <Button x:Name="btnCancelar_di_NuevoDesechoIncompleto" Content="CANCELAR" HorizontalAlignment="Right" VerticalAlignment="Top" Width="74" Canvas.Left="123"/>
+        </Canvas>
+    </Grid>
+</Window>

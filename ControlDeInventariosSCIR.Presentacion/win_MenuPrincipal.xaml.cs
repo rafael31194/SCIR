@@ -21,9 +21,12 @@ namespace ControlDeInventariosSCIR.Presentacion
     {
         private BussinessEntities.usr_usuarios user;
 
+        public static win_MenuPrincipal menu;
+
         public win_MenuPrincipal()
         {
             InitializeComponent();
+            menu = this;
         }
 
         public win_MenuPrincipal(BussinessEntities.usr_usuarios user)
@@ -31,12 +34,38 @@ namespace ControlDeInventariosSCIR.Presentacion
             // TODO: Complete member initialization
             this.user = user;
             InitializeComponent();
+            //Codigo para ocultar los botones
+            switch (this.user.usr_id_rol)
+            {
+                case 1:
+                    break;
+                case 2:
+                    btnDesechos.Visibility = Visibility.Hidden;
+                    btnMateriaPrima.Visibility = Visibility.Hidden;
+                    btnUsuarios.Visibility = Visibility.Hidden;
+                    
+                    break;
+                case 3:
+                    btnCompras.Visibility = Visibility.Hidden;
+                    btnTransferencias.Visibility = Visibility.Hidden;
+                    btnUsuarios.Visibility = Visibility.Hidden;
+                    break;
+
+            }
+
         }
 
         private void btnLogout_Click(object sender, RoutedEventArgs e)
         {
             MainWindow login = new MainWindow();
             login.Show();
+            this.Close();
+        }
+
+        private void btnUsuarios_Click(object sender, RoutedEventArgs e)
+        {
+            win_usr_Usuarios users = new win_usr_Usuarios();
+            users.Show();
             this.Close();
         }
     }
