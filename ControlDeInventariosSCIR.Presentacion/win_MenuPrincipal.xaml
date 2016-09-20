@@ -13,13 +13,13 @@
                 <ImageBrush ImageSource="Imagenes/desechos.png"/>
             </Button.Background>
         </Button>
-        <Button x:Name="btnMateriaPrima" Content="Button" HorizontalAlignment="Left" Margin="333,226,0,0" VerticalAlignment="Top" Width="130" Height="108">
+        <Button x:Name="btnMateriaPrima" Content="Button" HorizontalAlignment="Left" Margin="333,226,0,0" VerticalAlignment="Top" Width="130" Height="108" Click="btnMateriaPrima_Click">
             <Button.Background>
                 <ImageBrush ImageSource="Imagenes/materiaPrima.png"/>
             </Button.Background>
         </Button>
         <Button x:Name="btnCompras" Content="
-                " HorizontalAlignment="Left" Margin="124,98,0,0" VerticalAlignment="Top" Width="113" Height="94">
+                " HorizontalAlignment="Left" Margin="124,98,0,0" VerticalAlignment="Top" Width="113" Height="94" Click="btnCompras_Click">
             <Button.Background>
                 <ImageBrush ImageSource="Imagenes/compras.png"/>
             </Button.Background>

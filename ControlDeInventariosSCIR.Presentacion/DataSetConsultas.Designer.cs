@@ -1242,8 +1242,8 @@ SELECT rol_id, rol_descripcion FROM rol_roles WHERE (rol_id = @rol_id)";
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private void InitConnection() {
-            this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::ControlDeInventariosSCIR.Presentacion.Properties.Settings.Default.SCIR_SistemaInventarioConnectionString;
+           // this._connection = new global::System.Data.SqlClient.SqlConnection();
+           // this._connection.ConnectionString = global::ControlDeInventariosSCIR.Presentacion.Properties.Settings.Default.SCIR_SistemaInventarioConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1441,8 +1441,8 @@ SELECT rol_id, rol_descripcion FROM rol_roles WHERE (rol_id = @rol_id)";
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private void InitConnection() {
-            this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::ControlDeInventariosSCIR.Presentacion.Properties.Settings.Default.SCIR_SistemaInventarioConnectionString;
+          //  this._connection = new global::System.Data.SqlClient.SqlConnection();
+          //  this._connection.ConnectionString = global::ControlDeInventariosSCIR.Presentacion.Properties.Settings.Default.SCIR_SistemaInventarioConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]

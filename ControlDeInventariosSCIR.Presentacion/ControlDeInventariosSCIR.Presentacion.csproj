@@ -34,8 +34,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="MahApps.Metro">
+      <HintPath>..\packages\MahApps.Metro.1.2.4.0\lib\net45\MahApps.Metro.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\MahApps.Metro.1.2.4.0\lib\net45\System.Windows.Interactivity.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -58,6 +64,15 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DataSetConsultas.xsd</DependentUpon>
     </Compile>
+    <Compile Include="win_comprasEditar.xaml.cs">
+      <DependentUpon>win_comprasEditar.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="win_comprasGestionar.xaml.cs">
+      <DependentUpon>win_comprasGestionar.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="win_comprasInsertar.xaml.cs">
+      <DependentUpon>win_comprasInsertar.xaml</DependentUpon>
+    </Compile>
     <Compile Include="win_di_EditarDesechoIncompleto.xaml.cs">
       <DependentUpon>win_di_EditarDesechoIncompleto.xaml</DependentUpon>
     </Compile>
@@ -66,6 +81,9 @@
     </Compile>
     <Compile Include="win_di_NuevoDesechoIncompleto.xaml.cs">
       <DependentUpon>win_di_NuevoDesechoIncompleto.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="win_materiaprima.xaml.cs">
+      <DependentUpon>win_materiaprima.xaml</DependentUpon>
     </Compile>
     <Compile Include="win_MenuPrincipal.xaml.cs">
       <DependentUpon>win_MenuPrincipal.xaml</DependentUpon>
@@ -88,6 +106,26 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Resources\Icons.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\IconsNonShared.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="win_comprasEditar.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="win_comprasGestionar.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="win_comprasInsertar.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="win_di_EditarDesechoIncompleto.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -99,6 +137,10 @@
     <Page Include="win_di_NuevoDesechoIncompleto.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="win_materiaprima.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="win_MenuPrincipal.xaml">
       <SubType>Designer</SubType>
@@ -142,11 +184,13 @@
     <None Include="DataSetConsultas.xss">
       <DependentUpon>DataSetConsultas.xsd</DependentUpon>
     </None>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <AppDesigner Include="Properties\" />
+    <Resource Include="Resources\Entypo.ttf" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -185,6 +229,12 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Imagenes\logout.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\WindowsIcons-license.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Entypo-license.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

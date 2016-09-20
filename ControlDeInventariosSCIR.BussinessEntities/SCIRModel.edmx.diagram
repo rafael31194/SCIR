@@ -4,22 +4,22 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="3f76abb63d954f66a4e885269fef979a" Name="Diagram1" ZoomLevel="95">
+      <Diagram DiagramId="642a49d6dbc24d4da75588189732cdc1" Name="Diagram1">
         <EntityTypeShape EntityType="SCIR_SistemaInventarioModel.c_compra" Width="1.5" PointX="3" PointY="22.5" IsExpanded="true" />
         <EntityTypeShape EntityType="SCIR_SistemaInventarioModel.c_dtl_compra_detalle" Width="1.5" PointX="8.25" PointY="26.875" IsExpanded="true" />
         <EntityTypeShape EntityType="SCIR_SistemaInventarioModel.carg_cargoInventario" Width="1.5" PointX="6" PointY="22.625" IsExpanded="true" />
         <EntityTypeShape EntityType="SCIR_SistemaInventarioModel.ce_comidaEmpleado" Width="1.5" PointX="3" PointY="18.5" IsExpanded="true" />
         <EntityTypeShape EntityType="SCIR_SistemaInventarioModel.ce_dtl_comidaEmpleado_detalle" Width="1.5" PointX="5.25" PointY="14.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="SCIR_SistemaInventarioModel.d_desecho" Width="1.5" PointX="3" PointY="26.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SCIR_SistemaInventarioModel.d_desecho" Width="1.5" PointX="3" PointY="26.25" IsExpanded="true" />
         <EntityTypeShape EntityType="SCIR_SistemaInventarioModel.dc_desechoCompleto" Width="1.5" PointX="8.25" PointY="29.875" IsExpanded="true" />
         <EntityTypeShape EntityType="SCIR_SistemaInventarioModel.deg_degustacion" Width="1.5" PointX="6" PointY="18.625" IsExpanded="true" />
         <EntityTypeShape EntityType="SCIR_SistemaInventarioModel.deg_dtl_degustacion_detalle" Width="1.5" PointX="11.25" PointY="18.875" IsExpanded="true" />
         <EntityTypeShape EntityType="SCIR_SistemaInventarioModel.desc_descargoInventario" Width="1.5" PointX="6" PointY="26.625" IsExpanded="true" />
         <EntityTypeShape EntityType="SCIR_SistemaInventarioModel.di_desechoIncompleto" Width="1.5" PointX="5.25" PointY="30.875" IsExpanded="true" />
         <EntityTypeShape EntityType="SCIR_SistemaInventarioModel.i_inventario" Width="1.5" PointX="0.75" PointY="21.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="SCIR_SistemaInventarioModel.ii_inventarioInterno" Width="1.5" PointX="3" PointY="40.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="SCIR_SistemaInventarioModel.ir_inventarioReal" Width="1.5" PointX="3" PointY="44" IsExpanded="true" />
-        <EntityTypeShape EntityType="SCIR_SistemaInventarioModel.mp_materiaPrima" Width="1.5" PointX="9" PointY="14.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="SCIR_SistemaInventarioModel.ii_inventarioInterno" Width="1.5" PointX="3" PointY="41" IsExpanded="true" />
+        <EntityTypeShape EntityType="SCIR_SistemaInventarioModel.ir_inventarioReal" Width="1.5" PointX="3" PointY="44.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="SCIR_SistemaInventarioModel.mp_materiaPrima" Width="1.5" PointX="9" PointY="14.5" IsExpanded="true" />
         <EntityTypeShape EntityType="SCIR_SistemaInventarioModel.ope_operacion" Width="1.5" PointX="0.75" PointY="17.25" IsExpanded="true" />
         <EntityTypeShape EntityType="SCIR_SistemaInventarioModel.p_producto" Width="1.5" PointX="3" PointY="9.25" IsExpanded="true" />
         <EntityTypeShape EntityType="SCIR_SistemaInventarioModel.pant_pantallas" Width="1.5" PointX="6" PointY="2.625" IsExpanded="true" />
@@ -28,18 +28,18 @@
         <EntityTypeShape EntityType="SCIR_SistemaInventarioModel.pmx_dtl_productMix_detalle" Width="1.5" PointX="11.25" PointY="24.875" IsExpanded="true" />
         <EntityTypeShape EntityType="SCIR_SistemaInventarioModel.pmx_productMix" Width="1.5" PointX="9" PointY="22.625" IsExpanded="true" />
         <EntityTypeShape EntityType="SCIR_SistemaInventarioModel.ps_productoSimple" Width="1.5" PointX="5.25" PointY="11.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="SCIR_SistemaInventarioModel.r_dtl_recetaDetalle" Width="1.5" PointX="11.25" PointY="12.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SCIR_SistemaInventarioModel.r_dtl_recetaDetalle" Width="1.5" PointX="11.25" PointY="12.5" IsExpanded="true" />
         <EntityTypeShape EntityType="SCIR_SistemaInventarioModel.r_receta" Width="1.5" PointX="0.75" PointY="9.625" IsExpanded="true" />
         <EntityTypeShape EntityType="SCIR_SistemaInventarioModel.rol_roles" Width="1.5" PointX="3.75" PointY="2.875" IsExpanded="true" />
         <EntityTypeShape EntityType="SCIR_SistemaInventarioModel.sysdiagrams" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="SCIR_SistemaInventarioModel.t_transferencia" Width="1.5" PointX="9" PointY="18.375" IsExpanded="true" />
         <EntityTypeShape EntityType="SCIR_SistemaInventarioModel.te_transferenciaEntrada" Width="1.5" PointX="11.25" PointY="15.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="SCIR_SistemaInventarioModel.tid_tipoDesecho" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SCIR_SistemaInventarioModel.tid_tipoDesecho" Width="1.5" PointX="0.75" PointY="27.125" IsExpanded="true" />
         <EntityTypeShape EntityType="SCIR_SistemaInventarioModel.tir_tipoReceta" Width="1.5" PointX="1.5" PointY="6.125" IsExpanded="true" />
         <EntityTypeShape EntityType="SCIR_SistemaInventarioModel.tope_tipoOperacion" Width="1.5" PointX="1.5" PointY="14.125" IsExpanded="true" />
         <EntityTypeShape EntityType="SCIR_SistemaInventarioModel.ts_transferenciaSalida" Width="1.5" PointX="11.25" PointY="21.875" IsExpanded="true" />
         <EntityTypeShape EntityType="SCIR_SistemaInventarioModel.usr_usuarios" Width="1.5" PointX="6" PointY="5.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="SCIR_SistemaInventarioModel.vin_variacionInventario" Width="1.5" PointX="3" PointY="54.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SCIR_SistemaInventarioModel.vin_variacionInventario" Width="1.5" PointX="3" PointY="55" IsExpanded="true" />
         <AssociationConnector Association="SCIR_SistemaInventarioModel.FK_c_compra_i_inventario" ManuallyRouted="false" />
         <AssociationConnector Association="SCIR_SistemaInventarioModel.FK_c_compra_ope_operacion" ManuallyRouted="false" />
         <AssociationConnector Association="SCIR_SistemaInventarioModel.FK_c_dtl_compra_detalle_c_compra" ManuallyRouted="false" />
@@ -52,6 +52,7 @@
         <AssociationConnector Association="SCIR_SistemaInventarioModel.FK_ce_dtl_comidaEmpleado_detalle_p_producto" ManuallyRouted="false" />
         <AssociationConnector Association="SCIR_SistemaInventarioModel.FK_d_desecho_i_inventario" ManuallyRouted="false" />
         <AssociationConnector Association="SCIR_SistemaInventarioModel.FK_d_desecho_ope_operacion" ManuallyRouted="false" />
+        <AssociationConnector Association="SCIR_SistemaInventarioModel.FK_d_desecho_tid_tipoDesecho" ManuallyRouted="false" />
         <AssociationConnector Association="SCIR_SistemaInventarioModel.FK_dc_desechoCompleto_d_desecho" ManuallyRouted="false" />
         <AssociationConnector Association="SCIR_SistemaInventarioModel.FK_di_desechoIncompleto_d_desecho" ManuallyRouted="false" />
         <AssociationConnector Association="SCIR_SistemaInventarioModel.FK_dc_desechoCompleto_p_producto" ManuallyRouted="false" />
@@ -86,7 +87,6 @@
         <AssociationConnector Association="SCIR_SistemaInventarioModel.FK_usr_usuarios_rol_roles" ManuallyRouted="false" />
         <AssociationConnector Association="SCIR_SistemaInventarioModel.FK_te_transferenciaEntrada_t_transferencia" ManuallyRouted="false" />
         <AssociationConnector Association="SCIR_SistemaInventarioModel.FK_ts_transferenciaSalida_t_transferencia" ManuallyRouted="false" />
-        <AssociationConnector Association="SCIR_SistemaInventarioModel.FK_d_desecho_tid_tipoDesecho" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

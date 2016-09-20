@@ -71,9 +71,9 @@ namespace ControlDeInventariosSCIR.Presentacion
 
         private void btnTransferencias_Click(object sender, RoutedEventArgs e)
         {
-            win_t_GestionarTranferencias trans = new win_t_GestionarTranferencias();
+           /* win_t_GestionarTranferencias trans = new win_t_GestionarTranferencias();
             trans.Show();
-            this.Close();
+            this.Close();*/
 
         }
 
@@ -82,6 +82,18 @@ namespace ControlDeInventariosSCIR.Presentacion
             win_di_GestionarDesechoIncompleto dese = new win_di_GestionarDesechoIncompleto();
             dese.Show();
             this.Close();
+        }
+
+        private void btnCompras_Click(object sender, RoutedEventArgs e)
+        {
+            win_comprasGestionar comprasGestion = new win_comprasGestionar();
+            comprasGestion.Show();
+        }
+
+        private void btnMateriaPrima_Click(object sender, RoutedEventArgs e)
+        {
+            win_materiaprima mp = new win_materiaprima();
+            mp.Show();
         }
     }
 }
