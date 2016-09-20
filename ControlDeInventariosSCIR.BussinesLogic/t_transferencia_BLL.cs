@@ -10,10 +10,10 @@ namespace ControlDeInventariosSCIR.BussinesLogic
 {
     public class t_transferencia_BLL
     {
-        public static void insertar_t_transferencia_BLL(t_transferencia t_BLL)
+        public static int  insertar_t_transferencia_BLL(t_transferencia t_BLL)
         {
             //Mandarlo a la capa DAL
-            t_transferencia_DAL.insertar(t_BLL);
+           return  t_transferencia_DAL.insertar(t_BLL);
         }
         public List<t_transferencia> Gestion(t_transferencia trans)
         {
