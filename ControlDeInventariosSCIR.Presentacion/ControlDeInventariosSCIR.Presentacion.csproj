@@ -72,12 +72,15 @@
     </Compile>
     <Compile Include="win_t_EditarTransferencias.xaml.cs">
       <DependentUpon>win_t_EditarTransferencias.xaml</DependentUpon>
+      <SubType>Code</SubType>
     </Compile>
     <Compile Include="win_t_GestionarTranferencias.xaml.cs">
       <DependentUpon>win_t_GestionarTranferencias.xaml</DependentUpon>
+      <SubType>Code</SubType>
     </Compile>
     <Compile Include="win_t_InsertarTransferencias.xaml.cs">
       <DependentUpon>win_t_InsertarTransferencias.xaml</DependentUpon>
+      <SubType>Code</SubType>
     </Compile>
     <Compile Include="win_usr_NuevoUsuario.xaml.cs">
       <DependentUpon>win_usr_NuevoUsuario.xaml</DependentUpon>
@@ -118,12 +121,12 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="win_t_GestionarTranferencias.xaml">
-      <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="win_t_InsertarTransferencias.xaml">
-      <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="win_usr_NuevoUsuario.xaml">
       <SubType>Designer</SubType>
