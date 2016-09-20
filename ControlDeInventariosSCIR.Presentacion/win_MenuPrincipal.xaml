@@ -3,12 +3,12 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="win_MenuPrincipal" Height="600" Width="1000">
     <Grid>
-        <Button x:Name="btnTransferencias" Content="" HorizontalAlignment="Left" Margin="327,98,0,0" VerticalAlignment="Top" Width="136" Height="94" BorderBrush="Black" Foreground="#FFF59393">
+        <Button x:Name="btnTransferencias" Content="" HorizontalAlignment="Left" Margin="327,98,0,0" VerticalAlignment="Top" Width="136" Height="94" BorderBrush="Black" Foreground="#FFF59393" Click="btnTransferencias_Click">
             <Button.Background>
                 <ImageBrush ImageSource="Imagenes/transferencias.png"/>
             </Button.Background>
         </Button>
-        <Button x:Name="btnDesechos" Content="" HorizontalAlignment="Left" Margin="124,240,0,0" VerticalAlignment="Top" Width="102" Height="94">
+        <Button x:Name="btnDesechos" Content="" HorizontalAlignment="Left" Margin="124,240,0,0" VerticalAlignment="Top" Width="102" Height="94" Click="btnDesechos_Click">
             <Button.Background>
                 <ImageBrush ImageSource="Imagenes/desechos.png"/>
             </Button.Background>

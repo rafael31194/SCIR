@@ -68,5 +68,20 @@ namespace ControlDeInventariosSCIR.Presentacion
             users.Show();
             this.Close();
         }
+
+        private void btnTransferencias_Click(object sender, RoutedEventArgs e)
+        {
+            win_t_GestionarTranferencias trans = new win_t_GestionarTranferencias();
+            trans.Show();
+            this.Close();
+
+        }
+
+        private void btnDesechos_Click(object sender, RoutedEventArgs e)
+        {
+            win_di_GestionarDesechoIncompleto dese = new win_di_GestionarDesechoIncompleto();
+            dese.Show();
+            this.Close();
+        }
     }
 }
