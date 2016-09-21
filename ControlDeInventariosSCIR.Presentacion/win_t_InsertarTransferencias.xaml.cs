@@ -24,33 +24,24 @@ namespace ControlDeInventariosSCIR.Presentacion
     public partial class win_t_InsertarTransferencias : Window
     {
         int i = 0;
-        public struct MyData
-        {
-            public int id { set; get; }
-            public int cantidad_mp { set; get; }
-            public String nombre_mp { set; get; }
-            public DateTime nextrun { set; get; }
-        }
+    DataTable transferenciaDT= new DataTable();
+
+        
+    
 
         public win_t_InsertarTransferencias()
         {
             InitializeComponent();
-            List<mp_materiaPrima> mpList = new List<mp_materiaPrima>();
-            DataGridTextColumn col1 = new DataGridTextColumn();
-            DataGridTextColumn col2 = new DataGridTextColumn();
-          
+      
+       
 
-            transferencia2.Columns.Add(col1);
-            transferencia2.Columns.Add(col2);
-           
-
+            transferenciaDT.Columns.Add("Id_mp", typeof(Int32));
+            transferenciaDT.Columns.Add("cantidad_mp", typeof(float));
+            transferenciaDT.Columns.Add("nombre_mp", typeof(string));
             
-            col1.Binding = new Binding("cantidad_mp");
-            col2.Binding = new Binding("nombre_mp");
-
-            col1.Header = "cantidad_mp";
-            col2.Header = "nombre_mp";
+       
         }
+
         //Funciones para aceptar solo numeros
         private void NumericOnly(System.Object sender, System.Windows.Input.TextCompositionEventArgs e)
         {
@@ -75,12 +66,12 @@ namespace ControlDeInventariosSCIR.Presentacion
              * 3. esos objetos son MP, entonces llenar la lista
              * 4. Insertar cada objeto de la lista a la base
              * **/
-            
+             
             //CREAR OBJETO DE TIPO ENTITIES LLENITO!!
             t_transferencia trans = new t_transferencia();
             trans.t_fecha = (DateTime)fechadate.SelectedDate;
             trans.t_descripcion = txt_descripcion.Text;
-            trans.t_tipo = (int)cbx_tipo.SelectedValue;
+            trans.t_tipo = (int)cbx_tipo.SelectedIndex;
 
             //MANDAR EL OBJETO A LA CAPA BLL
             
@@ -92,35 +83,29 @@ namespace ControlDeInventariosSCIR.Presentacion
 
                     try
                     {
-                        foreach (DataRowView dr in transferencia2.Items)
+                        if (cbx_tipo.SelectedIndex == 0)
                         {
+                                foreach (DataRowView dr in transferencia2.Items)
+                                {
 
 
-                            //agregar detalle de transeferencia
-
-
-
-                            //dr[0].ToString()
-                            
+                                    //agregar detalle de transeferencia
+                                    //transferencia entrada
                            
-
-                                //user.usr_id = Convert.ToInt32(dr[0].ToString());
-                                //user.usr_nombre = dr[1].ToString();
-                                //user.usr_id_rol = Convert.ToInt32(dr[3].ToString());
-
-                                //nuevo = new win_usr_NuevoUsuario(this, user);
-                               
-                            
-
-                        }
+                                          te_transferenciaEntrada te = new te_transferenciaEntrada();
+                                          te.te_id_t = id;
+                                          te.te_id_mp = (int)dr[0];
+                                          te.te_cantidad = (float)dr[1];
+                                          te_transferencia_BLL.insertar_te_transferencia_BLL(te);
+                                     }
+                             }
                         
                     }
-                    catch (Exception)
+                    catch (Exception ex)
                     {
+                        Console.Write(ex.Message);
                         MessageBox.Show("Ocurrio un error al recorrer la tabla", "ERROR", MessageBoxButton.OK, MessageBoxImage.Error);
-                    }
-
-
+                   }
                     MessageBox.Show("Registro Guardado");
                     this.Close();
 
@@ -131,8 +116,11 @@ namespace ControlDeInventariosSCIR.Presentacion
         private void btnAgregar_mp_insertarTransferencia_Click_1(object sender, RoutedEventArgs e)
         {
            //Insertando al datagrid
-            transferencia2.Items.Add(new MyData { id = i++, cantidad_mp = Convert.ToInt32(txtCant.Text), nombre_mp = ( cb_mp.Text) });
+           // transferencia2.Items.Add(new MyData { Id_mp = i++, cantidad_mp = Convert.ToInt32(txtCant.Text), nombre_mp = ( cb_mp.Text) });
            
+            transferenciaDT.Rows.Add(cb_mp.SelectedValue,txtCant.Text,cb_mp.Text);
+            transferencia2.ItemsSource = transferenciaDT.DefaultView;
+
         }
 
         private void btn_eliminar_trans_Click(object sender, RoutedEventArgs e)
@@ -141,7 +129,7 @@ namespace ControlDeInventariosSCIR.Presentacion
             MessageBoxResult result = MessageBox.Show("Estas seguro de eliminar el registro", "Confirmar", MessageBoxButton.YesNo, MessageBoxImage.Question);
             if (result.ToString() == "Yes")
             {
-                transferencia2.Items.RemoveAt(transferencia2.SelectedIndex);
+                transferenciaDT.Rows.RemoveAt(transferencia2.SelectedIndex);
                 // materiaprima.Items.Refresh();
                 
 
