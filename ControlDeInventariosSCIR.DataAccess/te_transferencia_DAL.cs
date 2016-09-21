@@ -18,7 +18,7 @@ namespace ControlDeInventariosSCIR.DataAccess
 
             try
             {
-                DB.sp_trans_insert_TransferenciaEntradas(, tU.te_id_mp, tU.te_cantidad);
+                DB.sp_trans_insert_TransferenciaEntradas(tU.te_id_t, tU.te_id_mp, tU.te_cantidad);
                 var idUltimo = DB.te_transferenciaEntrada.OrderByDescending(u => u.te_id).FirstOrDefault();
                 
             }
