@@ -8,22 +8,29 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ControlDeInventariosSCIR.Presentacion.Properties
-{
-
-
+namespace ControlDeInventariosSCIR.Presentacion.Properties {
+    
+    
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "11.0.0.0")]
-    internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase
-    {
-
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "12.0.0.0")]
+    internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
+        
         private static Settings defaultInstance = ((Settings)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new Settings())));
-
-        public static Settings Default
-        {
-            get
-            {
+        
+        public static Settings Default {
+            get {
                 return defaultInstance;
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=EDUARDO-LAPTOP\\SQLEXPRESS;Initial Catalog=SCIR_SistemaInventario;Inte" +
+            "grated Security=True;MultipleActiveResultSets=True;Application Name=EntityFramew" +
+            "ork")]
+        public string SCIR_SistemaInventarioConnectionString {
+            get {
+                return ((string)(this["SCIR_SistemaInventarioConnectionString"]));
             }
         }
     }
