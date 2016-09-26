@@ -71,12 +71,12 @@ namespace ControlDeInventariosSCIR.Presentacion
             t_transferencia trans = new t_transferencia();
             trans.t_fecha = (DateTime)fechadate.SelectedDate;
             trans.t_descripcion = txt_descripcion.Text;
-            trans.t_tipo = (int)cbx_tipo.SelectedIndex;
+            trans.t_tipo = (int)cbx_tipo.SelectedIndex+1;
 
             //MANDAR EL OBJETO A LA CAPA BLL
             
             if (!(trans.Equals(null)) && !(trans.t_fecha.Equals(null))) {
-                MessageBoxResult result = MessageBox.Show("Estas seguro de Guardar el registro", "Confirmar", MessageBoxButton.YesNo, MessageBoxImage.Question);
+                MessageBoxResult result = MessageBox.Show("Estas seguro de Guardar la transferencia", "Confirmar", MessageBoxButton.YesNo, MessageBoxImage.Question);
                 if (result.ToString() == "Yes")
                 {
                     int id=t_transferencia_BLL.insertar_t_transferencia_BLL(trans);
@@ -98,7 +98,21 @@ namespace ControlDeInventariosSCIR.Presentacion
                                           te.te_cantidad = (float)dr[1];
                                           te_transferencia_BLL.insertar_te_transferencia_BLL(te);
                                      }
-                             }
+                             }else{
+                                 if (cbx_tipo.SelectedIndex == 1)
+                                 {
+                                     foreach(DataRowView dr in transferencia2.Items)
+                                     {
+                                     ts_transferenciaSalida ts = new ts_transferenciaSalida();
+                                     ts.ts_id_t = id;
+                                     ts.ts_id_mp = (int)dr[0];
+                                     ts.ts_cantidad = (float)dr[1];
+                                     ts_transferencia_BLL.insertar_ts_transferencia_BLL(ts);
+
+
+                                     }
+                                 }
+                        }
                         
                     }
                     catch (Exception ex)
@@ -107,6 +121,8 @@ namespace ControlDeInventariosSCIR.Presentacion
                         MessageBox.Show("Ocurrio un error al recorrer la tabla", "ERROR", MessageBoxButton.OK, MessageBoxImage.Error);
                    }
                     MessageBox.Show("Registro Guardado");
+                    win_t_GestionarTranferencias wg = new win_t_GestionarTranferencias();
+                    wg.Show();
                     this.Close();
 
                 }
@@ -138,7 +154,10 @@ namespace ControlDeInventariosSCIR.Presentacion
 
         private void btnCancelar_Transferencia_Click(object sender, RoutedEventArgs e)
         {
+            win_t_GestionarTranferencias win = new win_t_GestionarTranferencias();
+            win.Show();
             this.Close();
+
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)

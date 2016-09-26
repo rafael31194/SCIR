@@ -43,6 +43,10 @@
     <Compile Include="LoginBLL.cs" />
     <Compile Include="mp_materiaPrimaBLL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="te_transferencia_BLL.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ts_transferencia_BLL.cs" />
     <Compile Include="t_transferencia_BLL.cs" />
     <Compile Include="usr_UsuariosBLL.cs" />
   </ItemGroup>
