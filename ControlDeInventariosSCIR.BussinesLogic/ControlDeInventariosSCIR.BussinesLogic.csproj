@@ -40,6 +40,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Class1.cs" />
+    <Compile Include="di_desechoIncompletoBLL.cs" />
+    <Compile Include="d_desechoBLL.cs" />
     <Compile Include="LoginBLL.cs" />
     <Compile Include="mp_materiaPrimaBLL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

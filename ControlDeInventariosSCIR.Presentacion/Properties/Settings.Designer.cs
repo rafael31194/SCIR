@@ -26,7 +26,7 @@ namespace ControlDeInventariosSCIR.Presentacion.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("Data Source=SPARK-01\\SQLEXPRESS;Initial Catalog=SCIR_SistemaInventario;Integrated" +
-            "Security=True;MultipleActiveResultSets=True;Application Name=EntityFramework")]
+            " Security=True;MultipleActiveResultSets=True;Application Name=EntityFramework")]
         public string SCIR_SistemaInventarioConnectionString {
             get {
                 return ((string)(this["SCIR_SistemaInventarioConnectionString"]));
