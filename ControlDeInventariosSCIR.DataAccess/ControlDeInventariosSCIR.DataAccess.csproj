@@ -35,6 +35,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -43,6 +44,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Class1.cs" />
+    <Compile Include="di_desechoIncompletoDAL.cs" />
+    <Compile Include="d_desechoDAL.cs" />
     <Compile Include="LoginDAL.cs" />
     <Compile Include="MateriaPrimaDAL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

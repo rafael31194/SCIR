@@ -3,17 +3,23 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="win_MenuPrincipal" Height="600" Width="1000">
     <Grid>
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                <GradientStop Color="#FF0239F5" Offset="1"/>
+                <GradientStop Color="#FFF3F3F3" Offset="0.121"/>
+            </LinearGradientBrush>
+        </Grid.Background>
         <Button x:Name="btnTransferencias" Content="" HorizontalAlignment="Left" Margin="327,98,0,0" VerticalAlignment="Top" Width="136" Height="94" BorderBrush="Black" Foreground="#FFF59393" Click="btnTransferencias_Click">
             <Button.Background>
                 <ImageBrush ImageSource="Imagenes/transferencias.png"/>
             </Button.Background>
         </Button>
-        <Button x:Name="btnDesechos" Content="" HorizontalAlignment="Left" Margin="124,240,0,0" VerticalAlignment="Top" Width="102" Height="94" Click="btnDesechos_Click">
+        <Button x:Name="btnDesechos" Content="" HorizontalAlignment="Left" Margin="124,280,0,0" VerticalAlignment="Top" Width="102" Height="94" Click="btnDesechos_Click">
             <Button.Background>
                 <ImageBrush ImageSource="Imagenes/desechos.png"/>
             </Button.Background>
         </Button>
-        <Button x:Name="btnMateriaPrima" Content="Button" HorizontalAlignment="Left" Margin="333,226,0,0" VerticalAlignment="Top" Width="130" Height="108">
+        <Button x:Name="btnMateriaPrima" Content="" HorizontalAlignment="Left" Margin="327,280,0,0" VerticalAlignment="Top" Width="130" Height="108">
             <Button.Background>
                 <ImageBrush ImageSource="Imagenes/materiaPrima.png"/>
             </Button.Background>
@@ -24,7 +30,7 @@
                 <ImageBrush ImageSource="Imagenes/compras.png"/>
             </Button.Background>
         </Button>
-        <Button x:Name="btnUsuarios"  HorizontalAlignment="Left" Margin="578,86,0,0" VerticalAlignment="Top" Width="114" Height="106" Click="btnUsuarios_Click">
+        <Button x:Name="btnUsuarios"  HorizontalAlignment="Left" Margin="573,98,0,0" VerticalAlignment="Top" Width="114" Height="99" Click="btnUsuarios_Click">
             <Button.Background>
                 <ImageBrush ImageSource="Imagenes/usuarios.png"/>
             </Button.Background>
@@ -34,6 +40,12 @@
                 <ImageBrush ImageSource="Imagenes/logout.ico"/>
             </Button.Background>
         </Button>
+        <Label Content="Compras" HorizontalAlignment="Left" Margin="141,197,0,0" VerticalAlignment="Top" FontSize="18" FontWeight="Bold"/>
+        <Label Content="Transferencias" HorizontalAlignment="Left" Margin="332,197,0,0" VerticalAlignment="Top" FontSize="18" FontWeight="Bold"/>
+        <Label Content="Usuarios" HorizontalAlignment="Left" Margin="573,197,0,0" VerticalAlignment="Top" FontSize="18" FontWeight="Bold"/>
+        <Label Content="Desechos" HorizontalAlignment="Left" Margin="137,397,0,0" VerticalAlignment="Top" FontSize="18" FontWeight="Bold"/>
+        <Label Content="Materia Prima" HorizontalAlignment="Left" Margin="332,393,0,0" VerticalAlignment="Top" FontSize="18" FontWeight="Bold"/>
+        <Label Content="Salir" HorizontalAlignment="Left" Margin="935,57,0,0" VerticalAlignment="Top" FontSize="18" FontWeight="Bold"/>
 
     </Grid>
 </Window>

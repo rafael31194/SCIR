@@ -37,7 +37,11 @@ namespace ControlDeInventariosSCIR.DataAccess
                 if (userEdit != null)
                 {
                     userEdit.usr_id_rol = user.usr_id_rol;
-                    userEdit.usr_password = user.usr_password;
+                    if(user.usr_password!=null)
+                    {
+                        userEdit.usr_password = user.usr_password;
+                    }
+                    
                     db.SaveChanges();
                     return true;
                 }
