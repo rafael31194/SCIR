@@ -13,7 +13,7 @@
                 <ImageBrush ImageSource="Imagenes/desechos.png"/>
             </Button.Background>
         </Button>
-        <Button x:Name="btnMateriaPrima" Content="Button" HorizontalAlignment="Left" Margin="333,226,0,0" VerticalAlignment="Top" Width="130" Height="108">
+        <Button x:Name="btnMateriaPrima" Content="Button" HorizontalAlignment="Left" Margin="333,226,0,0" VerticalAlignment="Top" Width="130" Height="108" Click="btnMateriaPrima_Click">
             <Button.Background>
                 <ImageBrush ImageSource="Imagenes/materiaPrima.png"/>
             </Button.Background>
