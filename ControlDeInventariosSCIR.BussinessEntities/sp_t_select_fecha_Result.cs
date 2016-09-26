@@ -11,7 +11,7 @@ namespace ControlDeInventariosSCIR.BussinessEntities
 {
     using System;
     
-    public partial class sp_trans_select_all_EntradasSalidas_Result
+    public partial class sp_t_select_fecha_Result
     {
         public int t_id { get; set; }
         public int t_id_i { get; set; }

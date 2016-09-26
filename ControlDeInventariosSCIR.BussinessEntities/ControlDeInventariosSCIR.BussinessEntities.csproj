@@ -141,10 +141,10 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>SCIRModel.edmx</DependentUpon>
     </Compile>
-    <Compile Include="sp_helpdiagramdefinition_Result.cs">
+    <Compile Include="sp_LoginPermisosXRol_Result.cs">
       <DependentUpon>SCIRModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="sp_helpdiagrams_Result.cs">
+    <Compile Include="sp_Login_Result.cs">
       <DependentUpon>SCIRModel.tt</DependentUpon>
     </Compile>
     <Compile Include="sp_mp_select_all_Result.cs">
@@ -160,6 +160,12 @@
       <DependentUpon>SCIRModel.tt</DependentUpon>
     </Compile>
     <Compile Include="sp_trans_select_where_EntradasSalidas_Result.cs">
+      <DependentUpon>SCIRModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_t_select_fecha_Result.cs">
+      <DependentUpon>SCIRModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_t_select_where_TransferenciaID_Result.cs">
       <DependentUpon>SCIRModel.tt</DependentUpon>
     </Compile>
     <Compile Include="sysdiagrams.cs">
@@ -191,14 +197,12 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <None Include="App.Config" />
+    <None Include="packages.config" />
     <EntityDeploy Include="SCIRModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>SCIRModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="App.Config" />
-    <None Include="packages.config" />
     <None Include="SCIRModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>SCIRModel.edmx</DependentUpon>

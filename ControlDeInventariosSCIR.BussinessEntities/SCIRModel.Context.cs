@@ -119,7 +119,7 @@ namespace ControlDeInventariosSCIR.BussinessEntities
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_dropdiagram", diagramnameParameter, owner_idParameter);
         }
     
-        public virtual ObjectResult<sp_helpdiagramdefinition_Result> sp_helpdiagramdefinition(string diagramname, Nullable<int> owner_id)
+        public virtual int sp_helpdiagramdefinition(string diagramname, Nullable<int> owner_id)
         {
             var diagramnameParameter = diagramname != null ?
                 new ObjectParameter("diagramname", diagramname) :
@@ -129,10 +129,10 @@ namespace ControlDeInventariosSCIR.BussinessEntities
                 new ObjectParameter("owner_id", owner_id) :
                 new ObjectParameter("owner_id", typeof(int));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_helpdiagramdefinition_Result>("sp_helpdiagramdefinition", diagramnameParameter, owner_idParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_helpdiagramdefinition", diagramnameParameter, owner_idParameter);
         }
     
-        public virtual ObjectResult<sp_helpdiagrams_Result> sp_helpdiagrams(string diagramname, Nullable<int> owner_id)
+        public virtual int sp_helpdiagrams(string diagramname, Nullable<int> owner_id)
         {
             var diagramnameParameter = diagramname != null ?
                 new ObjectParameter("diagramname", diagramname) :
@@ -142,32 +142,10 @@ namespace ControlDeInventariosSCIR.BussinessEntities
                 new ObjectParameter("owner_id", owner_id) :
                 new ObjectParameter("owner_id", typeof(int));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_helpdiagrams_Result>("sp_helpdiagrams", diagramnameParameter, owner_idParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_helpdiagrams", diagramnameParameter, owner_idParameter);
         }
     
-        public virtual int sp_renamediagram(string diagramname, Nullable<int> owner_id, string new_diagramname)
-        {
-            var diagramnameParameter = diagramname != null ?
-                new ObjectParameter("diagramname", diagramname) :
-                new ObjectParameter("diagramname", typeof(string));
-    
-            var owner_idParameter = owner_id.HasValue ?
-                new ObjectParameter("owner_id", owner_id) :
-                new ObjectParameter("owner_id", typeof(int));
-    
-            var new_diagramnameParameter = new_diagramname != null ?
-                new ObjectParameter("new_diagramname", new_diagramname) :
-                new ObjectParameter("new_diagramname", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_renamediagram", diagramnameParameter, owner_idParameter, new_diagramnameParameter);
-        }
-    
-        public virtual int sp_upgraddiagrams()
-        {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_upgraddiagrams");
-        }
-    
-        public virtual ObjectResult<string> sp_Login(string username, string password)
+        public virtual ObjectResult<sp_Login_Result> sp_Login(string username, string password)
         {
             var usernameParameter = username != null ?
                 new ObjectParameter("username", username) :
@@ -177,7 +155,16 @@ namespace ControlDeInventariosSCIR.BussinessEntities
                 new ObjectParameter("password", password) :
                 new ObjectParameter("password", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("sp_Login", usernameParameter, passwordParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_Login_Result>("sp_Login", usernameParameter, passwordParameter);
+        }
+    
+        public virtual ObjectResult<sp_LoginPermisosXRol_Result> sp_LoginPermisosXRol(Nullable<int> id_rol)
+        {
+            var id_rolParameter = id_rol.HasValue ?
+                new ObjectParameter("id_rol", id_rol) :
+                new ObjectParameter("id_rol", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_LoginPermisosXRol_Result>("sp_LoginPermisosXRol", id_rolParameter);
         }
     
         public virtual int sp_mp_insert_NuevaMateriaPrima(string mp_codigo, string mp_nombre, string mp_unidadMedida, Nullable<double> mp_cantidadMinima, Nullable<bool> mp_estado)
@@ -257,6 +244,45 @@ namespace ControlDeInventariosSCIR.BussinessEntities
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_mp_update_MateriaPrima", mp_idParameter, mp_codigoParameter, mp_nombreParameter, mp_unidadMedidaParameter, mp_cantidadMinimaParameter, mp_estadoParameter);
         }
     
+        public virtual int sp_renamediagram(string diagramname, Nullable<int> owner_id, string new_diagramname)
+        {
+            var diagramnameParameter = diagramname != null ?
+                new ObjectParameter("diagramname", diagramname) :
+                new ObjectParameter("diagramname", typeof(string));
+    
+            var owner_idParameter = owner_id.HasValue ?
+                new ObjectParameter("owner_id", owner_id) :
+                new ObjectParameter("owner_id", typeof(int));
+    
+            var new_diagramnameParameter = new_diagramname != null ?
+                new ObjectParameter("new_diagramname", new_diagramname) :
+                new ObjectParameter("new_diagramname", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_renamediagram", diagramnameParameter, owner_idParameter, new_diagramnameParameter);
+        }
+    
+        public virtual ObjectResult<sp_t_select_fecha_Result> sp_t_select_fecha(Nullable<System.DateTime> t_fecha1, Nullable<System.DateTime> t_fecha2)
+        {
+            var t_fecha1Parameter = t_fecha1.HasValue ?
+                new ObjectParameter("t_fecha1", t_fecha1) :
+                new ObjectParameter("t_fecha1", typeof(System.DateTime));
+    
+            var t_fecha2Parameter = t_fecha2.HasValue ?
+                new ObjectParameter("t_fecha2", t_fecha2) :
+                new ObjectParameter("t_fecha2", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_t_select_fecha_Result>("sp_t_select_fecha", t_fecha1Parameter, t_fecha2Parameter);
+        }
+    
+        public virtual ObjectResult<sp_t_select_where_TransferenciaID_Result> sp_t_select_where_TransferenciaID(Nullable<int> t_id)
+        {
+            var t_idParameter = t_id.HasValue ?
+                new ObjectParameter("t_id", t_id) :
+                new ObjectParameter("t_id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_t_select_where_TransferenciaID_Result>("sp_t_select_where_TransferenciaID", t_idParameter);
+        }
+    
         public virtual int sp_trans_delete_TransferenciaEntradaSalida(Nullable<int> t_id, Nullable<int> t_tipo)
         {
             var t_idParameter = t_id.HasValue ?
@@ -270,8 +296,12 @@ namespace ControlDeInventariosSCIR.BussinessEntities
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_trans_delete_TransferenciaEntradaSalida", t_idParameter, t_tipoParameter);
         }
     
-        public virtual int sp_trans_insert_NuevaTransferencia(Nullable<int> t_id_i, Nullable<System.DateTime> t_fecha, string t_descripcion, Nullable<int> t_tipo, Nullable<int> t_id_usuarioCreacion, Nullable<int> t_id_ope)
+        public virtual int sp_trans_insert_NuevaTransferencia(Nullable<int> id, Nullable<int> t_id_i, Nullable<System.DateTime> t_fecha, string t_descripcion, Nullable<int> t_tipo, Nullable<int> t_id_usuarioCreacion, Nullable<int> t_id_ope)
         {
+            var idParameter = id.HasValue ?
+                new ObjectParameter("id", id) :
+                new ObjectParameter("id", typeof(int));
+    
             var t_id_iParameter = t_id_i.HasValue ?
                 new ObjectParameter("t_id_i", t_id_i) :
                 new ObjectParameter("t_id_i", typeof(int));
@@ -296,24 +326,49 @@ namespace ControlDeInventariosSCIR.BussinessEntities
                 new ObjectParameter("t_id_ope", t_id_ope) :
                 new ObjectParameter("t_id_ope", typeof(int));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_trans_insert_NuevaTransferencia", t_id_iParameter, t_fechaParameter, t_descripcionParameter, t_tipoParameter, t_id_usuarioCreacionParameter, t_id_opeParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_trans_insert_NuevaTransferencia", idParameter, t_id_iParameter, t_fechaParameter, t_descripcionParameter, t_tipoParameter, t_id_usuarioCreacionParameter, t_id_opeParameter);
         }
     
-        public virtual int sp_trans_insert_TransferenciaEntradas(Nullable<int> t_id, Nullable<int> t_mp_id, Nullable<double> t_mp_cantidad)
+        public virtual int sp_trans_insert_TransferenciaEntradas(Nullable<int> te_id, Nullable<int> te_id_t, Nullable<int> te_mp_id, Nullable<double> te_cantidad)
         {
-            var t_idParameter = t_id.HasValue ?
-                new ObjectParameter("t_id", t_id) :
-                new ObjectParameter("t_id", typeof(int));
+            var te_idParameter = te_id.HasValue ?
+                new ObjectParameter("te_id", te_id) :
+                new ObjectParameter("te_id", typeof(int));
     
-            var t_mp_idParameter = t_mp_id.HasValue ?
-                new ObjectParameter("t_mp_id", t_mp_id) :
-                new ObjectParameter("t_mp_id", typeof(int));
+            var te_id_tParameter = te_id_t.HasValue ?
+                new ObjectParameter("te_id_t", te_id_t) :
+                new ObjectParameter("te_id_t", typeof(int));
     
-            var t_mp_cantidadParameter = t_mp_cantidad.HasValue ?
-                new ObjectParameter("t_mp_cantidad", t_mp_cantidad) :
-                new ObjectParameter("t_mp_cantidad", typeof(double));
+            var te_mp_idParameter = te_mp_id.HasValue ?
+                new ObjectParameter("te_mp_id", te_mp_id) :
+                new ObjectParameter("te_mp_id", typeof(int));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_trans_insert_TransferenciaEntradas", t_idParameter, t_mp_idParameter, t_mp_cantidadParameter);
+            var te_cantidadParameter = te_cantidad.HasValue ?
+                new ObjectParameter("te_cantidad", te_cantidad) :
+                new ObjectParameter("te_cantidad", typeof(double));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_trans_insert_TransferenciaEntradas", te_idParameter, te_id_tParameter, te_mp_idParameter, te_cantidadParameter);
+        }
+    
+        public virtual int sp_trans_insert_TransferenciaEntradas1(Nullable<int> te_id, Nullable<int> te_id_t, Nullable<int> te_mp_id, Nullable<double> te_cantidad)
+        {
+            var te_idParameter = te_id.HasValue ?
+                new ObjectParameter("te_id", te_id) :
+                new ObjectParameter("te_id", typeof(int));
+    
+            var te_id_tParameter = te_id_t.HasValue ?
+                new ObjectParameter("te_id_t", te_id_t) :
+                new ObjectParameter("te_id_t", typeof(int));
+    
+            var te_mp_idParameter = te_mp_id.HasValue ?
+                new ObjectParameter("te_mp_id", te_mp_id) :
+                new ObjectParameter("te_mp_id", typeof(int));
+    
+            var te_cantidadParameter = te_cantidad.HasValue ?
+                new ObjectParameter("te_cantidad", te_cantidad) :
+                new ObjectParameter("te_cantidad", typeof(double));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_trans_insert_TransferenciaEntradas1", te_idParameter, te_id_tParameter, te_mp_idParameter, te_cantidadParameter);
         }
     
         public virtual int sp_trans_insert_TransferenciaSalida(Nullable<int> t_id, Nullable<int> t_mp_id, Nullable<double> t_mp_cantidad)
@@ -331,6 +386,27 @@ namespace ControlDeInventariosSCIR.BussinessEntities
                 new ObjectParameter("t_mp_cantidad", typeof(double));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_trans_insert_TransferenciaSalida", t_idParameter, t_mp_idParameter, t_mp_cantidadParameter);
+        }
+    
+        public virtual int sp_trans_insert_TransferenciaSalidas1(Nullable<int> ts_id, Nullable<int> ts_id_t, Nullable<int> ts_mp_id, Nullable<double> ts_cantidad)
+        {
+            var ts_idParameter = ts_id.HasValue ?
+                new ObjectParameter("ts_id", ts_id) :
+                new ObjectParameter("ts_id", typeof(int));
+    
+            var ts_id_tParameter = ts_id_t.HasValue ?
+                new ObjectParameter("ts_id_t", ts_id_t) :
+                new ObjectParameter("ts_id_t", typeof(int));
+    
+            var ts_mp_idParameter = ts_mp_id.HasValue ?
+                new ObjectParameter("ts_mp_id", ts_mp_id) :
+                new ObjectParameter("ts_mp_id", typeof(int));
+    
+            var ts_cantidadParameter = ts_cantidad.HasValue ?
+                new ObjectParameter("ts_cantidad", ts_cantidad) :
+                new ObjectParameter("ts_cantidad", typeof(double));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_trans_insert_TransferenciaSalidas1", ts_idParameter, ts_id_tParameter, ts_mp_idParameter, ts_cantidadParameter);
         }
     
         public virtual ObjectResult<sp_trans_select_all_EntradasSalidas_Result> sp_trans_select_all_EntradasSalidas()
@@ -399,6 +475,11 @@ namespace ControlDeInventariosSCIR.BussinessEntities
                 new ObjectParameter("t_mp_cantidadNuevo", typeof(double));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_trans_update_TransferenciaSalida", t_idParameter, t_mp_idParameter, t_mp_cantidadParameter, t_mp_idNuevoParameter, t_mp_cantidadNuevoParameter);
+        }
+    
+        public virtual int sp_upgraddiagrams()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_upgraddiagrams");
         }
     }
 }

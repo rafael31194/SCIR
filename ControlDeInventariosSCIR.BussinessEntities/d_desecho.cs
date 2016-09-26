@@ -30,8 +30,8 @@ namespace ControlDeInventariosSCIR.BussinessEntities
     
         public virtual i_inventario i_inventario { get; set; }
         public virtual ope_operacion ope_operacion { get; set; }
+        public virtual tid_tipoDesecho tid_tipoDesecho { get; set; }
         public virtual ICollection<dc_desechoCompleto> dc_desechoCompleto { get; set; }
         public virtual ICollection<di_desechoIncompleto> di_desechoIncompleto { get; set; }
-        public virtual tid_tipoDesecho tid_tipoDesecho { get; set; }
     }
 }

@@ -11,9 +11,11 @@ namespace ControlDeInventariosSCIR.BussinessEntities
 {
     using System;
     
-    public partial class sp_helpdiagramdefinition_Result
+    public partial class sp_LoginPermisosXRol_Result
     {
-        public Nullable<int> version { get; set; }
-        public byte[] definition { get; set; }
+        public int pxr_id { get; set; }
+        public string pxrl_id_pant { get; set; }
+        public Nullable<int> pxr_id_rol { get; set; }
+        public Nullable<int> pxr_id_user { get; set; }
     }
 }

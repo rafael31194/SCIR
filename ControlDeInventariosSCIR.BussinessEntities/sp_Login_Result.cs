@@ -11,12 +11,11 @@ namespace ControlDeInventariosSCIR.BussinessEntities
 {
     using System;
     
-    public partial class sp_helpdiagrams_Result
+    public partial class sp_Login_Result
     {
-        public string Database { get; set; }
-        public string Name { get; set; }
-        public int ID { get; set; }
-        public string Owner { get; set; }
-        public int OwnerID { get; set; }
+        public int usr_id { get; set; }
+        public string usr_nombre { get; set; }
+        public string usr_password { get; set; }
+        public int usr_id_rol { get; set; }
     }
 }
