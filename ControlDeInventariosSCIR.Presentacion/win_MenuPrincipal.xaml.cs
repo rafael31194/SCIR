@@ -83,14 +83,5 @@ namespace ControlDeInventariosSCIR.Presentacion
             dese.Show();
             this.Close();
         }
-
-        private void btnMateriaPrima_Click(object sender, RoutedEventArgs e)
-
-        {
-            win_materiaprima mat = new win_materiaprima();
-            mat.Show();
-            this.Close();
-
-        }
     }
 }

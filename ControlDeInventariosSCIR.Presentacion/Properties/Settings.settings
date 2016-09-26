@@ -3,7 +3,7 @@
   <Profiles />
   <Settings>
     <Setting Name="SCIR_SistemaInventarioConnectionString" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">Data Source=.\SQLEXPRESS;Initial Catalog=SCIR_SistemaInventario;Integrated Security=True;MultipleActiveResultSets=True;Application Name=EntityFramework</Value>
+      <Value Profile="(Default)">Data Source=EDUARDO-LAPTOP\SQLEXPRESS;Initial Catalog=SCIR_SistemaInventario;Integrated Security=True;MultipleActiveResultSets=True;Application Name=EntityFramework</Value>
     </Setting>
   </Settings>
 </SettingsFile>
