@@ -52,6 +52,7 @@ namespace ControlDeInventariosSCIR.Presentacion
             txtUsuario.Text = user.usr_nombre;
             txtUsuario.IsEnabled = false;
             btnEliminar.Visibility = Visibility.Visible;
+            
 
         }
 
@@ -65,6 +66,7 @@ namespace ControlDeInventariosSCIR.Presentacion
                 dataSetConsultasrol_rolesTableAdapter.Fill(dataSetConsultas.rol_roles);
                 System.Windows.Data.CollectionViewSource rol_rolesViewSource = ((System.Windows.Data.CollectionViewSource)(this.FindResource("rol_rolesViewSource")));
                 rol_rolesViewSource.View.MoveCurrentToFirst();
+                cbRoles.SelectedValue = user.usr_id_rol;
             }
             catch (Exception ex)
             {
@@ -81,60 +83,83 @@ namespace ControlDeInventariosSCIR.Presentacion
 
         private void btnGuardar_Click(object sender, RoutedEventArgs e)
         {
-            if (!(string.IsNullOrWhiteSpace(txtPassword.Password) | string.IsNullOrWhiteSpace(txtPasswordConfirm.Password)))
-            {
-                if (txtPassword.Password == txtPasswordConfirm.Password)
-                {
-                    if (user == null)
-                    {
 
-                        usr_usuarios usuario = new usr_usuarios();
-                        usuario.usr_id_rol = (int)cbRoles.SelectedValue;
-                        usuario.usr_nombre = (txtUsuario.Text).Replace("\r\n","");
-                        usuario.usr_password = txtPassword.Password;
-                        if (usr_UsuariosBLL.agregarUsuario(usuario))
-                        {
-                            MessageBox.Show("Nuevo usuario guardado con Exito", "NUEVO USUARIO", MessageBoxButton.OK, MessageBoxImage.Asterisk);
+            if (user == null)
+            {
+
+                if (!(string.IsNullOrWhiteSpace(txtPassword.Password) | string.IsNullOrWhiteSpace(txtPasswordConfirm.Password)))
+                {
+                    if (txtPassword.Password == txtPasswordConfirm.Password)
+                    {
+                    
+
+                            usr_usuarios usuario = new usr_usuarios();
+                            usuario.usr_id_rol = (int)cbRoles.SelectedValue;
+                            usuario.usr_nombre = (txtUsuario.Text).Replace("\r\n","");
+                            usuario.usr_password = txtPassword.Password;
+                            if (usr_UsuariosBLL.agregarUsuario(usuario))
+                            {
+                                MessageBox.Show("Nuevo usuario guardado con Exito", "NUEVO USUARIO", MessageBoxButton.OK, MessageBoxImage.Asterisk);
+                            }
+                            else
+                            {
+                                MessageBox.Show("Error al guardar Usuario");
+                            }
+
+                            limpiarCampos();
+                            this.Close();
+
+
                         }
                         else
                         {
-                            MessageBox.Show("Error al guardar Usuario");
+
+                            MessageBox.Show("Las contraseñas no coinciden\n Verifique su contraseña", "ERROR", MessageBoxButton.OK, MessageBoxImage.Error);
+
                         }
-
-                        limpiarCampos();
-                        this.Close();
-
-
                     }
                     else
                     {
-                        user.usr_password = txtPassword.Password;
-                        user.usr_id_rol = (int)cbRoles.SelectedValue;
-                        if (usr_UsuariosBLL.modificarUsuario(user))
-                        {
-                            MessageBox.Show("El usuario ha sido actualizado con Exito", "USUARIO MODIFICADO", MessageBoxButton.OK, MessageBoxImage.Asterisk);
-                            this.win_usr_Usuarios.cargarGrid();
-                            this.Close();
-                        }
-                        else
-                        {
-                            MessageBox.Show("Error al modificar Usuario");
-                            this.Close();
-                        }
 
+
+                        MessageBox.Show("Las contraseñas no debe estar vacías\n Verifique su contraseña", "ERROR", MessageBoxButton.OK, MessageBoxImage.Error);
                     }
-                }
-                else
-                {
-                    MessageBox.Show("Las contraseñas no coinciden\n Verifique su contraseña", "ERROR", MessageBoxButton.OK, MessageBoxImage.Error);
-                }
 
             }
             else
             {
-                MessageBox.Show("Las contraseñas no debe estar vacías\n Verifique su contraseña", "ERROR", MessageBoxButton.OK, MessageBoxImage.Error);
+                modificarUsuario();
             }
             
+        }
+
+        private void modificarUsuario()
+        {
+            if (!(string.IsNullOrWhiteSpace(txtPassword.Password) | string.IsNullOrWhiteSpace(txtPasswordConfirm.Password)))
+            {
+                if (txtPassword.Password == txtPasswordConfirm.Password)
+                {
+                    user.usr_password = txtPassword.Password;
+                }
+                else
+                {
+                    MessageBox.Show("Las contraseñas no coinciden\n Verifique su contraseña", "ERROR", MessageBoxButton.OK, MessageBoxImage.Error);
+                    return;
+                }
+            }
+            
+            user.usr_id_rol = (int)cbRoles.SelectedValue;
+            if (usr_UsuariosBLL.modificarUsuario(user))
+            {
+                MessageBox.Show("El usuario ha sido actualizado con Exito", "USUARIO MODIFICADO", MessageBoxButton.OK, MessageBoxImage.Asterisk);
+                this.win_usr_Usuarios.cargarGrid();
+                this.Close();
+            }
+            else
+            {
+                MessageBox.Show("Error al modificar Usuario");
+                this.Close();
+            }
         }
 
         public  void limpiarCampos()
