@@ -923,6 +923,43 @@
           <Parameter Name="version" Type="int" Mode="In" />
           <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
         </Function>
+        <Function Name="sp_d_deleteChildrenIncompleto_Desecho" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="d_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_d_insert_Desecho" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="d_id_i" Type="int" Mode="In" />
+          <Parameter Name="d_fecha" Type="date" Mode="In" />
+          <Parameter Name="d_descripcion" Type="varchar" Mode="In" />
+          <Parameter Name="d_id_usuarioCreacion" Type="int" Mode="In" />
+          <Parameter Name="d_id_ope" Type="int" Mode="In" />
+          <Parameter Name="id_tipoDesecho" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_d_select_where_IncompletoCompleto" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id_tipoDesecho" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_d_update_Desecho" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="d_id" Type="int" Mode="In" />
+          <Parameter Name="d_fecha" Type="date" Mode="In" />
+          <Parameter Name="d_descripcion" Type="nchar" Mode="In" />
+        </Function>
+        <Function Name="sp_di_delete_DesechoIncompleto" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="di_id" Type="int" Mode="In" />
+          <Parameter Name="di_id_d" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_di_insert_DesechoIncompleto" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="di_id_d" Type="int" Mode="In" />
+          <Parameter Name="di_id_mp" Type="int" Mode="In" />
+          <Parameter Name="di_cantidad" Type="float" Mode="In" />
+        </Function>
+        <Function Name="sp_di_select_DesechoIncompleto" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="di_id_d" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_di_update_DesechoIncompleto" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="di_id" Type="int" Mode="In" />
+          <Parameter Name="di_id_d" Type="int" Mode="In" />
+          <Parameter Name="di_id_mp" Type="int" Mode="In" />
+          <Parameter Name="di_cantidad" Type="float" Mode="In" />
+        </Function>
         <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
           <Parameter Name="owner_id" Type="int" Mode="In" />
@@ -938,6 +975,9 @@
         <Function Name="sp_Login" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="username" Type="varchar" Mode="In" />
           <Parameter Name="password" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="sp_LoginPermisosXRol" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id_rol" Type="int" Mode="In" />
         </Function>
         <Function Name="sp_mp_insert_NuevaMateriaPrima" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="mp_codigo" Type="varchar" Mode="In" />
@@ -966,11 +1006,15 @@
           <Parameter Name="owner_id" Type="int" Mode="In" />
           <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
         </Function>
+        <Function Name="sp_t_select_where_TransferenciaID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="t_id" Type="int" Mode="In" />
+        </Function>
         <Function Name="sp_trans_delete_TransferenciaEntradaSalida" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="t_id" Type="int" Mode="In" />
           <Parameter Name="t_tipo" Type="int" Mode="In" />
         </Function>
         <Function Name="sp_trans_insert_NuevaTransferencia" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
           <Parameter Name="t_id_i" Type="int" Mode="In" />
           <Parameter Name="t_fecha" Type="date" Mode="In" />
           <Parameter Name="t_descripcion" Type="varchar" Mode="In" />
@@ -2509,6 +2553,7 @@
             <Parameter Name="t_tipo" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="sp_trans_insert_NuevaTransferencia">
+            <Parameter Name="id" Mode="In" Type="Int32" />
             <Parameter Name="t_id_i" Mode="In" Type="Int32" />
             <Parameter Name="t_fecha" Mode="In" Type="DateTime" />
             <Parameter Name="t_descripcion" Mode="In" Type="String" />
@@ -2544,6 +2589,49 @@
             <Parameter Name="t_mp_cantidad" Mode="In" Type="Double" />
             <Parameter Name="t_mp_idNuevo" Mode="In" Type="Int32" />
             <Parameter Name="t_mp_cantidadNuevo" Mode="In" Type="Double" />
+          </FunctionImport>
+          <FunctionImport Name="sp_d_deleteChildrenIncompleto_Desecho">
+            <Parameter Name="d_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_d_insert_Desecho" ReturnType="Collection(Int32)">
+            <Parameter Name="d_id_i" Mode="In" Type="Int32" />
+            <Parameter Name="d_fecha" Mode="In" Type="DateTime" />
+            <Parameter Name="d_descripcion" Mode="In" Type="String" />
+            <Parameter Name="d_id_usuarioCreacion" Mode="In" Type="Int32" />
+            <Parameter Name="d_id_ope" Mode="In" Type="Int32" />
+            <Parameter Name="id_tipoDesecho" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_d_select_where_IncompletoCompleto" ReturnType="Collection(SCIR_SistemaInventarioModel.sp_d_select_where_IncompletoCompleto_Result)">
+            <Parameter Name="id_tipoDesecho" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_d_update_Desecho">
+            <Parameter Name="d_id" Mode="In" Type="Int32" />
+            <Parameter Name="d_fecha" Mode="In" Type="DateTime" />
+            <Parameter Name="d_descripcion" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_di_delete_DesechoIncompleto">
+            <Parameter Name="di_id" Mode="In" Type="Int32" />
+            <Parameter Name="di_id_d" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_di_insert_DesechoIncompleto">
+            <Parameter Name="di_id_d" Mode="In" Type="Int32" />
+            <Parameter Name="di_id_mp" Mode="In" Type="Int32" />
+            <Parameter Name="di_cantidad" Mode="In" Type="Double" />
+          </FunctionImport>
+          <FunctionImport Name="sp_di_select_DesechoIncompleto" ReturnType="Collection(SCIR_SistemaInventarioModel.sp_di_select_DesechoIncompleto_Result)">
+            <Parameter Name="di_id_d" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_di_update_DesechoIncompleto">
+            <Parameter Name="di_id" Mode="In" Type="Int32" />
+            <Parameter Name="di_id_d" Mode="In" Type="Int32" />
+            <Parameter Name="di_id_mp" Mode="In" Type="Int32" />
+            <Parameter Name="di_cantidad" Mode="In" Type="Double" />
+          </FunctionImport>
+          <FunctionImport Name="sp_LoginPermisosXRol" ReturnType="Collection(SCIR_SistemaInventarioModel.sp_LoginPermisosXRol_Result)">
+            <Parameter Name="id_rol" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_t_select_where_TransferenciaID" ReturnType="Collection(SCIR_SistemaInventarioModel.sp_t_select_where_TransferenciaID_Result)">
+            <Parameter Name="t_id" Mode="In" Type="Int32" />
           </FunctionImport>
         </EntityContainer>
         <ComplexType Name="sp_helpdiagramdefinition_Result">
@@ -2604,6 +2692,36 @@
           <Property Type="DateTime" Name="t_fecha" Nullable="false" />
           <Property Type="String" Name="t_descripcion" Nullable="true" MaxLength="100" />
           <Property Type="Int32" Name="t_tipo" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="sp_d_select_where_IncompletoCompleto_Result">
+          <Property Type="Int32" Name="d_id" Nullable="false" />
+          <Property Type="Int32" Name="d_id_i" Nullable="false" />
+          <Property Type="DateTime" Name="d_fecha" Nullable="false" />
+          <Property Type="String" Name="d_descripcion" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="d_id_usuarioCreacion" Nullable="true" />
+          <Property Type="Int32" Name="d_id_ope" Nullable="true" />
+          <Property Type="Int32" Name="id_tipoDesecho" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_di_select_DesechoIncompleto_Result">
+          <Property Type="Int32" Name="di_id" Nullable="false" />
+          <Property Type="Int32" Name="di_id_d" Nullable="false" />
+          <Property Type="Int32" Name="di_id_mp" Nullable="false" />
+          <Property Type="Double" Name="di_cantidad" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="sp_LoginPermisosXRol_Result">
+          <Property Type="Int32" Name="pxr_id" Nullable="false" />
+          <Property Type="String" Name="pxrl_id_pant" Nullable="true" MaxLength="10" />
+          <Property Type="Int32" Name="pxr_id_rol" Nullable="true" />
+          <Property Type="Int32" Name="pxr_id_user" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_t_select_where_TransferenciaID_Result">
+          <Property Type="Int32" Name="t_id" Nullable="false" />
+          <Property Type="Int32" Name="t_id_i" Nullable="false" />
+          <Property Type="DateTime" Name="t_fecha" Nullable="false" />
+          <Property Type="String" Name="t_descripcion" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="t_tipo" Nullable="false" />
+          <Property Type="Int32" Name="t_id_usuarioCreacion" Nullable="true" />
+          <Property Type="Int32" Name="t_id_ope" Nullable="true" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -3076,6 +3194,58 @@
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="sp_trans_update_TransferenciaEntrada" FunctionName="SCIR_SistemaInventarioModel.Store.sp_trans_update_TransferenciaEntrada" />
           <FunctionImportMapping FunctionImportName="sp_trans_update_TransferenciaSalida" FunctionName="SCIR_SistemaInventarioModel.Store.sp_trans_update_TransferenciaSalida" />
+          <FunctionImportMapping FunctionImportName="sp_d_deleteChildrenIncompleto_Desecho" FunctionName="SCIR_SistemaInventarioModel.Store.sp_d_deleteChildrenIncompleto_Desecho" />
+          <FunctionImportMapping FunctionImportName="sp_d_insert_Desecho" FunctionName="SCIR_SistemaInventarioModel.Store.sp_d_insert_Desecho" />
+          <FunctionImportMapping FunctionImportName="sp_d_select_where_IncompletoCompleto" FunctionName="SCIR_SistemaInventarioModel.Store.sp_d_select_where_IncompletoCompleto">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SCIR_SistemaInventarioModel.sp_d_select_where_IncompletoCompleto_Result">
+                <ScalarProperty Name="d_id" ColumnName="d_id" />
+                <ScalarProperty Name="d_id_i" ColumnName="d_id_i" />
+                <ScalarProperty Name="d_fecha" ColumnName="d_fecha" />
+                <ScalarProperty Name="d_descripcion" ColumnName="d_descripcion" />
+                <ScalarProperty Name="d_id_usuarioCreacion" ColumnName="d_id_usuarioCreacion" />
+                <ScalarProperty Name="d_id_ope" ColumnName="d_id_ope" />
+                <ScalarProperty Name="id_tipoDesecho" ColumnName="id_tipoDesecho" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_d_update_Desecho" FunctionName="SCIR_SistemaInventarioModel.Store.sp_d_update_Desecho" />
+          <FunctionImportMapping FunctionImportName="sp_di_delete_DesechoIncompleto" FunctionName="SCIR_SistemaInventarioModel.Store.sp_di_delete_DesechoIncompleto" />
+          <FunctionImportMapping FunctionImportName="sp_di_insert_DesechoIncompleto" FunctionName="SCIR_SistemaInventarioModel.Store.sp_di_insert_DesechoIncompleto" />
+          <FunctionImportMapping FunctionImportName="sp_di_select_DesechoIncompleto" FunctionName="SCIR_SistemaInventarioModel.Store.sp_di_select_DesechoIncompleto">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SCIR_SistemaInventarioModel.sp_di_select_DesechoIncompleto_Result">
+                <ScalarProperty Name="di_id" ColumnName="di_id" />
+                <ScalarProperty Name="di_id_d" ColumnName="di_id_d" />
+                <ScalarProperty Name="di_id_mp" ColumnName="di_id_mp" />
+                <ScalarProperty Name="di_cantidad" ColumnName="di_cantidad" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_di_update_DesechoIncompleto" FunctionName="SCIR_SistemaInventarioModel.Store.sp_di_update_DesechoIncompleto" />
+          <FunctionImportMapping FunctionImportName="sp_LoginPermisosXRol" FunctionName="SCIR_SistemaInventarioModel.Store.sp_LoginPermisosXRol">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SCIR_SistemaInventarioModel.sp_LoginPermisosXRol_Result">
+                <ScalarProperty Name="pxr_id" ColumnName="pxr_id" />
+                <ScalarProperty Name="pxrl_id_pant" ColumnName="pxrl_id_pant" />
+                <ScalarProperty Name="pxr_id_rol" ColumnName="pxr_id_rol" />
+                <ScalarProperty Name="pxr_id_user" ColumnName="pxr_id_user" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_t_select_where_TransferenciaID" FunctionName="SCIR_SistemaInventarioModel.Store.sp_t_select_where_TransferenciaID">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SCIR_SistemaInventarioModel.sp_t_select_where_TransferenciaID_Result">
+                <ScalarProperty Name="t_id" ColumnName="t_id" />
+                <ScalarProperty Name="t_id_i" ColumnName="t_id_i" />
+                <ScalarProperty Name="t_fecha" ColumnName="t_fecha" />
+                <ScalarProperty Name="t_descripcion" ColumnName="t_descripcion" />
+                <ScalarProperty Name="t_tipo" ColumnName="t_tipo" />
+                <ScalarProperty Name="t_id_usuarioCreacion" ColumnName="t_id_usuarioCreacion" />
+                <ScalarProperty Name="t_id_ope" ColumnName="t_id_ope" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

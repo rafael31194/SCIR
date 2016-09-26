@@ -270,8 +270,12 @@ namespace ControlDeInventariosSCIR.BussinessEntities
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_trans_delete_TransferenciaEntradaSalida", t_idParameter, t_tipoParameter);
         }
     
-        public virtual int sp_trans_insert_NuevaTransferencia(Nullable<int> t_id_i, Nullable<System.DateTime> t_fecha, string t_descripcion, Nullable<int> t_tipo, Nullable<int> t_id_usuarioCreacion, Nullable<int> t_id_ope)
+        public virtual int sp_trans_insert_NuevaTransferencia(Nullable<int> id, Nullable<int> t_id_i, Nullable<System.DateTime> t_fecha, string t_descripcion, Nullable<int> t_tipo, Nullable<int> t_id_usuarioCreacion, Nullable<int> t_id_ope)
         {
+            var idParameter = id.HasValue ?
+                new ObjectParameter("id", id) :
+                new ObjectParameter("id", typeof(int));
+    
             var t_id_iParameter = t_id_i.HasValue ?
                 new ObjectParameter("t_id_i", t_id_i) :
                 new ObjectParameter("t_id_i", typeof(int));
@@ -296,7 +300,7 @@ namespace ControlDeInventariosSCIR.BussinessEntities
                 new ObjectParameter("t_id_ope", t_id_ope) :
                 new ObjectParameter("t_id_ope", typeof(int));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_trans_insert_NuevaTransferencia", t_id_iParameter, t_fechaParameter, t_descripcionParameter, t_tipoParameter, t_id_usuarioCreacionParameter, t_id_opeParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_trans_insert_NuevaTransferencia", idParameter, t_id_iParameter, t_fechaParameter, t_descripcionParameter, t_tipoParameter, t_id_usuarioCreacionParameter, t_id_opeParameter);
         }
     
         public virtual int sp_trans_insert_TransferenciaEntradas(Nullable<int> t_id, Nullable<int> t_mp_id, Nullable<double> t_mp_cantidad)
@@ -399,6 +403,148 @@ namespace ControlDeInventariosSCIR.BussinessEntities
                 new ObjectParameter("t_mp_cantidadNuevo", typeof(double));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_trans_update_TransferenciaSalida", t_idParameter, t_mp_idParameter, t_mp_cantidadParameter, t_mp_idNuevoParameter, t_mp_cantidadNuevoParameter);
+        }
+    
+        public virtual int sp_d_deleteChildrenIncompleto_Desecho(Nullable<int> d_id)
+        {
+            var d_idParameter = d_id.HasValue ?
+                new ObjectParameter("d_id", d_id) :
+                new ObjectParameter("d_id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_d_deleteChildrenIncompleto_Desecho", d_idParameter);
+        }
+    
+        public virtual ObjectResult<Nullable<int>> sp_d_insert_Desecho(Nullable<int> d_id_i, Nullable<System.DateTime> d_fecha, string d_descripcion, Nullable<int> d_id_usuarioCreacion, Nullable<int> d_id_ope, Nullable<int> id_tipoDesecho)
+        {
+            var d_id_iParameter = d_id_i.HasValue ?
+                new ObjectParameter("d_id_i", d_id_i) :
+                new ObjectParameter("d_id_i", typeof(int));
+    
+            var d_fechaParameter = d_fecha.HasValue ?
+                new ObjectParameter("d_fecha", d_fecha) :
+                new ObjectParameter("d_fecha", typeof(System.DateTime));
+    
+            var d_descripcionParameter = d_descripcion != null ?
+                new ObjectParameter("d_descripcion", d_descripcion) :
+                new ObjectParameter("d_descripcion", typeof(string));
+    
+            var d_id_usuarioCreacionParameter = d_id_usuarioCreacion.HasValue ?
+                new ObjectParameter("d_id_usuarioCreacion", d_id_usuarioCreacion) :
+                new ObjectParameter("d_id_usuarioCreacion", typeof(int));
+    
+            var d_id_opeParameter = d_id_ope.HasValue ?
+                new ObjectParameter("d_id_ope", d_id_ope) :
+                new ObjectParameter("d_id_ope", typeof(int));
+    
+            var id_tipoDesechoParameter = id_tipoDesecho.HasValue ?
+                new ObjectParameter("id_tipoDesecho", id_tipoDesecho) :
+                new ObjectParameter("id_tipoDesecho", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("sp_d_insert_Desecho", d_id_iParameter, d_fechaParameter, d_descripcionParameter, d_id_usuarioCreacionParameter, d_id_opeParameter, id_tipoDesechoParameter);
+        }
+    
+        public virtual ObjectResult<sp_d_select_where_IncompletoCompleto_Result> sp_d_select_where_IncompletoCompleto(Nullable<int> id_tipoDesecho)
+        {
+            var id_tipoDesechoParameter = id_tipoDesecho.HasValue ?
+                new ObjectParameter("id_tipoDesecho", id_tipoDesecho) :
+                new ObjectParameter("id_tipoDesecho", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_d_select_where_IncompletoCompleto_Result>("sp_d_select_where_IncompletoCompleto", id_tipoDesechoParameter);
+        }
+    
+        public virtual int sp_d_update_Desecho(Nullable<int> d_id, Nullable<System.DateTime> d_fecha, string d_descripcion)
+        {
+            var d_idParameter = d_id.HasValue ?
+                new ObjectParameter("d_id", d_id) :
+                new ObjectParameter("d_id", typeof(int));
+    
+            var d_fechaParameter = d_fecha.HasValue ?
+                new ObjectParameter("d_fecha", d_fecha) :
+                new ObjectParameter("d_fecha", typeof(System.DateTime));
+    
+            var d_descripcionParameter = d_descripcion != null ?
+                new ObjectParameter("d_descripcion", d_descripcion) :
+                new ObjectParameter("d_descripcion", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_d_update_Desecho", d_idParameter, d_fechaParameter, d_descripcionParameter);
+        }
+    
+        public virtual int sp_di_delete_DesechoIncompleto(Nullable<int> di_id, Nullable<int> di_id_d)
+        {
+            var di_idParameter = di_id.HasValue ?
+                new ObjectParameter("di_id", di_id) :
+                new ObjectParameter("di_id", typeof(int));
+    
+            var di_id_dParameter = di_id_d.HasValue ?
+                new ObjectParameter("di_id_d", di_id_d) :
+                new ObjectParameter("di_id_d", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_di_delete_DesechoIncompleto", di_idParameter, di_id_dParameter);
+        }
+    
+        public virtual int sp_di_insert_DesechoIncompleto(Nullable<int> di_id_d, Nullable<int> di_id_mp, Nullable<double> di_cantidad)
+        {
+            var di_id_dParameter = di_id_d.HasValue ?
+                new ObjectParameter("di_id_d", di_id_d) :
+                new ObjectParameter("di_id_d", typeof(int));
+    
+            var di_id_mpParameter = di_id_mp.HasValue ?
+                new ObjectParameter("di_id_mp", di_id_mp) :
+                new ObjectParameter("di_id_mp", typeof(int));
+    
+            var di_cantidadParameter = di_cantidad.HasValue ?
+                new ObjectParameter("di_cantidad", di_cantidad) :
+                new ObjectParameter("di_cantidad", typeof(double));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_di_insert_DesechoIncompleto", di_id_dParameter, di_id_mpParameter, di_cantidadParameter);
+        }
+    
+        public virtual ObjectResult<sp_di_select_DesechoIncompleto_Result> sp_di_select_DesechoIncompleto(Nullable<int> di_id_d)
+        {
+            var di_id_dParameter = di_id_d.HasValue ?
+                new ObjectParameter("di_id_d", di_id_d) :
+                new ObjectParameter("di_id_d", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_di_select_DesechoIncompleto_Result>("sp_di_select_DesechoIncompleto", di_id_dParameter);
+        }
+    
+        public virtual int sp_di_update_DesechoIncompleto(Nullable<int> di_id, Nullable<int> di_id_d, Nullable<int> di_id_mp, Nullable<double> di_cantidad)
+        {
+            var di_idParameter = di_id.HasValue ?
+                new ObjectParameter("di_id", di_id) :
+                new ObjectParameter("di_id", typeof(int));
+    
+            var di_id_dParameter = di_id_d.HasValue ?
+                new ObjectParameter("di_id_d", di_id_d) :
+                new ObjectParameter("di_id_d", typeof(int));
+    
+            var di_id_mpParameter = di_id_mp.HasValue ?
+                new ObjectParameter("di_id_mp", di_id_mp) :
+                new ObjectParameter("di_id_mp", typeof(int));
+    
+            var di_cantidadParameter = di_cantidad.HasValue ?
+                new ObjectParameter("di_cantidad", di_cantidad) :
+                new ObjectParameter("di_cantidad", typeof(double));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_di_update_DesechoIncompleto", di_idParameter, di_id_dParameter, di_id_mpParameter, di_cantidadParameter);
+        }
+    
+        public virtual ObjectResult<sp_LoginPermisosXRol_Result> sp_LoginPermisosXRol(Nullable<int> id_rol)
+        {
+            var id_rolParameter = id_rol.HasValue ?
+                new ObjectParameter("id_rol", id_rol) :
+                new ObjectParameter("id_rol", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_LoginPermisosXRol_Result>("sp_LoginPermisosXRol", id_rolParameter);
+        }
+    
+        public virtual ObjectResult<sp_t_select_where_TransferenciaID_Result> sp_t_select_where_TransferenciaID(Nullable<int> t_id)
+        {
+            var t_idParameter = t_id.HasValue ?
+                new ObjectParameter("t_id", t_id) :
+                new ObjectParameter("t_id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_t_select_where_TransferenciaID_Result>("sp_t_select_where_TransferenciaID", t_idParameter);
         }
     }
 }

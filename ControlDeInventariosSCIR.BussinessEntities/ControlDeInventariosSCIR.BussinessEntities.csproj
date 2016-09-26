@@ -141,10 +141,19 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>SCIRModel.edmx</DependentUpon>
     </Compile>
+    <Compile Include="sp_di_select_DesechoIncompleto_Result.cs">
+      <DependentUpon>SCIRModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_d_select_where_IncompletoCompleto_Result.cs">
+      <DependentUpon>SCIRModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="sp_helpdiagramdefinition_Result.cs">
       <DependentUpon>SCIRModel.tt</DependentUpon>
     </Compile>
     <Compile Include="sp_helpdiagrams_Result.cs">
+      <DependentUpon>SCIRModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_LoginPermisosXRol_Result.cs">
       <DependentUpon>SCIRModel.tt</DependentUpon>
     </Compile>
     <Compile Include="sp_mp_select_all_Result.cs">
@@ -160,6 +169,9 @@
       <DependentUpon>SCIRModel.tt</DependentUpon>
     </Compile>
     <Compile Include="sp_trans_select_where_EntradasSalidas_Result.cs">
+      <DependentUpon>SCIRModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_t_select_where_TransferenciaID_Result.cs">
       <DependentUpon>SCIRModel.tt</DependentUpon>
     </Compile>
     <Compile Include="sysdiagrams.cs">
