@@ -58,6 +58,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DataSetConsultas.xsd</DependentUpon>
     </Compile>
+    <Compile Include="win_Insertar_mp.xaml.cs">
+      <DependentUpon>win_Insertar_mp.xaml</DependentUpon>
+    </Compile>
     <Compile Include="win_di_EditarDesechoIncompleto.xaml.cs">
       <DependentUpon>win_di_EditarDesechoIncompleto.xaml</DependentUpon>
     </Compile>
@@ -66,6 +69,9 @@
     </Compile>
     <Compile Include="win_di_NuevoDesechoIncompleto.xaml.cs">
       <DependentUpon>win_di_NuevoDesechoIncompleto.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="win_materiaprima.xaml.cs">
+      <DependentUpon>win_materiaprima.xaml</DependentUpon>
     </Compile>
     <Compile Include="win_MenuPrincipal.xaml.cs">
       <DependentUpon>win_MenuPrincipal.xaml</DependentUpon>
@@ -85,6 +91,10 @@
     <Compile Include="win_usr_Usuarios.xaml.cs">
       <DependentUpon>win_usr_Usuarios.xaml</DependentUpon>
     </Compile>
+    <Page Include="win_Insertar_mp.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -106,6 +116,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="win_di_NuevoDesechoIncompleto.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="win_materiaprima.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -170,7 +184,9 @@
     <AppDesigner Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ControlDeInventariosSCIR.BussinesLogic\ControlDeInventariosSCIR.BussinesLogic.csproj">
