@@ -475,5 +475,82 @@ namespace ControlDeInventariosSCIR.BussinessEntities
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_upgraddiagrams");
         }
+    
+        public virtual ObjectResult<sp_select_c_detalle_select_all_Result> sp_select_c_detalle_select_all()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_select_c_detalle_select_all_Result>("sp_select_c_detalle_select_all");
+        }
+    
+        public virtual ObjectResult<sp_buscar_mpnombre_Result> sp_buscar_mpnombre(string mp_codigo)
+        {
+            var mp_codigoParameter = mp_codigo != null ?
+                new ObjectParameter("mp_codigo", mp_codigo) :
+                new ObjectParameter("mp_codigo", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_buscar_mpnombre_Result>("sp_buscar_mpnombre", mp_codigoParameter);
+        }
+    
+        public virtual int sp_c_compra_insert(Nullable<int> c_id, Nullable<int> c_id_i, Nullable<System.DateTime> c_fecha, string c_codigoFactura, string c_descripcion, Nullable<int> c_id_usuarioCreacion, Nullable<int> c_id_ope)
+        {
+            var c_idParameter = c_id.HasValue ?
+                new ObjectParameter("c_id", c_id) :
+                new ObjectParameter("c_id", typeof(int));
+    
+            var c_id_iParameter = c_id_i.HasValue ?
+                new ObjectParameter("c_id_i", c_id_i) :
+                new ObjectParameter("c_id_i", typeof(int));
+    
+            var c_fechaParameter = c_fecha.HasValue ?
+                new ObjectParameter("c_fecha", c_fecha) :
+                new ObjectParameter("c_fecha", typeof(System.DateTime));
+    
+            var c_codigoFacturaParameter = c_codigoFactura != null ?
+                new ObjectParameter("c_codigoFactura", c_codigoFactura) :
+                new ObjectParameter("c_codigoFactura", typeof(string));
+    
+            var c_descripcionParameter = c_descripcion != null ?
+                new ObjectParameter("c_descripcion", c_descripcion) :
+                new ObjectParameter("c_descripcion", typeof(string));
+    
+            var c_id_usuarioCreacionParameter = c_id_usuarioCreacion.HasValue ?
+                new ObjectParameter("c_id_usuarioCreacion", c_id_usuarioCreacion) :
+                new ObjectParameter("c_id_usuarioCreacion", typeof(int));
+    
+            var c_id_opeParameter = c_id_ope.HasValue ?
+                new ObjectParameter("c_id_ope", c_id_ope) :
+                new ObjectParameter("c_id_ope", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_c_compra_insert", c_idParameter, c_id_iParameter, c_fechaParameter, c_codigoFacturaParameter, c_descripcionParameter, c_id_usuarioCreacionParameter, c_id_opeParameter);
+        }
+    
+        public virtual int sp_insert_c_dtlCompra(Nullable<int> c_dtl_id, Nullable<int> c_dtl_id_c, Nullable<int> c_dtl_id_mp, Nullable<double> c_dtl_cantidad)
+        {
+            var c_dtl_idParameter = c_dtl_id.HasValue ?
+                new ObjectParameter("c_dtl_id", c_dtl_id) :
+                new ObjectParameter("c_dtl_id", typeof(int));
+    
+            var c_dtl_id_cParameter = c_dtl_id_c.HasValue ?
+                new ObjectParameter("c_dtl_id_c", c_dtl_id_c) :
+                new ObjectParameter("c_dtl_id_c", typeof(int));
+    
+            var c_dtl_id_mpParameter = c_dtl_id_mp.HasValue ?
+                new ObjectParameter("c_dtl_id_mp", c_dtl_id_mp) :
+                new ObjectParameter("c_dtl_id_mp", typeof(int));
+    
+            var c_dtl_cantidadParameter = c_dtl_cantidad.HasValue ?
+                new ObjectParameter("c_dtl_cantidad", c_dtl_cantidad) :
+                new ObjectParameter("c_dtl_cantidad", typeof(double));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_insert_c_dtlCompra", c_dtl_idParameter, c_dtl_id_cParameter, c_dtl_id_mpParameter, c_dtl_cantidadParameter);
+        }
+    
+        public virtual ObjectResult<sp_c_dtl_select_where_CompraID_Result> sp_c_dtl_select_where_CompraID(Nullable<int> c_dtl_id_c)
+        {
+            var c_dtl_id_cParameter = c_dtl_id_c.HasValue ?
+                new ObjectParameter("c_dtl_id_c", c_dtl_id_c) :
+                new ObjectParameter("c_dtl_id_c", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_c_dtl_select_where_CompraID_Result>("sp_c_dtl_select_where_CompraID", c_dtl_id_cParameter);
+        }
     }
 }

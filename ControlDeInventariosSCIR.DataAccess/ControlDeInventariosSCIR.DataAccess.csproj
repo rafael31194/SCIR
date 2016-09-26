@@ -42,12 +42,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CDetalleDAL.cs" />
     <Compile Include="Class1.cs" />
+    <Compile Include="CompraDetalleDAL.cs" />
     <Compile Include="ComprasDAL.cs" />
     <Compile Include="InventarioDAL.cs" />
     <Compile Include="LoginDAL.cs" />
     <Compile Include="MateriaPrimaDAL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="t_transferencia_DAL.cs" />
     <Compile Include="usr_UsuariosDAL.cs" />
   </ItemGroup>
   <ItemGroup>

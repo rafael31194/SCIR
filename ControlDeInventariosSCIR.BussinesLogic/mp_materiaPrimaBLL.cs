@@ -26,5 +26,15 @@ namespace ControlDeInventariosSCIR.BussinesLogic
                 return MateriaPrimaDAL.GetResultado(mp);
             }
 
+            public string mpNombre(mp_materiaPrima mp)
+            {
+                return MateriaPrimaDAL.GetNombre(mp);
+            }
+
+            //obtener datos de acuerdo al idmateria prima
+            public mp_materiaPrima NombreID(int mp)
+            {
+                return MateriaPrimaDAL.GetDatosMp(mp);
+            }
     }
 }

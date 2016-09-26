@@ -14,7 +14,7 @@ namespace ControlDeInventariosSCIR.DataAccess
         {
             SCIR_SistemaInventarioEntities DB = new SCIR_SistemaInventarioEntities();
             //DB.sp_trans_insert_NuevaTransferencia(tU.t_id_i,tU.t_fecha,tU.t_descripcion,tU.t_tipo,tU.t_id_usuarioCreacion,tU.t_id_ope);
-            DB.sp_trans_insert_NuevaTransferencia(9,1, tU.t_fecha, tU.t_descripcion, 1, 1, 1);  
+           // DB.sp_trans_insert_NuevaTransferencia(9,1, tU.t_fecha, tU.t_descripcion, 1, 1, 1);  
         }
         public static List<t_transferencia> GetDatos(t_transferencia trans)
         {

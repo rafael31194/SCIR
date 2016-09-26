@@ -4,10 +4,10 @@
        Title="GestionCompras" Height="400" Width="607">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="117*"/>
-            <ColumnDefinition Width="215*"/>
-            <ColumnDefinition Width="74*"/>
-            <ColumnDefinition Width="86*"/>
+            <ColumnDefinition Width="142*"/>
+            <ColumnDefinition Width="300*"/>
+            <ColumnDefinition Width="52*"/>
+            <ColumnDefinition Width="105*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="64*"/>
@@ -46,10 +46,10 @@
         </DataGrid>
         <Button Content="Cancelar" Margin="11,0,0,4" Grid.Row="4" Grid.Column="3" HorizontalAlignment="Left" Width="84" Background="#FFBDBBBB"/>
         <Button Content="Ayuda" Grid.Row="4" Margin="0,0,0,4" HorizontalAlignment="Left" Width="100" Background="#FFBDBBBB" />
-        <TextBox x:Name="txtBuscarMp"  Grid.Column="1" Margin="10,0" Grid.Row="2" BorderThickness="2" BorderBrush="Black" Height="30" VerticalAlignment="Bottom"/>
-        <Button Content="Buscar" Grid.Column="2" Margin="10,0,0,2" Grid.Row="2" Background="#FFBDBBBB"  Height="25" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="70"/>
+        <TextBox x:Name="txtCompra"  Grid.Column="1" Margin="0,0,10,8" Grid.Row="2" BorderThickness="2" BorderBrush="Black" Height="26" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="111" Text="Cod Factura"/>
+        <Button Content="Buscar" Grid.Column="3" Margin="10,0,0,5" Grid.Row="2" Background="#FFBDBBBB"  Height="25" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="70" Click="btBuscar"/>
         <Button Content="Nuevo" Margin="10,10,0,0" Grid.Row="1" HorizontalAlignment="Left" Width="122" Background="#FFB0AFAF" Height="25" VerticalAlignment="Top" Click="Button_Click_1"/>
-        <Button Content="Actualizar" Grid.Column="3" HorizontalAlignment="Left" Margin="11,10,0,0" Width="75" Grid.Row="1" Click="Button_Click"/>
+        <DatePicker x:Name="fecha" Grid.Column="1" HorizontalAlignment="Left" Margin="10,3,0,0" Grid.Row="2" VerticalAlignment="Top" Height="26" Width="143"/>
 
     </Grid>
 </Window>

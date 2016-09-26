@@ -39,12 +39,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CDetalleBLL.cs" />
     <Compile Include="Class1.cs" />
+    <Compile Include="CompraDetalleBLL.cs" />
     <Compile Include="ComprasBLL.cs" />
     <Compile Include="InventarioBLL.cs" />
     <Compile Include="LoginBLL.cs" />
     <Compile Include="mp_materiaPrimaBLL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="t_transferencia_BLL.cs" />
     <Compile Include="usr_UsuariosBLL.cs" />
   </ItemGroup>
   <ItemGroup>

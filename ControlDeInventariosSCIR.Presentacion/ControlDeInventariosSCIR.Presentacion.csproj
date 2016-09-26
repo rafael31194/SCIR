@@ -59,6 +59,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="DataSetConsultas.cs">
+      <DependentUpon>DataSetConsultas.xsd</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="DataSetConsultas.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -87,6 +91,15 @@
     </Compile>
     <Compile Include="win_MenuPrincipal.xaml.cs">
       <DependentUpon>win_MenuPrincipal.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="win_t_EditarTransferencias.xaml.cs">
+      <DependentUpon>win_t_EditarTransferencias.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="win_t_GestionarTranferencias.xaml.cs">
+      <DependentUpon>win_t_GestionarTranferencias.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="win_t_InsertarTransferencias.xaml.cs">
+      <DependentUpon>win_t_InsertarTransferencias.xaml</DependentUpon>
     </Compile>
     <Compile Include="win_usr_NuevoUsuario.xaml.cs">
       <DependentUpon>win_usr_NuevoUsuario.xaml</DependentUpon>
@@ -145,6 +158,18 @@
     <Page Include="win_MenuPrincipal.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="win_t_EditarTransferencias.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="win_t_GestionarTranferencias.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="win_t_InsertarTransferencias.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="win_usr_NuevoUsuario.xaml">
       <SubType>Designer</SubType>

@@ -141,10 +141,16 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>SCIRModel.edmx</DependentUpon>
     </Compile>
+    <Compile Include="sp_buscar_mpnombre_Result.cs">
+      <DependentUpon>SCIRModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="sp_compras_select_all_Result.cs">
       <DependentUpon>SCIRModel.tt</DependentUpon>
     </Compile>
     <Compile Include="sp_compra_select_where_CompraporID_Result.cs">
+      <DependentUpon>SCIRModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_c_dtl_select_where_CompraID_Result.cs">
       <DependentUpon>SCIRModel.tt</DependentUpon>
     </Compile>
     <Compile Include="sp_i_inventario_select_all_Result.cs">
@@ -163,6 +169,9 @@
       <DependentUpon>SCIRModel.tt</DependentUpon>
     </Compile>
     <Compile Include="sp_mp_select_where_MateriaPrimaPorNombre_Result.cs">
+      <DependentUpon>SCIRModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_select_c_detalle_select_all_Result.cs">
       <DependentUpon>SCIRModel.tt</DependentUpon>
     </Compile>
     <Compile Include="sp_trans_select_all_EntradasSalidas_Result.cs">

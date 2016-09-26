@@ -56,5 +56,27 @@ namespace ControlDeInventariosSCIR.Presentacion
           {
               this.Close();
           }
+
+          private void bteliminar(object sender, RoutedEventArgs e)
+          {
+             /*  object item = materiaprima.SelectedItem;
+              string id = (materiaprima.SelectedCells[0].Column.GetCellContent(item) as TextBlock).Text;
+              int ids = Int32.Parse(id);
+              //  var remover=scir.sp_mp_select_where_MateriaPrimaPorID(ids);
+              var remover = scir.mp_materiaPrima.Where(w => w.mp_id == ids).FirstOrDefault();
+
+              MessageBoxResult result = MessageBox.Show("Estas seguro de eliminar el registro", "Confirmar", MessageBoxButton.YesNo, MessageBoxImage.Question);
+              if (result.ToString() == "Yes")
+              {
+                  scir.mp_materiaPrima.Remove(remover);
+                  scir.SaveChanges();
+
+                  materiaprima.ItemsSource = scir.mp_materiaPrima.ToList();
+                  // materiaprima.Items.Refresh();
+                  MessageBox.Show("Registro eliminado");
+
+              }*/
+
+          }
     }
 }

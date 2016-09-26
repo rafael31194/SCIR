@@ -20,10 +20,24 @@ namespace ControlDeInventariosSCIR.BussinesLogic
             //   ComprasDAL compras = new ComprasDAL();
             return ComprasDAL.GetFila(compra);
         }
-        public c_compra GuadarEdicion(c_compra compra)
+        public static int GuadarEdicion(c_compra compra)
         {
             return ComprasDAL.Actualizar(compra);
         }
 
+        public static int insertar_compra(c_compra compra)
+        {
+            return ComprasDAL.insertar(compra);
+        }
+
+        public static int eliminar(c_compra compra)
+        {
+            return ComprasDAL.Eliminar(compra);
+        }
+
+        public List<c_compra> Buscar(c_compra compra)
+        {
+            return ComprasDAL.Buscar(compra);
+        }
     }
 }

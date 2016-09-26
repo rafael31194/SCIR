@@ -7,6 +7,8 @@ using ControlDeInventariosSCIR.BussinessEntities;
 using ControlDeInventariosSCIR.DataAccess;
 using System.Data.SqlClient;
 
+
+
 namespace ControlDeInventariosSCIR.DataAccess
 {
     public static class MateriaPrimaDAL
@@ -28,6 +30,14 @@ namespace ControlDeInventariosSCIR.DataAccess
           }
          */
         //funcion q obtiene todos los datos de las materias primas
+
+        public static string GetNombre(mp_materiaPrima mp)
+        {
+            SCIR_SistemaInventarioEntities scir = new SCIR_SistemaInventarioEntities();
+            var filas = scir.Database.SqlQuery<mp_materiaPrima>("sp_buscar_mpnombre @mp_codigo",new SqlParameter("@mp_codigo",mp.mp_codigo)).ToArray<mp_materiaPrima>();
+            string cad = filas.ToString();
+            return cad;
+        }
         public static List<mp_materiaPrima> GetDatos(mp_materiaPrima mp)
         {
             SCIR_SistemaInventarioEntities scir = new SCIR_SistemaInventarioEntities();
@@ -43,6 +53,24 @@ namespace ControlDeInventariosSCIR.DataAccess
 
         }
 
+        //funcion q obtiene los datos de materias primas por idmp
+        public static mp_materiaPrima GetDatosMp(int mp)
+        {
+            SCIR_SistemaInventarioEntities scir = new SCIR_SistemaInventarioEntities();
+            var datos = scir.Database.SqlQuery<mp_materiaPrima>("sp_mp_select_where_MateriaPrimaPorID @mp_id", new SqlParameter("@mp_id", mp)).ToArray<mp_materiaPrima>().FirstOrDefault();
+            try
+            {
+                if (datos != null)
+                    return datos;
+                else
+                    return null;
+            }
+            catch(Exception e)
+            {
+                Console.Write(e);
+                return null;
+            }
+        }
         //funcion q obtiene datos a partir de la busqueda
         public static mp_materiaPrima GetResultado(mp_materiaPrima mp)
         {
